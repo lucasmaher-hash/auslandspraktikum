@@ -160,6 +160,21 @@ dl.profile dd ul { margin: 0; padding-left: 18px; display: grid; gap: 3px; }
 .tpl pre { margin: 0; padding: 14px; font-family: var(--font-mono); font-size: 12.5px; line-height: 1.6; white-space: pre-wrap; overflow-wrap: anywhere; }
 button.copy { font-family: var(--font-mono); font-size: 12px; color: var(--accent); background: var(--accent-wash); border: 0; border-radius: 6px; padding: 6px 10px; cursor: pointer; }
 button.copy:focus-visible { outline: 2px solid var(--accent-soft); outline-offset: 2px; }
+.filters { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; cursor: pointer; }
+.chip .cnt { opacity: .6; margin-left: 2px; }
+.chip[aria-pressed="true"] { color: var(--bg); background: var(--accent); border-color: var(--accent); }
+.chip:focus-visible, .check input:focus-visible { outline: 2px solid var(--accent-soft); outline-offset: 2px; }
+.filter-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.check { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; cursor: pointer; }
+.firms { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+.firm { border: 1px solid var(--line); border-radius: 10px; background: var(--surface); padding: 14px 16px; display: grid; gap: 8px; align-content: start; min-width: 0; }
+.firm header { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+.firm h3 { font-size: 16px; }
+.firm-pills { display: flex; gap: 6px; flex-shrink: 0; }
+.firm .why { color: var(--fg); }
+.firm .fnote { font-size: 13.5px; color: var(--muted); }
+.firm-link { font-family: var(--font-mono); font-size: 12.5px; text-decoration: none; margin-top: 2px; }
 footer { max-width: 880px; margin: 48px auto 0; font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 16px; }
 </style>
 
@@ -175,6 +190,7 @@ footer { max-width: 880px; margin: 48px auto 0; font-size: 13px; color: var(--mu
     <li><a href="#allgemein"><span class="num">01</span><span class="lbl">Allgemein</span></a></li>
     <li><a href="#orte"><span class="num">02</span><span class="lbl">Orte</span></a></li>
     <li><a href="#bewerbung"><span class="num">03</span><span class="lbl">Bewerbungsprozess</span></a></li>
+    <li><a href="#firmen"><span class="num">04</span><span class="lbl">Firmen</span></a></li>
   </ul>
 </nav>
 
@@ -410,6 +426,7 @@ footer { max-width: 880px; margin: 48px auto 0; font-size: 13px; color: var(--mu
 <section>
   <h2>Log</h2>
   <ul class="log">
+    <li><span class="mono muted">09.10.2026</span><span>Reiter 04 Firmen: 48 konkrete Firmen mit Länderfilter, Priorität und geprüften Karriere-Links. Subframe und HeyClicky ergänzt.</span></li>
     <li><span class="mono muted">09.10.2026</span><span>Irischer Pass: London ohne Visum möglich, auf Platz 1 in Europa gerückt. Empfehlung ergänzt (Kern London, Amsterdam, Stockholm, Paris; Wunschziele Toronto, Singapur). USA: J-1 „Irish Work and Travel" als Option.</span></li>
     <li><span class="mono muted">09.10.2026</span><span>Portfolio geprüft: Unify zeigt live erfundene Research-Zahlen, Bereinigung vor jeder Bewerbung. APE und SCE ergänzt. Analyse in der Vault-Notiz „Portfolio-Analyse".</span></li>
     <li><span class="mono muted">09.10.2026</span><span>Reiter 03 neu: Anleitung zur Bewerbung bei Firmen (Wege, Unterlagen, Jobbörsen, Vorlagen, Gespräche, Zeitplan). Organisatorisches (Fahrplan, HM-Ablauf, Visa, Fragen) nach Allgemein verschoben.</span></li>
@@ -867,13 +884,29 @@ USA: I'd come on a J-1 intern visa through a sponsor organization. Your side wou
 
 </div>
 
+<div class="wrap" data-tab="firmen" hidden>
+
+<section>
+  <h2>Firmen <span class="tag">konkrete Ziele zum Anschreiben</span></h2>
+  <p class="muted">Priorität A heißt: zuerst anschreiben. B ist eine gute Option, C ein Stretch-Ziel oder nur passend, wenn sich etwas ergibt. Keine dieser Firmen hat eine bestätigte, offene Praktikumsstelle für deinen Zeitraum. Konkret belegte Hinweise stehen jeweils unter „Gut zu wissen". Alle Karriere-Links habe ich am 09.10.2026 geprüft.</p>
+  <div class="filters" role="group" aria-label="Nach Land filtern" id="country-filters"></div>
+  <div class="filter-row">
+    <label class="check"><input type="checkbox" id="only-a"> Nur Priorität A</label>
+    <span class="mono muted" id="firm-count"></span>
+  </div>
+  <div class="firms" id="firm-list"></div>
+</section>
+
+<div class="next"><a href="#allgemein">Zurück zu 01 Allgemein →</a></div>
+</div>
+
 </main>
 
 <footer>Quelle für den Stand ist die Vault-Notiz „Auslandssemester". Diese Seite ist die Arbeitsansicht. Arbeitsordner: ~/TEMP/auslandssemester:praktikum/arbeit/praktikum/</footer>
 
 <script>
 (function () {
-  var tabs = ["allgemein", "orte", "bewerbung"];
+  var tabs = ["allgemein", "orte", "bewerbung", "firmen"];
   function show(id) {
     if (tabs.indexOf(id) < 0) id = "allgemein";
     document.querySelectorAll("[data-tab]").forEach(function (p) { p.hidden = p.getAttribute("data-tab") !== id; });
@@ -898,6 +931,110 @@ USA: I'd come on a J-1 intern visa through a sponsor organization. Your side wou
       try { navigator.clipboard.writeText(txt).then(function () { done("Kopiert"); }, fallback); } catch (e) { fallback(); }
     });
   });
+  /* ── Firmen: Daten und Filter ──────────────────────────────────────── */
+  var COUNTRIES = { UK: "UK", NL: "Niederlande", SE: "Schweden", FR: "Frankreich", IE: "Irland", CH: "Schweiz", CA: "Kanada", SG: "Singapur", AU: "Australien", US: "USA", JP: "Japan" };
+  var FIRMS = [
+    { n: "ElevenLabs", c: "London", cc: "UK", t: "KI-nativ", p: "A", u: "https://elevenlabs.io/careers", what: "KI-Stimmen und Audio", why: "Eine der wertvollsten KI-Firmen Europas. Ohne Visum für dich erreichbar.", note: "Laut einem Guide (Juli 2026) kein formelles Praktikumsprogramm, also direkt an das Design-Team schreiben." },
+    { n: "Granola", c: "London", cc: "UK", t: "KI-nativ", p: "A", u: "https://www.granola.ai/jobs", what: "KI-Notizen für Meetings", why: "Kleines, sehr designgetriebenes KI-Produkt. Dort zählt, ob du bauen kannst.", note: "" },
+    { n: "Synthesia", c: "London", cc: "UK", t: "KI-nativ", p: "B", u: "https://www.synthesia.io/careers", what: "KI-Videos mit Avataren", why: "Großes KI-Produkt mit eigenem Design-Team. Deine Motion-Arbeit passt.", note: "" },
+    { n: "Attio", c: "London", cc: "UK", t: "Scale-up", p: "B", u: "https://attio.com/careers", what: "CRM-Software", why: "Bekannt für sehr gutes Produktdesign.", note: "" },
+    { n: "Wayve", c: "London", cc: "UK", t: "KI-nativ", p: "B", u: "https://wayve.ai/careers/", what: "KI für autonomes Fahren", why: "KI plus Fahrzeug, passt zu deinem Industriedesign-Hintergrund.", note: "" },
+    { n: "Monzo", c: "London", cc: "UK", t: "Scale-up", p: "B", u: "https://monzo.com/careers", what: "Banking-App", why: "Große Consumer-App mit starker Design-Kultur.", note: "" },
+    { n: "Cleo", c: "London", cc: "UK", t: "KI-nativ", p: "B", u: "https://web.meetcleo.com/careers", what: "KI-Finanzassistent", why: "Consumer-KI mit eigener Persönlichkeit im Produkt.", note: "" },
+    { n: "Google DeepMind", c: "London", cc: "UK", t: "Big Tech", p: "C", u: "https://deepmind.google/careers/", what: "KI-Forschung von Google", why: "Top-Name, aber Design-Praktika sind selten.", note: "" },
+
+    { n: "Framer", c: "Amsterdam", cc: "NL", t: "Design-Tool", p: "A", u: "https://www.framer.com/careers/", what: "Design-Tool mit KI-Website-Builder, Hauptsitz Amsterdam", why: "Design und KI in einem Produkt. Passt zu dir wie kaum eine andere Firma.", note: "Die Stelle als Product Designer verlangt Berufserfahrung. Ein Praktikum also aktiv anfragen." },
+    { n: "Picnic", c: "Amsterdam", cc: "NL", t: "Scale-up", p: "B", u: "https://jobs.picnic.app/en/", what: "Lebensmittel-Lieferung per App", why: "Bezahlte Design-Praktika gibt es dort nachweislich.", note: "Auf magnet.me war ein Praktikum als Visual Designer für 800 € im Monat ausgeschrieben." },
+    { n: "Miro", c: "Amsterdam", cc: "NL", t: "Scale-up", p: "B", u: "https://miro.com/careers/", what: "Online-Whiteboard für Teams", why: "Designer sind dort Zielgruppe und Team zugleich.", note: "" },
+    { n: "Booking.com", c: "Amsterdam", cc: "NL", t: "Big Tech", p: "B", u: "https://careers.booking.com/", what: "Reiseplattform", why: "Großes Produktdesign-Team, viel Experimentieren.", note: "" },
+    { n: "Mollie", c: "Amsterdam", cc: "NL", t: "Scale-up", p: "B", u: "https://jobs.mollie.com/", what: "Zahlungsabwicklung", why: "Fintech mit gutem Ruf für Design.", note: "" },
+    { n: "Adyen", c: "Amsterdam", cc: "NL", t: "Scale-up", p: "C", u: "https://careers.adyen.com/", what: "Zahlungsabwicklung", why: "Großer Name, aber eher technisch.", note: "" },
+
+    { n: "Lovable", c: "Stockholm", cc: "SE", t: "KI-nativ", p: "A", u: "https://lovable.dev/careers", what: "Apps per KI bauen", why: "Arbeitet genau so wie du mit Agents. to.morrow und Gauntlet sind dort direkte Argumente.", note: "" },
+    { n: "Legora", c: "Stockholm", cc: "SE", t: "KI-nativ", p: "B", u: "https://legora.com/careers", what: "KI für Anwaltskanzleien", why: "Schnell wachsende KI-Firma mit komplexer UX.", note: "" },
+    { n: "Klarna", c: "Stockholm", cc: "SE", t: "Scale-up", p: "B", u: "https://www.klarna.com/careers/", what: "Zahlungs- und Shopping-App", why: "Große Consumer-App, setzt stark auf KI.", note: "" },
+    { n: "Spotify", c: "Stockholm", cc: "SE", t: "Big Tech", p: "C", u: "https://www.lifeatspotify.com/", what: "Musik-Streaming", why: "Top-Name, aber Design-Praktika liefen bisher nur im Sommer.", note: "Design-Praktika bisher als Sommerprogramm von Mitte Juni bis Ende August." },
+    { n: "Epidemic Sound", c: "Stockholm", cc: "SE", t: "Scale-up", p: "C", u: "https://www.epidemicsound.com/careers/", what: "Musik für Creator", why: "Kreative Zielgruppe, passt zu deinem Motion-Profil.", note: "" },
+
+    { n: "Photoroom", c: "Paris", cc: "FR", t: "KI-nativ", p: "A", u: "https://jobs.ashbyhq.com/photoroom", what: "KI-Fotobearbeitung", why: "Consumer-KI, bei der Design das Produkt ist.", note: "" },
+    { n: "Dust", c: "Paris", cc: "FR", t: "KI-nativ", p: "A", u: "https://jobs.ashbyhq.com/dust", what: "KI-Agenten für Firmen", why: "Agenten-Produkt wie dein Gauntlet. Du sprichst ihre Sprache.", note: "" },
+    { n: "Mistral AI", c: "Paris", cc: "FR", t: "KI-nativ", p: "B", u: "https://mistral.ai/careers/", what: "Sprachmodelle", why: "Wichtigste KI-Firma der EU.", note: "Praktika waren bisher in Forschung und Engineering ausgeschrieben, Design noch nicht gesehen." },
+    { n: "Hugging Face", c: "Paris", cc: "FR", t: "KI-nativ", p: "B", u: "https://apply.workable.com/huggingface/", what: "Plattform für offene KI-Modelle", why: "Zentrum der Open-Source-KI.", note: "" },
+    { n: "H Company", c: "Paris", cc: "FR", t: "KI-nativ", p: "B", u: "https://hcompany.ai/careers", what: "KI-Agenten", why: "Junges Agenten-Startup.", note: "" },
+    { n: "Alan", c: "Paris", cc: "FR", t: "Scale-up", p: "B", u: "https://alan.com/en/careers", what: "Krankenversicherung als App", why: "Bekannt für Produkt- und Designkultur.", note: "" },
+    { n: "Qonto", c: "Paris", cc: "FR", t: "Scale-up", p: "B", u: "https://qonto.com/en/careers", what: "Business-Banking", why: "Großes Produktteam, viele Praktikanten in Frankreich.", note: "" },
+
+    { n: "Intercom (Fin)", c: "Dublin", cc: "IE", t: "KI-nativ", p: "B", u: "https://fin.ai/careers", what: "KI-Kundenservice-Agent Fin", why: "Starkes Design-Team, baut voll auf KI-Agenten.", note: "Eine Stelle als Senior Product Designer nennt Prototyping mit Framer und Lovable. Die Karriereseite leitet inzwischen auf fin.ai." },
+    { n: "Stripe", c: "Dublin", cc: "IE", t: "Big Tech", p: "C", u: "https://stripe.com/jobs", what: "Zahlungsinfrastruktur", why: "Top-Name für Design, aber stark umkämpft.", note: "" },
+
+    { n: "Google Zürich", c: "Zürich", cc: "CH", t: "Big Tech", p: "C", u: "https://www.google.com/about/careers/applications/locations/zurich/", what: "Großer Google-Standort", why: "DAAD zahlt hier 1.475 €, aber Design-Praktika sind selten.", note: "" },
+
+    { n: "Cohere", c: "Toronto", cc: "CA", t: "KI-nativ", p: "A", u: "https://cohere.com/careers", what: "Sprachmodelle für Firmen", why: "Größte KI-Firma Kanadas. Das IEC-Visum passt zu deinem Pflichtpraktikum.", note: "" },
+    { n: "Ada", c: "Toronto", cc: "CA", t: "KI-nativ", p: "B", u: "https://www.ada.cx/careers", what: "KI-Kundenservice", why: "KI-Agenten mit viel Konversationsdesign.", note: "" },
+    { n: "Shopify", c: "Ottawa / remote", cc: "CA", t: "Big Tech", p: "B", u: "https://www.shopify.com/careers", what: "Shop-Plattform", why: "Bekannt für das Designsystem Polaris.", note: "" },
+    { n: "Wealthsimple", c: "Toronto", cc: "CA", t: "Scale-up", p: "B", u: "https://www.wealthsimple.com/en-ca/careers", what: "Finanz-App", why: "Sehr gutes Consumer-Design.", note: "" },
+    { n: "Hopper", c: "Montreal", cc: "CA", t: "Scale-up", p: "C", u: "https://hopper.com/careers", what: "Reise-App", why: "Consumer-App mit Preisprognose per KI.", note: "" },
+
+    { n: "Grab", c: "Singapur", cc: "SG", t: "Big Tech", p: "B", u: "https://www.grab.careers/en/", what: "Super-App für Südostasien", why: "Ein ganz anderes UX-Feld als in Europa. Mit dem Work Holiday Pass braucht Grab kein Visum für dich.", note: "" },
+    { n: "Shopee", c: "Singapur", cc: "SG", t: "Big Tech", p: "B", u: "https://careers.shopee.sg/", what: "E-Commerce (Sea Group)", why: "Riesige Nutzerbasis in Asien.", note: "" },
+    { n: "TikTok", c: "Singapur", cc: "SG", t: "Big Tech", p: "C", u: "https://lifeattiktok.com/", what: "Video-Plattform", why: "Großes Design-Team in Singapur.", note: "" },
+
+    { n: "Canva", c: "Sydney", cc: "AU", t: "Design-Tool", p: "B", u: "https://www.canva.com/careers/", what: "Design-Plattform mit KI", why: "Eine der designgetriebensten Firmen überhaupt.", note: "Zuletzt nur ein Brand-Design-Praktikum (Dez–Feb) ohne Visa-Sponsoring. Mit Working Holiday brauchst du keins." },
+    { n: "Leonardo.Ai", c: "Sydney", cc: "AU", t: "KI-nativ", p: "B", u: "https://leonardo.ai/careers/", what: "KI-Bildgenerierung, gehört zu Canva", why: "KI-Produkt für Kreative.", note: "" },
+    { n: "Atlassian", c: "Sydney", cc: "AU", t: "Big Tech", p: "C", u: "https://www.atlassian.com/company/careers", what: "Jira, Confluence", why: "Großes Design-Team.", note: "Das australische Praktikumsprogramm war nur für Australier und Neuseeländer offen." },
+
+    { n: "HeyClicky", c: "San Francisco / remote", cc: "US", t: "KI-nativ", p: "A", u: "https://www.heyclicky.com/careers", what: "KI-Assistent für den Mac, der neben dem Cursor sitzt, den Bildschirm sieht, spricht und auf Dinge zeigt (Humansongs, Inc.)", why: "Passt ungewöhnlich gut: ein neues KI-Interface, Retro-Computing als Haltung („the computer we fell in love with“), Figuren statt Avatare, natives macOS. Genau dein Profil aus to.morrow, SkeuKit, Unify und Motion.", note: "Karriereseite (geprüft 09.10.2026) listet ein Praktikum „sf / remote“ und eine Designer-Stelle „sf / remote“. Gründer ist Farza (früher buildspace). Bewerbung per „reach out“, Kontakt hi@heyclicky.com. Remote hieße: kein Visum, aber zählt es als Auslandspraktikum? Mit Petri klären." },
+    { n: "Subframe", c: "San Francisco", cc: "US", t: "Design-Tool", p: "B", u: "https://www.subframe.com/", what: "Design-Tool für Designer, die in Code arbeiten. Desktop-App mit Canvas, Browser und Coding-Agent (Claude Code, Codex)", why: "Genau deine Arbeitsweise. Passt inhaltlich so gut wie Framer oder Lovable.", note: "Gegründet 2022, laut Firmenverzeichnis rund 6 Leute, CEO Irvin Zhan. Keine Karriereseite gefunden, also direkt anschreiben. Hürde ist das US-Visum." },
+    { n: "BMW Group Designworks", c: "Los Angeles", cc: "US", t: "Design-Studio", p: "B", u: "https://jobs.bmwgroup.com/", what: "Designstudio der BMW Group", why: "Industriedesign plus UI/UX, deutscher Konzern.", note: "Zuletzt ein UI/UX-Praktikum „Summer/Fall 2026“ für 25,30 $ pro Stunde. J-1-Bewerber brauchten BMW-Vorerfahrung." },
+    { n: "Figma", c: "San Francisco", cc: "US", t: "Design-Tool", p: "C", u: "https://www.figma.com/careers/", what: "Design-Tool", why: "Das Werkzeug, das du täglich nutzt.", note: "" },
+    { n: "Anthropic", c: "San Francisco", cc: "US", t: "KI-nativ", p: "C", u: "https://www.anthropic.com/careers", what: "KI-Modelle (Claude)", why: "Du baust mit ihren Werkzeugen.", note: "Eine Stelle als Product Designer für Claude Code verlangt Prototyping in HTML, CSS und JS." },
+    { n: "Cursor", c: "San Francisco", cc: "US", t: "KI-nativ", p: "C", u: "https://cursor.com/careers", what: "KI-Code-Editor", why: "Design Engineering an der Schnittstelle von Figma und Code.", note: "Eine Stelle als Design Engineer verlangt Figma und Code (TypeScript, React)." },
+
+    { n: "Mercari", c: "Tokio", cc: "JP", t: "Scale-up", p: "C", u: "https://careers.mercari.com/", what: "Marktplatz-App", why: "Englischsprachige Teams.", note: "Engineering-Praktika mit Visa-Support und Englisch als Arbeitssprache. Für Design nicht geprüft." },
+    { n: "Sakana AI", c: "Tokio", cc: "JP", t: "KI-nativ", p: "C", u: "https://sakana.ai/careers/", what: "KI-Forschung", why: "Bekanntestes KI-Startup Japans.", note: "Das Produkt-Praktikum verlangt Business-Japanisch." }
+  ];
+
+  var state = { cc: "ALL", onlyA: false };
+  try { var saved = JSON.parse(localStorage.getItem("firmFilter") || "null"); if (saved) state = saved; } catch (e) {}
+  var filterBox = document.getElementById("country-filters");
+  var listBox = document.getElementById("firm-list");
+  var countBox = document.getElementById("firm-count");
+  var onlyA = document.getElementById("only-a");
+  var order = { A: 0, B: 1, C: 2 };
+
+  function chip(code, label, count) {
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "chip"; b.dataset.cc = code;
+    b.innerHTML = label + ' <span class="cnt">' + count + "</span>";
+    b.addEventListener("click", function () { state.cc = code; render(); });
+    return b;
+  }
+  function esc(s) { return s.replace(/&/g, "&amp;").replace(/</g, "&lt;"); }
+  function render() {
+    try { localStorage.setItem("firmFilter", JSON.stringify(state)); } catch (e) {}
+    onlyA.checked = state.onlyA;
+    filterBox.querySelectorAll(".chip").forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.cc === state.cc ? "true" : "false"); });
+    var list = FIRMS.filter(function (f) { return (state.cc === "ALL" || f.cc === state.cc) && (!state.onlyA || f.p === "A"); })
+      .sort(function (a, b) { return order[a.p] - order[b.p] || a.n.localeCompare(b.n); });
+    countBox.textContent = list.length + (list.length === 1 ? " Firma" : " Firmen");
+    listBox.innerHTML = list.map(function (f) {
+      var pc = f.p === "A" ? "p-good" : f.p === "B" ? "p-info" : "p-warn";
+      return '<article class="firm">' +
+        '<header><div><h3>' + esc(f.n) + '</h3><span class="mono muted">' + esc(f.c) + " · " + COUNTRIES[f.cc] + "</span></div>" +
+        '<div class="firm-pills"><span class="pill ' + pc + '">' + f.p + '</span><span class="pill p-info">' + esc(f.t) + "</span></div></header>" +
+        "<p>" + esc(f.what) + "</p>" +
+        '<p class="why">' + esc(f.why) + "</p>" +
+        (f.note ? '<p class="fnote"><span class="mono">Gut zu wissen:</span> ' + esc(f.note) + "</p>" : "") +
+        '<a class="firm-link" href="' + f.u + '" target="_blank" rel="noopener">Karriereseite →</a>' +
+        "</article>";
+    }).join("") || '<p class="muted">Keine Firma für diese Auswahl.</p>';
+  }
+  var counts = {}; FIRMS.forEach(function (f) { counts[f.cc] = (counts[f.cc] || 0) + 1; });
+  filterBox.appendChild(chip("ALL", "Alle", FIRMS.length));
+  Object.keys(COUNTRIES).forEach(function (cc) { if (counts[cc]) filterBox.appendChild(chip(cc, COUNTRIES[cc], counts[cc])); });
+  onlyA.addEventListener("change", function () { state.onlyA = onlyA.checked; render(); });
+  render();
+
   show(location.hash.slice(1));
 })();
 </script>
