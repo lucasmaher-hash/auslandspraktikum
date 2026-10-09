@@ -181,6 +181,20 @@ button.copy:focus-visible { outline: 2px solid var(--accent-soft); outline-offse
 .firm .why { color: var(--fg); }
 .firm .fnote { font-size: 13.5px; color: var(--muted); }
 .firm-link { font-family: var(--font-mono); font-size: 12.5px; text-decoration: none; margin-top: 2px; }
+.firm-actions { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 2px; }
+.dossier-btn { font-family: var(--font-mono); font-size: 12.5px; color: var(--bg); background: var(--accent); border: 0; border-radius: 6px; padding: 6px 10px; cursor: pointer; }
+.dossier-btn:focus-visible { outline: 2px solid var(--accent-soft); outline-offset: 2px; }
+details.dossier { border: 1px solid var(--line); border-radius: 10px; background: var(--surface); scroll-margin-top: 72px; }
+details.dossier summary { cursor: pointer; list-style: none; padding: 16px; display: grid; gap: 4px; }
+details.dossier summary::-webkit-details-marker { display: none; }
+details.dossier .d-title { font-family: var(--font-display); font-size: 20px; }
+details.dossier .d-hint { font-family: var(--font-mono); font-size: 12px; color: var(--accent); }
+details.dossier .d-hint::before { content: "▸ "; }
+details.dossier[open] .d-hint::before { content: "▾ "; }
+details.dossier[open] summary { border-bottom: 1px solid var(--line); }
+.d-body { padding: 16px; display: grid; gap: 14px; min-width: 0; }
+.d-body > ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; }
+.d-body > h3 { padding-top: 6px; }
 footer { max-width: 880px; margin: 48px auto 0; font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 16px; }
 </style>
 </head>
@@ -434,6 +448,7 @@ footer { max-width: 880px; margin: 48px auto 0; font-size: 13px; color: var(--mu
 <section>
   <h2>Log</h2>
   <ul class="log">
+    <li><span class="mono muted">09.10.2026</span><span>Dossier HeyClicky mit Vorgehensplan im Reiter Firmen, aufrufbar über die Karte.</span></li>
     <li><span class="mono muted">09.10.2026</span><span>HeyClicky recherchiert: YC Spring 2026, Gründer Farza Majeed, Kontaktweg. Dossier im Vault („Bewerbung HeyClicky“).</span></li>
     <li><span class="mono muted">09.10.2026</span><span>Reiter 04 Firmen: 48 konkrete Firmen mit Länderfilter, Priorität und geprüften Karriere-Links. Subframe und HeyClicky ergänzt.</span></li>
     <li><span class="mono muted">09.10.2026</span><span>Irischer Pass: London ohne Visum möglich, auf Platz 1 in Europa gerückt. Empfehlung ergänzt (Kern London, Amsterdam, Stockholm, Paris; Wunschziele Toronto, Singapur). USA: J-1 „Irish Work and Travel" als Option.</span></li>
@@ -906,6 +921,147 @@ USA: I'd come on a J-1 intern visa through a sponsor organization. Your side wou
   <div class="firms" id="firm-list"></div>
 </section>
 
+<section>
+  <h2>Dossiers <span class="tag">ausführlich recherchierte Zielfirmen</span></h2>
+  <details class="dossier" id="dossier-heyclicky">
+    <summary><span class="d-title">HeyClicky</span><span class="mono muted">San Francisco / remote · Y Combinator Spring 2026 · Priorität A</span><span class="d-hint">Dossier und Vorgehensplan</span></summary>
+    <div class="d-body">
+
+      <div class="note key">
+        <strong>Kurz</strong>
+        <p>KI-Buddy für den Mac, der neben dem Cursor sitzt. Die Firma sucht laut Karriereseite einen <strong>Intern</strong> und einen <strong>Designer</strong>, beide „sf / remote“. Das heißt: Büro in San Francisco oder remote. Du bewirbst dich direkt bei Gründer Farza, per Mail an <span class="mono">hi@heyclicky.com</span> und mit einer kurzen Nachricht an <span class="mono">@FarzaTV</span> auf X. Am meisten zählt eine kleine Arbeitsprobe für HeyClicky.</p>
+      </div>
+
+      <h3>Die Stelle</h3>
+      <ul>
+        <li><strong>intern:</strong> „ship real stuff with us for a few months“, sf / remote</li>
+        <li><strong>designer:</strong> „make it feel like the computer we fell in love with“, sf / remote, Vollzeit, 0,25–2,5 % Equity</li>
+        <li>Außerdem Product Engineer, Mobile Engineer, Ads, IG- und TikTok-Creator, „invent a role“</li>
+        <li>Alle Knöpfe „reach out“ führen zu hi@heyclicky.com. Auf der YC-Jobbörse ist nichts ausgeschrieben.</li>
+        <li>Motto der Karriereseite: „we're a small team building a new interface for ai. if you like shipping fast and caring about the details, come build it with us.“</li>
+      </ul>
+
+      <h3>Die Firma</h3>
+      <ul>
+        <li><strong>Produkt:</strong> Du drückst Control + Option, der Buddy sieht den Bildschirm. Du fragst laut, er erklärt, zeichnet auf den Bildschirm und zeigt auf Knöpfe. Mit „HeyClicky Agent“ startet er Agenten im Hintergrund. Er verbindet sich mit Gmail, Kalender, Notion und Stripe. Nur für den Mac (ab Sonoma 14.2), für Windows gibt es eine Warteliste.</li>
+        <li><strong>Leitsatz von Farza:</strong> „we're trying to figure out the ai interface the next billion people will use.“ Alle haben dieselben Modelle, es ist ein Interface-Problem.</li>
+        <li><strong>Firma:</strong> Humansongs, Inc., San Francisco. Y Combinator Spring 2026, Partner Aaron Epstein. Seed laut Datenbanken rund 500.000 $, nicht offiziell bestätigt. Investoren laut PitchBook: YC, Founders, Inc., Pioneer Fund, Parable, Weekend Fund.</li>
+        <li><strong>Zahlen von der Firma:</strong> über 25.000 Nutzer, 9,5 % Zahlungskonversion, über 200 behobene Bugs in einer Woche (Video vom 05.10.2026)</li>
+        <li><strong>Preise:</strong> Free, Pro 20 $, Max 100 $ im Monat. Studierende bekommen 50 % auf den ersten Monat Pro.</li>
+        <li><strong>Technik:</strong> Anfragen gehen an Anthropic oder OpenAI, Screenshots werden nicht gespeichert. Anfangs Open Source.</li>
+        <li><strong>Tempo:</strong> 39 Releases von April bis Oktober 2026, aktuell Version 1.0.53 (02.10.2026). Jede Woche ein Video, was neu ist.</li>
+      </ul>
+
+      <h3>Die Leute</h3>
+      <ul>
+        <li><strong>Farza (Farzain) Majeed</strong>, Gründer und CEO. Vorher Gründer von buildspace (Y Combinator, Programm „nights &amp; weekends“, 2024 eingestellt). Stellt selbst ein: „I'm hiring. Engineering, film, design, everything.“ (X, Juni 2026)</li>
+        <li><strong>Nilesh Rathore</strong>, „teammate #1“, Engineer, seit Juni 2026</li>
+        <li>Mindestens eine Person für Film und Video. Neues Büro in San Francisco. Teamgröße laut Datenbanken 1–10.</li>
+      </ul>
+
+      <h3>Kultur und Design-Sprache</h3>
+      <ul>
+        <li>Alles kleingeschrieben, Kaomojis, Figuren statt Avatare: <strong>Coco</strong> und <strong>Poppy</strong> als anpassbare Buddys, „bonzo“, Sticker</li>
+        <li>Retro-Mac: Menüleiste, Beachball, ziehbare Fenster, Haftnotizen, Easter Eggs. Auf der Website ist ein Song namens „iPod Touch“ versteckt.</li>
+        <li>Das Logo ist der Shortcut: Control- und Option-Taste als Smiley</li>
+        <li>Selbstbild: „the world's cutest AI interface“. Lenny Rachitsky über das Onboarding: „My new favorite onboarding experience.“</li>
+        <li>Build in public: wöchentliche Shipping-Videos, Livestreams, Creator-Programm</li>
+      </ul>
+
+      <h3>Neueste Videos auf YouTube</h3>
+      <div class="tbl">
+        <table>
+          <thead><tr><th>Datum</th><th>Titel</th><th class="n">Aufrufe am 09.10.</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">05.10.2026</td><td><a href="https://youtu.be/ffi-bsnU4VQ">shipping a ton and fixing 200+ bugs</a></td><td class="n">357</td></tr>
+            <tr><td class="mono">28.09.2026</td><td><a href="https://youtu.be/qlFgqOVcfdg">introducing agent buddies</a></td><td class="n">5.461</td></tr>
+            <tr><td class="mono">11.09.2026</td><td><a href="https://youtu.be/46t-mCH-AQw">the world's cutest ai interface</a></td><td class="n">6.648</td></tr>
+            <tr><td class="mono">01.09.2026</td><td><a href="https://youtu.be/GRuNsFM_CBU">our new logo is a keyboard shortcut.</a></td><td class="n">12.524</td></tr>
+            <tr><td class="mono">27.08.2026</td><td><a href="https://youtu.be/dFWk2rnPOHA">i finally found an ai i like using.</a></td><td class="n">204.885</td></tr>
+            <tr><td class="mono">05.08.2026</td><td><a href="https://youtu.be/bLnkvjw7j84">introducing spatial context.</a></td><td class="n">24.050</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Warum es passt</h3>
+      <ul>
+        <li><strong>Retro-Computing:</strong> to.morrow war zuerst eine Windows-95-App, SkeuKit verbindet weiche Tiefe mit Pixelschrift. Die Designer-Stelle sucht „the computer we fell in love with“.</li>
+        <li><strong>Figuren:</strong> Bei Unify gibt es Figuren im Interface statt Namen, HeyClicky lebt von Coco, Poppy und bonzo</li>
+        <li><strong>Natives macOS mit KI gebaut:</strong> to.morrow in SwiftUI, gebaut mit Claude Code</li>
+        <li><strong>Motion:</strong> selbst gebaute Remotion-Filme. HeyClicky erzählt alles in Videos.</li>
+        <li><strong>Agenten:</strong> Gauntlet ist ein Agenten-Produkt, HeyClicky hat gerade „agent buddies“ gestartet</li>
+      </ul>
+
+      <h3>San Francisco oder remote</h3>
+      <div class="cols">
+        <div class="card">
+          <h3>Vor Ort in SF</h3>
+          <ul>
+            <li>Zählt klar als Auslandspraktikum, DAAD oder PROMOS möglich</li>
+            <li>Näher am Team, das sichtbar im Büro arbeitet</li>
+            <li>Braucht ein J-1: über einen Sponsor (rund 1.500–2.100 $, HeyClicky unterschreibt einen Trainingsplan) oder eventuell „Irish Work and Travel“ über deinen irischen Pass. Ob das mit einem Studium in Deutschland geht, ist offen.</li>
+            <li>Zimmer im Schnitt rund 1.650 $ im Monat</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Remote aus München</h3>
+          <ul>
+            <li>Kein Visum, keine Miete</li>
+            <li>Zählt vielleicht nicht als Auslandspraktikum. DAAD und Erasmus zahlen nur, wenn du im Ausland bist.</li>
+            <li>9 Stunden Zeitverschiebung</li>
+            <li>Ob die HM das als Pflichtpraktikum anerkennt, muss Petri sagen</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Förderung</h3>
+      <ul>
+        <li><strong>DAAD HAW.International:</strong> 1.400 € im Monat für die USA plus Reise und Versicherung. Frist 26.02.2027, Zusage muss dann vorliegen. Vergütung über 603 € wird abgezogen. Erfolgsquote nicht veröffentlicht.</li>
+        <li><strong>PROMOS:</strong> 550 € im Monat plus 1.188 € Reisepauschale, wird bei Vergütung nicht gekürzt. Die HM wählt selbst aus, Quote unbekannt. Bei vielen Bewerbungen gibt es oft nur die Reisekosten.</li>
+        <li>In SF zahlen Startups Praktikanten meist. Dann ist PROMOS die bessere Wahl.</li>
+      </ul>
+
+      <h3>Vorgehensplan</h3>
+      <ol class="plan">
+        <li><span class="d">bis 31.10.2026</span><div class="b"><strong>Klären</strong><ul><li>Petri: Zählt ein Remote-Praktikum bei einer US-Firma? Unterschreibt die HM einen J-1-Trainingsplan?</li><li>Bei einem J-1-Sponsor (z. B. USIT, CIEE) fragen, ob „Irish Work and Travel“ mit einem Studium in Deutschland geht</li></ul></div></li>
+        <li><span class="d">ab sofort</span><div class="b"><strong>Produkt und Kanal kennenlernen</strong><ul><li>HeyClicky installieren und echt nutzen, mit Studentenrabatt Pro testen</li><li>Videos schauen und notieren, welche dich gepackt haben und warum. Das ist der Rohstoff fürs Anschreiben.</li></ul></div></li>
+        <li><span class="d">bis 30.11.2026</span><div class="b"><strong>Portfolio bereit machen</strong><ul><li>Unify bereinigen, to.morrow nach vorn, Gauntlet als Case Study</li><li>CV auf Englisch, eine Seite, ohne Foto</li></ul></div></li>
+        <li><span class="d">Nov 2026</span><div class="b"><strong>Arbeitsprobe für HeyClicky bauen</strong><ul><li>Entweder ein 20–30-Sekunden-Motion-Stück mit neuen Zuständen für Coco oder Poppy (zuhören, denken, zeigen), oder ein SwiftUI-Prototyp einer Interaktion, z. B. zu „spatial context“</li><li>Öffentlich posten und @heyclicky markieren</li></ul></div></li>
+        <li><span class="d">Ende Nov 2026</span><div class="b"><strong>Anschreiben</strong><ul><li>Persönlich, mit den Punkten unten. Die KI-Hassliebe ist der rote Faden.</li><li>Konkrete Videos nennen, die du wirklich gesehen hast</li><li>SF als Wunsch nennen, remote als Alternative. Den Zeitraum nennen: 18 Wochen im WS 2027/28.</li><li>Am Ende durch den humanizer</li></ul></div></li>
+        <li class="deadline"><span class="d">Anfang Dez 2026</span><div class="b"><strong>Senden</strong><ul><li>Mail an hi@heyclicky.com mit Arbeitsprobe, Portfolio und CV</li><li>Parallel eine kurze Nachricht an @FarzaTV mit Link zur Arbeitsprobe, nur einmal</li></ul></div></li>
+        <li><span class="d">+ 1 Woche</span><div class="b"><strong>Ein Follow-up</strong><ul><li>Kurz, mit etwas Neuem, z. B. einer zweiten Variante der Arbeitsprobe</li></ul></div></li>
+        <li><span class="d">bis ca. 20.02.2027</span><div class="b"><strong>Zusage für den DAAD</strong><ul><li>Ein kleines Startup plant ungern 9 Monate voraus. Frag offen nach einer schriftlichen Zusage für den Zeitraum, weil du sie für das Stipendium brauchst.</li><li>Ohne Zusage bis Februar bleibt PROMOS (spätere Frist) oder eine Vergütung</li></ul></div></li>
+        <li><span class="d">nach der Zusage</span><div class="b"><strong>Festmachen</strong><ul><li>Vertrag nach HM-Muster, Genehmigung durch Petri, Anmeldung in PRIMUSS</li><li>DAAD bis 26.02. oder PROMOS, J-1 über den Sponsor</li></ul></div></li>
+      </ol>
+
+      <h3>Persönliche Punkte fürs Anschreiben</h3>
+      <ul>
+        <li>Ich verfolge ihre Social-Media-Kanäle schon eine Weile, vor allem YouTube, und bin ein riesiger Fan</li>
+        <li>Ich bin sehr an KI interessiert, besonders an neuen, kreativen Wegen, sie zu nutzen</li>
+        <li>Das Produkt hat mich sofort als etwas richtig Cooles gepackt</li>
+        <li><strong>Hassliebe zu KI:</strong> für mich das nützlichste Werkzeug, das je gebaut wurde. Gleichzeitig die Angst, echte Fähigkeiten zu verlieren, also Programme selbst zu beherrschen und zu lernen. HeyClicky ist genau die Schnittstelle: Laut eigener FAQ „teaches you any tool, walks you through whatever you're stuck on“. Nutzer lernen damit DaVinci Resolve und After Effects. Das trifft Farzas eigenes Argument, dass das Problem im Interface liegt.</li>
+      </ul>
+
+      <h3>Risiken</h3>
+      <ul>
+        <li>Viel Konkurrenz, das Produkt ist viral gegangen</li>
+        <li>Sehr kleines Team: Ein Praktikant muss sofort liefern</li>
+        <li>Visum für SF und offene Anerkennung bei remote</li>
+        <li>Portfolio: Farza klickt sich durch. Unify muss vorher bereinigt sein.</li>
+      </ul>
+
+      <h3>Quellen</h3>
+      <ol class="sources">
+        <li><a href="https://www.heyclicky.com/">heyclicky.com</a> · <a href="https://www.heyclicky.com/careers">Karriereseite</a> · <a href="https://www.heyclicky.com/trust">Trust &amp; Privacy</a> · <a href="https://www.heyclicky.com/changelog">Changelog</a> (alle 09.10.2026)</li>
+        <li><a href="https://www.ycombinator.com/companies/heyclicky">Y Combinator: HeyClicky</a> · <a href="https://f.inc/portfolio/heyclicky/">Founders, Inc.</a></li>
+        <li><a href="https://www.youtube.com/@HeyClicky">YouTube @HeyClicky</a> · <a href="https://x.com/FarzaTV/status/2061978963191402657">Farza auf X: teammate #1</a></li>
+        <li><a href="https://pitchbook.com/profiles/company/1392716-35">PitchBook</a> · <a href="https://www.crunchbase.com/organization/heyclicky">Crunchbase</a> · <a href="https://hokai.io/hub/tools/heyclicky">HokAI</a> · <a href="https://dailydropout.substack.com/p/heyclicky-give-your-cursor-infinite">DailyDropout</a> (Aggregatoren, Zahlen nicht bestätigt)</li>
+      </ol>
+    </div>
+  </details>
+</section>
+
+
 <div class="next"><a href="#allgemein">Zurück zu 01 Allgemein →</a></div>
 </div>
 
@@ -992,7 +1148,7 @@ USA: I'd come on a J-1 intern visa through a sponsor organization. Your side wou
     { n: "Leonardo.Ai", c: "Sydney", cc: "AU", t: "KI-nativ", p: "B", u: "https://leonardo.ai/careers/", what: "KI-Bildgenerierung, gehört zu Canva", why: "KI-Produkt für Kreative.", note: "" },
     { n: "Atlassian", c: "Sydney", cc: "AU", t: "Big Tech", p: "C", u: "https://www.atlassian.com/company/careers", what: "Jira, Confluence", why: "Großes Design-Team.", note: "Das australische Praktikumsprogramm war nur für Australier und Neuseeländer offen." },
 
-    { n: "HeyClicky", c: "San Francisco / remote", cc: "US", t: "KI-nativ", p: "A", u: "https://www.heyclicky.com/careers", what: "KI-Buddy für den Mac neben dem Cursor: sieht den Bildschirm, spricht, zeichnet und startet Agenten. Y Combinator Spring 2026.", why: "Passt ungewöhnlich gut: neues KI-Interface, Retro-Mac-Ästhetik („the computer we fell in love with“), Figuren (Coco, Poppy), natives macOS, Shipping-Videos. Genau dein Profil aus to.morrow, SkeuKit, Unify und Motion.", note: "Karriereseite (09.10.2026): Intern und Designer, beide „sf / remote“. Gründer Farza Majeed (früher buildspace) stellt selbst ein, Kontakt hi@heyclicky.com, auf X @FarzaTV. Studierende bekommen 50 % auf den ersten Monat Pro. Remote: Petri fragen, ob es als Auslandspraktikum zählt." },
+    { n: "HeyClicky", d: "dossier-heyclicky", c: "San Francisco / remote", cc: "US", t: "KI-nativ", p: "A", u: "https://www.heyclicky.com/careers", what: "KI-Buddy für den Mac neben dem Cursor: sieht den Bildschirm, spricht, zeichnet und startet Agenten. Y Combinator Spring 2026.", why: "Passt ungewöhnlich gut: neues KI-Interface, Retro-Mac-Ästhetik („the computer we fell in love with“), Figuren (Coco, Poppy), natives macOS, Shipping-Videos. Genau dein Profil aus to.morrow, SkeuKit, Unify und Motion.", note: "Karriereseite (09.10.2026): Intern und Designer, beide „sf / remote“. Gründer Farza Majeed (früher buildspace) stellt selbst ein, Kontakt hi@heyclicky.com, auf X @FarzaTV. Studierende bekommen 50 % auf den ersten Monat Pro. Remote: Petri fragen, ob es als Auslandspraktikum zählt." },
     { n: "Subframe", c: "San Francisco", cc: "US", t: "Design-Tool", p: "B", u: "https://www.subframe.com/", what: "Design-Tool für Designer, die in Code arbeiten. Desktop-App mit Canvas, Browser und Coding-Agent (Claude Code, Codex)", why: "Genau deine Arbeitsweise. Passt inhaltlich so gut wie Framer oder Lovable.", note: "Gegründet 2022, laut Firmenverzeichnis rund 6 Leute, CEO Irvin Zhan. Keine Karriereseite gefunden, also direkt anschreiben. Hürde ist das US-Visum." },
     { n: "BMW Group Designworks", c: "Los Angeles", cc: "US", t: "Design-Studio", p: "B", u: "https://jobs.bmwgroup.com/", what: "Designstudio der BMW Group", why: "Industriedesign plus UI/UX, deutscher Konzern.", note: "Zuletzt ein UI/UX-Praktikum „Summer/Fall 2026“ für 25,30 $ pro Stunde. J-1-Bewerber brauchten BMW-Vorerfahrung." },
     { n: "Figma", c: "San Francisco", cc: "US", t: "Design-Tool", p: "C", u: "https://www.figma.com/careers/", what: "Design-Tool", why: "Das Werkzeug, das du täglich nutzt.", note: "" },
@@ -1034,7 +1190,8 @@ USA: I'd come on a J-1 intern visa through a sponsor organization. Your side wou
         "<p>" + esc(f.what) + "</p>" +
         '<p class="why">' + esc(f.why) + "</p>" +
         (f.note ? '<p class="fnote"><span class="mono">Gut zu wissen:</span> ' + esc(f.note) + "</p>" : "") +
-        '<a class="firm-link" href="' + f.u + '" target="_blank" rel="noopener">Karriereseite →</a>' +
+        '<div class="firm-actions"><a class="firm-link" href="' + f.u + '" target="_blank" rel="noopener">Karriereseite →</a>' +
+        (f.d ? '<button type="button" class="dossier-btn" data-d="' + f.d + '">Dossier und Plan öffnen ↓</button>' : '') + '</div>' +
         "</article>";
     }).join("") || '<p class="muted">Keine Firma für diese Auswahl.</p>';
   }
@@ -1042,6 +1199,12 @@ USA: I'd come on a J-1 intern visa through a sponsor organization. Your side wou
   filterBox.appendChild(chip("ALL", "Alle", FIRMS.length));
   Object.keys(COUNTRIES).forEach(function (cc) { if (counts[cc]) filterBox.appendChild(chip(cc, COUNTRIES[cc], counts[cc])); });
   onlyA.addEventListener("change", function () { state.onlyA = onlyA.checked; render(); });
+  listBox.addEventListener("click", function (ev) {
+    var b = ev.target.closest(".dossier-btn"); if (!b) return;
+    var d = document.getElementById(b.getAttribute("data-d")); if (!d) return;
+    d.open = true;
+    d.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+  });
   render();
 
   show(location.hash.slice(1));
