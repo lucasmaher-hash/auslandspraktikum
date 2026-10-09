@@ -1,0 +1,901 @@
+<title>Auslandspraktikum WS 2027/28</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Silkscreen&display=swap">
+<style>
+/* Layout: Arbeitsdossier mit drei Reitern (Allgemein, Orte, Bewerbung), eine ruhige Spalte, Status als Pillen. */
+:root {
+  --bg: #F2F4F7;
+  --surface: #FFFFFF;
+  --fg: #151920;
+  --muted: #586273;
+  --line: #D8DEE7;
+  --accent: #46607F;
+  --accent-soft: #809BBC;
+  --accent-wash: #E6ECF4;
+  --good: #2D7550;
+  --good-wash: #E2F1E8;
+  --warn: #9A6210;
+  --warn-wash: #F7EEDC;
+  --bad: #A93838;
+  --bad-wash: #F6E3E3;
+  --font-display: "Silkscreen", "Geist Mono", ui-monospace, monospace;
+  --font-body: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0F1217; --surface: #171B22; --fg: #E5E9EF; --muted: #97A1B1; --line: #2A313C;
+    --accent: #A3B8D4; --accent-soft: #809BBC; --accent-wash: #1E2633;
+    --good: #72C597; --good-wash: #16271E; --warn: #E2AB4E; --warn-wash: #2B2215;
+    --bad: #EA8080; --bad-wash: #2E1A1A; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0F1217; --surface: #171B22; --fg: #E5E9EF; --muted: #97A1B1; --line: #2A313C;
+  --accent: #A3B8D4; --accent-soft: #809BBC; --accent-wash: #1E2633;
+  --good: #72C597; --good-wash: #16271E; --warn: #E2AB4E; --warn-wash: #2B2215;
+  --bad: #EA8080; --bad-wash: #2E1A1A; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: var(--font-body); font-size: 15px; line-height: 1.6;
+  padding-inline: 16px; padding-block: 0 64px;
+}
+.wrap { max-width: 880px; margin-inline: auto; display: grid; gap: 48px; }
+a { color: var(--accent); text-underline-offset: 2px; }
+a:focus-visible, summary:focus-visible { outline: 2px solid var(--accent-soft); outline-offset: 2px; border-radius: 3px; }
+h1, h2, h3 { text-wrap: balance; line-height: 1.25; margin: 0; }
+p { margin: 0; max-width: 68ch; }
+.mono { font-family: var(--font-mono); font-size: 12.5px; }
+.muted { color: var(--muted); }
+
+header.top { max-width: 880px; margin-inline: auto; padding-top: 36px; padding-bottom: 20px; display: grid; gap: 14px; }
+.kicker { font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(26px, 6vw, 40px); letter-spacing: .01em; }
+.lede { font-size: 16.5px; }
+
+/* Reiter */
+nav.tabbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line); margin-inline: -16px; padding-inline: 16px; }
+nav.tabbar ul { list-style: none; margin: 0 auto; padding: 0; max-width: 880px; display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+nav.tabbar a { display: grid; gap: 1px; padding: 12px 14px 10px; text-decoration: none; color: var(--muted); border-bottom: 2px solid transparent; white-space: nowrap; }
+nav.tabbar a .num { font-family: var(--font-mono); font-size: 11px; letter-spacing: .06em; }
+nav.tabbar a .lbl { font-weight: 600; font-size: 15px; }
+nav.tabbar a:hover { color: var(--fg); }
+nav.tabbar a[aria-current="page"] { color: var(--fg); border-bottom-color: var(--accent); }
+nav.tabbar a[aria-current="page"] .num { color: var(--accent); }
+main { padding-top: 32px; }
+
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); border: 1px solid var(--line); background: var(--surface); border-radius: 10px; overflow: hidden; margin: 0; }
+.facts div { padding: 12px 14px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); display: grid; gap: 2px; min-width: 0; }
+.facts dt { font-family: var(--font-mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.facts dd { margin: 0; font-weight: 500; font-variant-numeric: tabular-nums; }
+
+section { display: grid; gap: 16px; }
+section > h2 { font-size: 21px; font-weight: 600; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+section > h2 .tag { font-family: var(--font-mono); font-size: 11.5px; font-weight: 400; color: var(--muted); letter-spacing: .04em; }
+h3 { font-size: 16px; font-weight: 600; }
+.subhead { font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding-top: 8px; }
+
+.note { border: 1px solid var(--line); background: var(--surface); border-radius: 10px; padding: 14px 16px; display: grid; gap: 6px; }
+.note.warn { background: var(--warn-wash); border-color: transparent; }
+.note.key { background: var(--accent-wash); border-color: transparent; }
+.note strong { font-weight: 600; }
+.note ul, .card ul, .verdict ul { margin: 0; padding-left: 18px; display: grid; gap: 3px; }
+
+.pill { display: inline-block; font-family: var(--font-mono); font-size: 11.5px; line-height: 1; padding: 4px 7px; border-radius: 999px; white-space: nowrap; vertical-align: 1px; }
+.p-good { background: var(--good-wash); color: var(--good); }
+.p-warn { background: var(--warn-wash); color: var(--warn); }
+.p-bad { background: var(--bad-wash); color: var(--bad); }
+.p-info { background: var(--accent-wash); color: var(--accent); }
+
+.todos { list-style: none; margin: 0; padding: 0; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+.todos li { display: grid; grid-template-columns: 22px 1fr auto; gap: 12px; padding: 12px 14px; border-bottom: 1px solid var(--line); align-items: start; }
+.todos li:last-child { border-bottom: 0; }
+.box { width: 16px; height: 16px; border: 1.5px solid var(--muted); border-radius: 4px; margin-top: 4px; }
+.todos li.done .box { background: var(--good); border-color: var(--good); }
+.todos li.done .t { color: var(--muted); text-decoration: line-through; }
+.todos .t { min-width: 0; }
+.todos .t small { display: block; color: var(--muted); font-size: 13px; }
+.todos .when { font-family: var(--font-mono); font-size: 12px; color: var(--muted); white-space: nowrap; padding-top: 2px; }
+.todos li.hot .when { color: var(--bad); font-weight: 500; }
+
+ol.plan { list-style: none; margin: 0; padding: 0; display: grid; }
+ol.plan li { display: grid; grid-template-columns: 120px 1fr; gap: 16px; padding: 14px 0; border-top: 1px solid var(--line); }
+ol.plan li:first-child { border-top: 0; }
+ol.plan .d { font-family: var(--font-mono); font-size: 12.5px; color: var(--accent); font-variant-numeric: tabular-nums; padding-top: 2px; }
+ol.plan li.deadline .d { color: var(--bad); font-weight: 500; }
+ol.plan .b { display: grid; gap: 6px; min-width: 0; }
+ol.plan ul { margin: 0; padding-left: 18px; display: grid; gap: 3px; }
+@media (max-width: 560px) { ol.plan li { grid-template-columns: 1fr; gap: 4px; } }
+
+.tbl { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+tr:last-child td { border-bottom: 0; }
+tr.group td { background: var(--accent-wash); font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); padding-block: 6px; }
+th { font-family: var(--font-mono); font-size: 11.5px; font-weight: 500; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+td.pos { color: var(--good); font-weight: 500; }
+td.flat { color: var(--warn); font-weight: 500; }
+.wide table { min-width: 780px; }
+
+/* Ortsprofile */
+.places { display: grid; gap: 12px; }
+details.place { border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+details.place summary { cursor: pointer; list-style: none; padding: 14px 16px; display: grid; grid-template-columns: 28px 1fr auto; gap: 12px; align-items: baseline; }
+details.place summary::-webkit-details-marker { display: none; }
+details.place .rank { font-family: var(--font-display); font-size: 15px; color: var(--accent); }
+details.place .name { font-weight: 600; font-size: 16px; min-width: 0; }
+details.place .name small { display: block; font-weight: 400; color: var(--muted); font-size: 13.5px; }
+details.place .pills { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+details.place[open] summary { border-bottom: 1px solid var(--line); }
+dl.profile { margin: 0; padding: 4px 16px 8px; display: grid; }
+dl.profile > div { display: grid; grid-template-columns: 110px 1fr; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+dl.profile > div:last-child { border-bottom: 0; }
+dl.profile dt { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding-top: 3px; }
+dl.profile dd { margin: 0; min-width: 0; display: grid; gap: 4px; }
+dl.profile dd ul { margin: 0; padding-left: 18px; display: grid; gap: 3px; }
+@media (max-width: 560px) {
+  details.place summary { grid-template-columns: 24px 1fr; }
+  details.place .pills { grid-column: 2; justify-content: flex-start; }
+  dl.profile > div { grid-template-columns: 1fr; gap: 2px; }
+}
+
+.verdicts { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+.verdict { border: 1px solid var(--line); border-radius: 10px; background: var(--surface); padding: 16px; display: grid; gap: 8px; align-content: start; min-width: 0; }
+.verdict .q { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
+.verdict .a { font-size: 17px; font-weight: 600; }
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.card { border: 1px solid var(--line); border-radius: 10px; background: var(--surface); padding: 14px 16px; display: grid; gap: 8px; align-content: start; min-width: 0; }
+.sources { margin: 0; padding-left: 18px; display: grid; gap: 4px; font-size: 13.5px; }
+.log { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; font-size: 14px; }
+.log li { display: grid; grid-template-columns: 96px 1fr; gap: 12px; }
+.next { display: flex; justify-content: flex-end; }
+.next a { font-family: var(--font-mono); font-size: 13px; text-decoration: none; border: 1px solid var(--line); background: var(--surface); padding: 8px 12px; border-radius: 8px; }
+.next a:hover { border-color: var(--accent-soft); }
+.tpl { border: 1px solid var(--line); border-radius: 10px; background: var(--surface); overflow: hidden; }
+.tpl-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+.tpl pre { margin: 0; padding: 14px; font-family: var(--font-mono); font-size: 12.5px; line-height: 1.6; white-space: pre-wrap; overflow-wrap: anywhere; }
+button.copy { font-family: var(--font-mono); font-size: 12px; color: var(--accent); background: var(--accent-wash); border: 0; border-radius: 6px; padding: 6px 10px; cursor: pointer; }
+button.copy:focus-visible { outline: 2px solid var(--accent-soft); outline-offset: 2px; }
+footer { max-width: 880px; margin: 48px auto 0; font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 16px; }
+</style>
+
+<header class="top">
+  <div class="kicker">Lucas Maher · 21 · Design B.A., Industriedesign · HM FK12 · Product Visuals bei CeiliX</div>
+  <h1>Auslandspraktikum WS&nbsp;2027/28</h1>
+  <p class="lede">Pflichtpraktikum im Ausland, Richtung UI/UX und KI, in Europa oder weltweit. Karriere geht vor Großstadtleben.</p>
+  <p class="mono muted">Stand 09.10.2026 · alles ohne Pille „geprüft" ist Einschätzung · Quellen im Reiter Allgemein</p>
+</header>
+
+<nav class="tabbar" aria-label="Bereiche">
+  <ul>
+    <li><a href="#allgemein"><span class="num">01</span><span class="lbl">Allgemein</span></a></li>
+    <li><a href="#orte"><span class="num">02</span><span class="lbl">Orte</span></a></li>
+    <li><a href="#bewerbung"><span class="num">03</span><span class="lbl">Bewerbungsprozess</span></a></li>
+  </ul>
+</nav>
+
+<main>
+
+<!-- ============ 01 ALLGEMEIN ============ -->
+<div class="wrap" data-tab="allgemein">
+
+<section>
+  <h2>Jetzt dran</h2>
+  <div class="note warn">
+    <strong>Die Zusage muss bis Ende Februar 2027 stehen.</strong>
+    <p>Für DAAD HAW.International ist Bewerbungsschluss am 26.02.2027, und die Praktikumszusage gehört schon in die Bewerbung. Deine Bewerbungsphase läuft deshalb von November 2026 bis Februar 2027. Wenn es bis dahin nicht klappt, bleiben Erasmus+, PROMOS und der Reisekostenzuschuss. Dort reicht ein Antrag kurz vor dem Start.</p>
+  </div>
+  <ul class="todos">
+    <li class="hot"><span class="box"></span><span class="t">Mail an Prof. Petri mit den offenen Fragen (weiter unten). Dabei fragen, welches „Center" er meinte<small>florian.petri@hm.edu</small></span><span class="when">bis 31.10.</span></li>
+    <li><span class="box"></span><span class="t">Erasmus-Infoveranstaltung des International Office<small>22.10.2026, 17 Uhr, Zugang noch prüfen</small></span><span class="when">22.10.</span></li>
+    <li class="hot"><span class="box"></span><span class="t">Portfolio auf UX + KI umbauen: 3 Fälle mit Prozess<small>Unify, to.morrow (App Store), absorb oder curiosity. Agent-gebaute Produkte nach vorne.</small></span><span class="when">bis 30.11.</span></li>
+    <li class="hot"><span class="box"></span><span class="t">CV auf Englisch, Positionierung „AI-centered designer"<small>CeiliX als aktuelle Startup-Station nach oben. Für US- und kanadische Firmen eine Seite im US-Format.</small></span><span class="when">bis 30.11.</span></li>
+    <li><span class="box"></span><span class="t">CeiliX um ein Referenzschreiben bitten, wenn die ersten Projekte stehen<small>Hilft bei der Bewerbung und beim DAAD-Motivationsschreiben</small></span><span class="when">bis 31.01.</span></li>
+    <li><span class="box"></span><span class="t">Bewerbung bei FLUID Design (Start März 2027) neu einordnen<small>Wäre kein Pflichtpraktikum mehr, weil das erst im WS 2027/28 liegt</small></span><span class="when">bis 31.10.</span></li>
+    <li><span class="box"></span><span class="t">Zielliste mit 40 bis 60 Firmen in zwei Spuren<small>Wunschziele (Kanada, Singapur, USA, London) und sichere Ziele (Amsterdam, Paris, Stockholm)</small></span><span class="when">bis 30.11.</span></li>
+    <li><span class="box"></span><span class="t">Englisch-Nachweis für den DAAD organisieren<small>DAAD-Sprachnachweisformular über das HM-Sprachenzentrum, höchstens 3 Jahre alt</small></span><span class="when">bis 31.01.</span></li>
+    <li><span class="box"></span><span class="t">Entscheiden: Auslandssemester im SoSe 2028 ja oder nein</span><span class="when">bis 30.11.</span></li>
+    <li><span class="box"></span><span class="t">BAföG-Anspruch prüfen (Auslands-BAföG ist auch ohne Inlands-BAföG möglich)</span><span class="when">bis 30.11.</span></li>
+  </ul>
+</section>
+
+
+<section>
+  <h2>Eckdaten</h2>
+  <dl class="facts">
+    <div><dt>Wann</dt><dd>5. Semester = WS 2027/28</dd></div>
+    <div><dt>Dauer</dt><dd>18 Fünftagewochen</dd></div>
+    <div><dt>Credits</dt><dd>24 + 6 ECTS</dd></div>
+    <div><dt>Voraussetzung</dt><dd>≥ 80 ECTS</dd></div>
+    <div><dt>Genehmigt durch</dt><dd>Prof. Florian Petri</dd></div>
+    <div><dt>Monatsbudget</dt><dd>1.000 € + Vergütung + Förderung</dd></div>
+  </dl>
+  <div class="note key">
+    <strong>Das Praxissemester liegt im WS 2027/28, nicht im März 2027.</strong>
+    <p>Die SPO von 2024 gilt für alle, die nach dem SoSe 2024 angefangen haben, also auch für dich. Sie legt das praktische Studiensemester als 5. Semester fest. In Bayern läuft das WS üblicherweise vom 01.10.2027 bis 15.03.2028. Die HM-Vorlesungszeiten für 2027/28 sind noch nicht veröffentlicht.</p>
+  </div>
+  <div class="note">
+    <strong>Konflikt mit dem Auslandssemester</strong>
+    <p>Die Non-EU-Frist am 01.12.2026 gilt für das WS 2027/28, also genau dein Praxissemester. Ein Auslandssemester passt realistisch nur ins 6. Semester (SoSe 2028). Die Fristen dafür sind noch nicht geprüft.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Einschätzung <span class="tag">deine drei Fragen</span></h2>
+  <div class="verdicts">
+    <div class="verdict">
+      <span class="q">Einen Platz bekommen?</span>
+      <span class="a">Europa gut machbar, international schwerer</span>
+      <p>Dein stärkstes Argument sind Produkte, die du mit KI-Agents gebaut und veröffentlicht hast, dazu Motion-Filme und die begehbare 3D-Seite. Dazu kommen bezahlte Startup-Arbeit bei CeiliX und APE (Innovationsprojekte mit Partnern, Bootcamp im Ausland). Deine Schwächen: belastbare UX-Research, keine Erfahrung in einem Produktteam und „Industriedesign" statt HCI. Ausführlich in der Vault-Notiz „Portfolio-Analyse".</p>
+      <p><span class="pill p-bad">Vorher fixen: Unify zeigt live erfundene Research-Zahlen</span></p>
+    </div>
+    <div class="verdict">
+      <span class="q">Bezahlt werden?</span>
+      <span class="a">Hängt am Land, nicht an dir</span>
+      <p>Die deutsche Mindestlohn-Ausnahme gilt im Ausland nicht. Dort zählt das lokale Recht.</p>
+      <ul>
+        <li>Pflicht oder Regel: Frankreich, UK, Irland, Australien, USA</li>
+        <li>Mindestlohn existiert, Ausnahme unklar: Kanada</li>
+        <li>Üblich, aber keine Pflicht: Niederlande, Schweden, Singapur</li>
+      </ul>
+    </div>
+    <div class="verdict">
+      <span class="q">Im Budget bleiben?</span>
+      <span class="a">Fast überall, wenn Förderung dazukommt</span>
+      <p>Dir stehen 1.000 € plus Vergütung plus Förderung zur Verfügung, und in München fallen keine Mietkosten an. Mit einem DAAD-Stipendium geht die Rechnung selbst in San Francisco unbezahlt knapp auf.</p>
+    </div>
+  </div>
+  <div class="note">
+    <strong>Warum Big Tech für diesen Slot kaum passt</strong>
+    <p>Google, Meta, Spotify, Microsoft und Atlassian vergeben Design-Praktika fast nur als Sommerprogramme von 10 bis 13 Wochen. Die US-Programme schließen oft J-1-Studierende ausdrücklich aus, zum Beispiel Atlassian für 2027. Dein Slot dauert 18 Wochen im Winter. Realistischer sind Startups, Scale-ups und deutsche Konzerne mit Designstudios im Ausland.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Fahrplan <span class="tag">Okt 2026 bis Mär 2028</span></h2>
+  <ol class="plan">
+    <li><span class="d">Okt–Nov 2026</span><div class="b"><strong>Klären und vorbereiten</strong><ul><li>Fragen an Petri, Infoveranstaltung, Auslandssemester-Entscheidung</li><li>Portfolio, CV, Zielliste</li></ul></div></li>
+    <li><span class="d">Nov 2026–Feb 2027</span><div class="b"><strong>Bewerbungswelle</strong><ul><li>Startups, Scale-ups und Design-Studios direkt anschreiben, nicht nur auf Ausschreibungen warten</li><li>Bei Kanada und den USA im ersten Kontakt klären, ob die Firma IEC Co-op bzw. J-1 mitträgt</li><li>Falls BAföG plausibel: Auslands-BAföG beantragen, rund 6 Monate Bearbeitung</li></ul></div></li>
+    <li class="deadline"><span class="d">26.02.2027</span><div class="b"><strong>Frist DAAD HAW.International</strong><ul><li>Lebenslauf, Beschreibung der Praktikumsstelle (max. 3 Seiten), Motivationsschreiben, Transcript, Abiturzeugnis, Sprachnachweis, DAAD-Formular „Praktikumszusage"</li><li>Auswahl im Juni 2027, Ergebnis im Juli 2027</li></ul></div></li>
+    <li><span class="d">Mär–Jul 2027</span><div class="b"><strong>Zusage festmachen</strong><ul><li>Vertrag (HM-Muster auf Englisch) → fachliche Genehmigung durch Petri → Anmeldung in PRIMUSS</li><li>Ohne DAAD: Erasmus+ (spätestens 1 Monat vor Start, UK 4 Monate) oder PROMOS (HM-Fristen 01.12. und 01.07., prüfen)</li><li>Visum beantragen (siehe unten)</li></ul></div></li>
+    <li><span class="d">Jul–Sep 2027</span><div class="b"><strong>Umzug vorbereiten</strong><ul><li>Für das WS 2027/28 zurückmelden, ein Urlaubssemester ist nicht möglich</li><li>Versicherungen: Die gesetzliche Unfallversicherung gilt im Ausland nicht. Beim DAAD sind Kranken-, Unfall- und Haftpflichtversicherung enthalten</li><li>Wohnung suchen, Puffer für die ersten Wochen einplanen</li></ul></div></li>
+    <li><span class="d">WS 2027/28</span><div class="b"><strong>18 Wochen Praktikum</strong><ul><li>Kein Urlaubsanspruch, Fehltage nachholen</li><li>Praktikumsseminar (Modul 510): Bericht und Präsentation</li></ul></div></li>
+    <li><span class="d">Ende</span><div class="b"><strong>Abschließen</strong><ul><li>Zeugnis in PRIMUSS hochladen, Bericht „mit Erfolg" ist Voraussetzung für die Bachelorarbeit</li><li>Abschlussberichte für das Förderprogramm einreichen</li></ul></div></li>
+  </ol>
+</section>
+
+
+<section>
+  <h2>Förderung <span class="tag">ein Hauptprogramm wählen</span></h2>
+  <div class="note key">
+    <strong>Welches „Center" meinte dein Prof?</strong>
+    <p>Bei der HM gibt es keine Stelle mit genau diesem Namen. Wahrscheinlich sind die <strong>Bayerischen Hochschulzentren</strong> gemeint: staatliche Zentren für einzelne Regionen, die Praktika mit einmaligen Zuschüssen fördern. Für die USA, Kanada und Australien gibt es aber keins. Die andere Möglichkeit ist das <strong>International Office</strong>, das Erasmus+, PROMOS und den Reisekostenzuschuss vergibt. Ein dritter Kandidat ist das <strong>Strascheg Center for Entrepreneurship (SCE)</strong>, das auch APE betreibt. Eine Förderung von Auslandspraktika durch das SCE habe ich aber nicht gefunden. Steht auf der Fragenliste für Petri.</p>
+  </div>
+  <div class="note warn">
+    <strong>Kombinieren geht nur begrenzt.</strong>
+    <p>Erasmus+, PROMOS und DAAD HAW.International schließen sich gegenseitig aus. Ausnahme beim DAAD: Großbritannien. Der Reisekostenzuschuss der HM ist mit keinem der drei kombinierbar.</p>
+  </div>
+  <div class="tbl wide">
+    <table>
+      <thead><tr><th>Programm</th><th>Wohin</th><th class="n">Betrag</th><th>Frist / Bedingungen</th></tr></thead>
+      <tbody>
+        <tr class="group"><td colspan="4">Hauptprogramme</td></tr>
+        <tr><td><strong>DAAD HAW.International</strong><br><span class="muted">Auslandspraktika für HAW-Studierende</span></td><td>weltweit</td><td class="n">1.125–1.550 € / Monat<br>+ Reisekosten<br>+ Versicherung</td><td><strong>26.02.2027</strong> für einen Start zwischen August 2027 und Januar 2028, Praktikumszusage nötig. Raten für Studierende laut Stipendienrechner (Vorbehalt 2027/28): Japan 1.550, Singapur 1.500, Schweiz 1.475, USA 1.400, Südkorea 1.375, UK 1.300, Australien 1.275, Niederlande 1.275, Irland 1.250, Schweden 1.225, Kanada 1.175, Frankreich 1.150, Spanien 1.125 €. <span class="pill p-good">geprüft</span></td></tr>
+        <tr><td><strong>Erasmus+ Praktikum</strong></td><td>EU-Programmländer</td><td class="n">G1 750 € · G2/G3 690 €</td><td>Die HM fördert höchstens 120 Tage. Antrag spätestens 1 Monat vor Start, Vergütung höchstens 2.500 € brutto. <span class="pill p-good">geprüft</span></td></tr>
+        <tr><td><strong>Erasmus+ weltweit</strong></td><td>UK, Schweiz, USA, Kanada u. a.</td><td class="n">750 € (UK/CH) · 700 €</td><td>Mittel begrenzt, Vorrang für Digitalisierung. KI-Design passt dazu. <span class="pill p-good">geprüft</span></td></tr>
+        <tr><td><strong>PROMOS</strong></td><td>außerhalb Europas, auch UK und Schweiz</td><td class="n">350–550 € / Monat<br>+ einmalige Reisepauschale</td><td>Sätze 2027: USA 550 + 1.188, Kanada 350 + 1.188, Australien 450 + 1.735, Japan 550 + 1.735, Singapur 550 + 1.735, UK 450 + 309 €. Höchstens 6 Monate. HM-Fristen laut Drittquelle 01.12. und 01.07. <span class="pill p-good">Sätze geprüft</span></td></tr>
+        <tr class="group"><td colspan="4">Regionale Zuschüsse (Bayerische Hochschulzentren)</td></tr>
+        <tr><td><strong>BAYLAT</strong></td><td>Lateinamerika</td><td class="n">bis 1.500 € einmalig</td><td>Stand 2024: Praktikumsplatz muss feststehen, 2 bis 6 Monate</td></tr>
+        <tr><td><strong>BayIND</strong></td><td>Indien</td><td class="n">500–1.000 € einmalig</td><td>Fristen 15.04. und 15.09.</td></tr>
+        <tr><td><strong>BayCHINA</strong></td><td>China</td><td class="n">bis 850 € einmalig</td><td>Antrag spätestens 6 Wochen vor Start</td></tr>
+        <tr class="group"><td colspan="4">Ergänzend oder als Ersatz</td></tr>
+        <tr><td><strong>Reisekostenzuschuss HM</strong></td><td>überall</td><td class="n">bis 1.000 € einmalig</td><td>Einkommen im Schnitt höchstens 15.000 € pro Jahr inkl. Unterhalt. Antrag mindestens 2 Wochen vor Abreise. <span class="pill p-good">geprüft</span></td></tr>
+        <tr><td><strong>Auslands-BAföG</strong></td><td>überall</td><td class="n">einkommensabhängig</td><td>Pflichtpraktikum ab 12 Wochen. Vergütung und DAAD-Stipendium über 300 € werden angerechnet. Rund 6 Monate Bearbeitung.</td></tr>
+        <tr><td><strong>Mühlfenzl-Stiftung (HM)</strong></td><td>überall</td><td class="n">—</td><td>Seit WS 2025/26 ausgesetzt <span class="pill p-bad">ausgesetzt</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="note">
+    <strong>DAAD-Stipendium und Gehalt addieren sich nicht voll</strong>
+    <p>Laut DAAD wird Vergütung über 603 € im Monat vom Stipendium abgezogen. Beispiel USA mit 1.400 €: Unbezahlt bekommst du 1.400 €. Bei 1.000 € Gehalt bleiben 1.003 € Stipendium. Ab rund 2.000 € Gehalt fällt das Stipendium weg, Reisekosten und Versicherung bleiben. Stockt die Firma nur bis zum gesetzlichen Mindestlohn auf, wird das nicht abgezogen. Bei gutem Gehalt ist PROMOS die bessere Wahl, weil es nicht gekürzt wird.</p>
+  </div>
+</section>
+
+<section>
+  <h2>HM-Regeln <span class="tag">geprüft am 09.10.2026</span></h2>
+  <div class="cols">
+    <div class="card">
+      <h3>Aus der SPO Design B.A. (16.10.2024)</h3>
+      <ul>
+        <li>Das praktische Studiensemester ist das 5. Semester (§ 2 Abs. 2)</li>
+        <li>Zulassung ab mindestens 80 Leistungspunkten (§ 3 Abs. 2)</li>
+        <li>Modul 500 „Betriebliches Praktikum": 18 Fünftagewochen, 24 ECTS</li>
+        <li>Modul 510 „Praktikumsseminar": 6 ECTS, Bericht, Präsentation</li>
+        <li>Die Bachelorarbeit setzt das erfolgreiche Praktikum voraus (§ 5)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Ablauf laut HM und FK12</h3>
+      <ul>
+        <li>Die Fakultät „befürwortet und unterstützt Praktika im Ausland"</li>
+        <li>Anerkennung nur mit Praktikumsvertrag, Muster auf Deutsch und Englisch</li>
+        <li>Kein Urlaub, Fehltage nachholen</li>
+        <li>Kein Urlaubssemester möglich, rechtzeitig zurückmelden</li>
+        <li>Die Unfallversicherung über die Berufsgenossenschaft gilt im Ausland nicht</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Ablauf an der HM <span class="tag">nach der Zusage</span></h2>
+  <ol class="plan">
+    <li><span class="d">1 · Vertrag</span><div class="b"><p>Praktikumsvertrag mit der Firma schließen. Die HM hat Muster auf Deutsch, Englisch, Französisch und Spanisch. Ohne Vertrag keine Anerkennung.</p></div></li>
+    <li><span class="d">2 · Genehmigung</span><div class="b"><p>Vertrag Prof. Petri zur fachlichen Genehmigung vorlegen. Er unterschreibt beim Erasmus-Antrag auch das Learning Agreement als „Responsible Person".</p></div></li>
+    <li><span class="d">3 · PRIMUSS</span><div class="b"><p>Praktikum in PRIMUSS unter Services → Praktikumsverwaltung anmelden</p></div></li>
+    <li><span class="d">4 · Förderung</span><div class="b"><p>Je nach Programm: DAAD-Portal, Erasmus über MoveOn, PROMOS oder Reisekostenzuschuss beim International Office</p></div></li>
+    <li><span class="d">5 · Abschluss</span><div class="b"><p>Zeugnis in PRIMUSS hochladen, Praktikumsseminar abschließen</p></div></li>
+  </ol>
+</section>
+
+<section>
+  <h2>Visum je Ziel</h2>
+  <div class="tbl wide">
+    <table>
+      <thead><tr><th>Ziel</th><th>Visum</th><th>Wer beantragt</th><th class="n">Kosten</th><th>Vorlauf / Hinweise</th></tr></thead>
+      <tbody>
+        <tr><td>EU, Schweiz</td><td>keins</td><td>—</td><td class="n">—</td><td>Frankreich: convention de stage</td></tr>
+        <tr><td>Kanada</td><td>IEC International Co-op</td><td>du + Firma (Angebot im Portal)</td><td class="n">184,75 + 85 CAD</td><td>Pools, früh einsteigen. HM-Bestätigung „mandatory"</td></tr>
+        <tr><td>Singapur</td><td>Work Holiday Pass</td><td>du selbst</td><td class="n">nicht geprüft</td><td>Bis 25 Jahre, höchstens 6 Monate, Kontingent 2.000</td></tr>
+        <tr><td>Australien</td><td>Working Holiday 417</td><td>du selbst, online</td><td class="n">≈ 840 AUD</td><td>Nachweis von 5.000 AUD, höchstens 6 Monate pro Arbeitgeber</td></tr>
+        <tr><td>Japan</td><td>Working Holiday</td><td>du, japanische Botschaft</td><td class="n">nicht geprüft</td><td>18 bis 30 Jahre</td></tr>
+        <tr><td>USA</td><td>J-1 Intern</td><td>Sponsor + Firma + du</td><td class="n">≈ 1.500–2.100 $</td><td>Trainingsplan, Finanzierungsnachweis, Termin im Konsulat</td></tr>
+        <tr><td>UK</td><td>GAE (Temporary Work)</td><td>Sponsor-Programm + du</td><td class="n">£340 + Sponsor</td><td>Erasmus-Antrag 4 Monate vorher, laut DAAD sehr restriktiv</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <h2>Offene Fragen</h2>
+  <div class="cols">
+    <div class="card">
+      <h3>An Prof. Petri</h3>
+      <ul>
+        <li>Welches „Center" für die Förderung von Auslandspraktika meinten Sie?</li>
+        <li>Frühester Start und spätestes Ende im WS 2027/28? Ist ein Start im August oder September 2027 möglich?</li>
+        <li>Wie läuft das Praktikumsseminar (510), wenn ich im Ausland bin?</li>
+        <li>Zählt UX/Product Design bei einer Tech- oder KI-Firma fachlich für Industriedesign? Muss ein Designer vor Ort betreuen?</li>
+        <li>Unterschreibt die HM eine „convention de stage", einen J-1-Trainingsplan und eine Bestätigung „mandatory internship" für Kanada?</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>An das International Office</h3>
+      <ul>
+        <li>PROMOS für Praktika: aktuelle HM-Fristen</li>
+        <li>Erasmus+ weltweit: Wie realistisch ist eine Förderung für Kanada oder die USA?</li>
+        <li>Erasmus-Budget 2027/28: Bleibt es bei 120 Tagen?</li>
+      </ul>
+      <h3>Für dich</h3>
+      <ul>
+        <li>Besteht ein BAföG-Anspruch?</li>
+        <li>Wie viel Risiko willst du eingehen: internationale Wunschziele mit Europa als Absicherung?</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<section>
+  <h2>Quellen</h2>
+  <ol class="sources">
+    <li><a href="https://mediapool.hm.edu/media/dachmarke/dm_transfer/download_13/spo_6/spo_aktuell/12_dsb_aktuell_spo.pdf">SPO Bachelor Design, Lesefassung (HM)</a> · <a href="https://design.hm.edu/studierende/praktikum/index.de.html">FK12: Praktikum</a> · <a href="https://hm.edu/studium_1/im_studium/mein_studium/verlauf/praxis.de.html">HM: Praktisches Studiensemester</a> · <a href="https://mediapool.hm.edu/media/dachmarke/dm_lokal/hauptabteilung2/pruefung_praktikum/praktikum_11/Ansprechpartner_Praxisbeauftragte.pdf">Praktikumsbeauftragte</a></li>
+    <li><a href="https://hm.edu/internationales/wege_in_die_welt/studierende/praktikum_im_ausland/smp_ablauf_und_unterlagen.de.html">HM IO: Erasmus+ Praktikum</a> · <a href="https://hm.edu/internationales/wege_in_die_welt/studierende/praktikum_im_ausland/praktikum_non_eu.de.html">Erasmus+ weltweit</a> · <a href="https://hm.edu/internationales/wege_in_die_welt/studierende/foerdermoeglichkeiten/erasmus_foerderung.de.html">Fördersätze</a> · <a href="https://hm.edu/internationales/wege_in_die_welt/studierende/foerdermoeglichkeiten/reisekostenzuschuss.de.html">Reisekostenzuschuss</a> · <a href="https://hm.edu/internationales/wege_in_die_welt/studierende/foerdermoeglichkeiten/weitere_foerdermoeglichkeiten.de.html">Weitere Förderung</a> · <a href="https://hm.edu/studium_1/studienberatung_1/foerderung_und_finanzierung/incoming_outgoing/muehlfenzlstiftung.de.html">Mühlfenzl-Stiftung</a></li>
+    <li><a href="https://www2.daad.de/ausland/studieren/stipendium/de/70-stipendien-finden-und-bewerben/?detail=57588826">DAAD HAW.International</a> · <a href="https://www2.daad.de/bundles/daadstipendiendatenbanklsh/data/d/js/scholarshiprates.js">DAAD-Stipendienrechner (Daten)</a> · <a href="https://www.daad.de/de/im-ausland-studieren-forschen-lehren/stipendien-finanzierung/wichtige-hinweise-zu-daad-stipendien/">DAAD: Stipendienhinweise</a> · <a href="https://www2.daad.de/downloads/foerderprogramm/file.php?id=9736">PROMOS-Sätze 2027</a></li>
+    <li><a href="https://www.stmwk.bayern.de/wissenschaftler/international/hochschulzentren.html">Bayerische Hochschulzentren</a> · <a href="https://www.baylat.org/fileadmin/user_upload/dateien/descargas/Ausschreibung_BAYLAT_Mobilitaetsbeihilfe_2024_Praktikum.pdf">BAYLAT</a> · <a href="https://www.mystipendium.de/stipendien/bayind-stipendium-indien">BayIND</a> · <a href="https://www.mystipendium.de/stipendien/baychina-auslandspraktikum">BayCHINA</a></li>
+    <li><a href="https://pvtistes.net/en/dossiers/international-co-op-internship-iec-work-permit/">Kanada: IEC Co-op</a> · <a href="https://hicksmorley.com/2026/04/01/ontario-minimum-wage-to-increase-october-1-2026/">Mindestlohn Ontario</a> · <a href="https://www2.gov.bc.ca/gov/content/employment-business/employment-standards-advice/employment-standards/wages/minimum-wage">Mindestlohn BC</a> · <a href="https://www.cp24.com/local/toronto/2025/01/10/the-cost-to-rent-a-toronto-apartment-fell-by-about-7-per-cent-last-year-report/">Zimmer Toronto</a></li>
+    <li><a href="https://culturalvistas.org/j-1-fees-intern-trainee-research-scholar-specialist">USA: J-1-Gebühren</a> · <a href="https://jobs.bmwgroup.com/job/Santa-Monica-Intern%2C-UIUX-SummerFall-2026-CA-90401/1383342733/">BMW Designworks</a> · <a href="https://jobs.accel.com/companies/atlassian/jobs/92598808-product-design-intern-2027-summer-u-s">Atlassian 2027</a> · <a href="https://citiesinsider.com/country/united-states/san-francisco/shared-housing/">Zimmer SF</a></li>
+    <li><a href="https://www.mom.gov.sg/passes-and-permits/work-holiday-programme/eligibility">Singapur: Work Holiday Pass</a> · <a href="https://www.mom.gov.sg/passes-and-permits/training-employment-pass/eligibility">TEP</a> · <a href="https://sg.indeed.com/career/intern/salaries">Vergütung Singapur</a> · <a href="https://themoneybees.co/blog/rent-singapore">Mieten Singapur</a></li>
+    <li><a href="https://immi.homeaffairs.gov.au/what-we-do/whm-program/latest-news">Australien: Working Holiday</a> · <a href="https://www.mondaq.com/australia/employee-rights-labour-relations/1797824/minimum-wage-to-increase-to-%24100490-per-week-from-1-july-2026">Mindestlohn 2026</a> · <a href="https://peakifi.com/personal-finance/cost-of-living/cost-of-living-sydney/">Mieten Sydney</a></li>
+    <li><a href="https://www.mofa.go.jp/j_info/visit/w_holiday/index.html">Japan: Working Holiday</a> · <a href="https://modernlivingjapan.com/blog/tokyo-share-house-cost-breakdown-2026">Sharehouse Tokio</a> · <a href="https://www.kowork.kr/en/visa/H-1">Korea: H-1</a></li>
+    <li><a href="https://www.editions-tissot.fr/actualite/droit-du-travail/gratification-de-stage">Frankreich: gratification 2026</a> · <a href="https://gov.uk/employment-rights-for-interns">GOV.UK: Interns</a> · <a href="https://morgansmithimmigration.com/government-authorised-exchange-visa-guide-2026/">UK GAE-Visum</a> · <a href="https://www.recordinglaw.com/ireland/employment-law/minimum-wage/">Irland Mindestlohn</a></li>
+    <li><a href="https://magnet.me/nl-NL/stages/amsterdam-zuid-amsterdam/design">Amsterdam: Design-Praktika</a> · <a href="https://housinganywhere.com/quarterly-kamernet-rent-report">Kamernet Q2 2026</a> · <a href="https://www.locservice.fr/actualites/marche-colocation-france-2026-16560.html">LocService 2026</a> · <a href="https://www.spareroom.co.uk/statistics/uk-rents-q1-2026/">SpareRoom Q1 2026</a> · <a href="https://erasmusplay.com/en/market-trends/se/stockholm">Erasmus Play Stockholm</a> · <a href="https://exik.hawk.de/media/22264">Erasmus+-Ländergruppen</a></li>
+  </ol>
+</section>
+
+<section>
+  <h2>Log</h2>
+  <ul class="log">
+    <li><span class="mono muted">09.10.2026</span><span>Portfolio geprüft: Unify zeigt live erfundene Research-Zahlen, Bereinigung vor jeder Bewerbung. APE und SCE ergänzt. Analyse in der Vault-Notiz „Portfolio-Analyse".</span></li>
+    <li><span class="mono muted">09.10.2026</span><span>Reiter 03 neu: Anleitung zur Bewerbung bei Firmen (Wege, Unterlagen, Jobbörsen, Vorlagen, Gespräche, Zeitplan). Organisatorisches (Fahrplan, HM-Ablauf, Visa, Fragen) nach Allgemein verschoben.</span></li>
+    <li><span class="mono muted">09.10.2026</span><span>CeiliX als Stärke in der Einschätzung ergänzt. Neue To-dos: Referenz von CeiliX, FLUID-Bewerbung neu einordnen.</span></li>
+    <li><span class="mono muted">09.10.2026</span><span>Seite in drei Reiter aufgeteilt. Ortsprofile ausgebaut (Szene, Bedingungen, Chance, Aussichten, Geld), Singapur, Sydney, Tokio und Toronto mit Zahlen ergänzt, Südkorea gestrichen (Working Holiday nur 25 Stunden pro Woche). Alter 21 und Wohnen beim Vater eingetragen.</span></li>
+    <li><span class="mono muted">09.10.2026</span><span>DAAD-Raten aus dem Stipendienrechner, Gehaltsanrechnung über 603 €, Singapur über den Work Holiday Pass möglich.</span></li>
+    <li><span class="mono muted">09.10.2026</span><span>Internationale Ziele und Förderung ergänzt (DAAD HAW.International, PROMOS 2027, Bayerische Hochschulzentren).</span></li>
+    <li><span class="mono muted">09.10.2026</span><span>Seite angelegt. Fund: Das Praxissemester liegt im WS 2027/28.</span></li>
+  </ul>
+</section>
+
+<div class="next"><a href="#orte">Weiter zu 02 Orte →</a></div>
+</div>
+
+<!-- ============ 02 ORTE ============ -->
+<div class="wrap" data-tab="orte" hidden>
+
+<section>
+  <h2>Überblick <span class="tag">gewichtet: Karriere › KI/UX-Szene › Machbarkeit › Budget</span></h2>
+  <p class="muted">„Chance" heißt: Wie wahrscheinlich ist ein passender Platz, wenn du ab November gezielt 30 oder mehr Bewerbungen schickst? Das ist eine Einschätzung, keine Messung. Die Firmen sind Ziele zum Prüfen. Keine davon hat eine bestätigte, offene Stelle für deinen Zeitraum.</p>
+  <div class="tbl wide">
+    <table>
+      <thead><tr><th>Ort</th><th>Visum für dich (21)</th><th>Chance</th><th>Bezahlung</th><th class="n">DAAD / Monat</th></tr></thead>
+      <tbody>
+        <tr class="group"><td colspan="5">Europa</td></tr>
+        <tr><td>Amsterdam</td><td>keins nötig</td><td><span class="pill p-good">mittel–gut</span></td><td>üblich, 350–800 €</td><td class="n">1.275</td></tr>
+        <tr><td>Paris</td><td>keins nötig</td><td><span class="pill p-info">mittel</span></td><td>Pflicht, ≥ 693 €</td><td class="n">1.150</td></tr>
+        <tr><td>Stockholm</td><td>keins nötig</td><td><span class="pill p-info">mittel</span></td><td>oft unbezahlt</td><td class="n">1.225</td></tr>
+        <tr><td>London</td><td>GAE über Sponsor, schwer</td><td><span class="pill p-warn">niedrig–mittel</span></td><td>Mindestlohn £12,71/h</td><td class="n">1.300</td></tr>
+        <tr><td>Dublin</td><td>keins nötig</td><td><span class="pill p-warn">niedrig–mittel</span></td><td>Mindestlohn 14,15 €/h</td><td class="n">1.250</td></tr>
+        <tr><td>Zürich</td><td>EU-Regeln, einfach</td><td><span class="pill p-warn">niedrig–mittel</span></td><td>nicht geprüft</td><td class="n">1.475</td></tr>
+        <tr class="group"><td colspan="5">International</td></tr>
+        <tr><td>Kanada</td><td>IEC Co-op, passt genau</td><td><span class="pill p-warn">mittel–niedrig</span></td><td>Mindestlohn ~18 CAD/h, Pflicht unklar</td><td class="n">1.175</td></tr>
+        <tr><td>Singapur</td><td>Work Holiday Pass (bis 25)</td><td><span class="pill p-warn">mittel–niedrig</span></td><td>üblich, S$ 800–1.100</td><td class="n">1.500</td></tr>
+        <tr><td>Australien</td><td>Working Holiday (bis 35)</td><td><span class="pill p-warn">mittel–niedrig</span></td><td>Mindestlohn 26,44 AUD/h</td><td class="n">1.275</td></tr>
+        <tr><td>USA</td><td>J-1 über Sponsor</td><td><span class="pill p-bad">niedrig</span></td><td>25–40 $/h</td><td class="n">1.400</td></tr>
+        <tr><td>Japan</td><td>Working Holiday (bis 30)</td><td><span class="pill p-bad">niedrig</span></td><td>oft gering</td><td class="n">1.550</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <h2>International</h2>
+  <div class="places">
+
+    <details class="place" open>
+      <summary><span class="rank">1</span><span class="name">Kanada · Toronto, Montreal, Vancouver<small>Beste Mischung aus KI-Szene, Englisch und passendem Visum</small></span><span class="pills"><span class="pill p-good">Visum passt</span><span class="pill p-warn">Chance mittel–niedrig</span></span></summary>
+      <dl class="profile">
+        <div><dt>Szene</dt><dd><p>Toronto und Montreal gehören zu den großen KI-Standorten Nordamerikas. In Toronto sitzen Cohere (Sprachmodelle) und das Vector Institute, in Montreal das Forschungsinstitut Mila. Für Produktdesign stehen Shopify mit seinem Designsystem Polaris, Ada (KI-Kundenservice) und Wealthsimple. In Vancouver gibt es Clio und Büros großer Tech-Firmen.</p></dd></div>
+        <div><dt>Bedingungen</dt><dd><ul><li>Visum „IEC International Co-op", gemacht für Pflichtpraktika. Die HM muss bestätigen, dass das Praktikum Pflicht ist.</li><li>Die Firma reicht das Angebot im Regierungsportal ein und zahlt 230 CAD. Du zahlst 184,75 CAD plus 85 CAD Biometrie.</li><li>Plätze werden aus Pools vergeben, also früh einsteigen</li><li>Englisch reicht, in Montreal hilft Französisch</li></ul></dd></div>
+        <div><dt>Chance</dt><dd><p>Mittel bis niedrig. Kanadische Firmen kennen Praktika über ein Semester aus ihrem eigenen Co-op-System. Die Firma muss aber den IEC-Schritt mitmachen, und kleine Startups scheuen das oft. Am besten fragst du gleich im ersten Kontakt danach.</p></dd></div>
+        <div><dt>Aussichten</dt><dd><p>Nordamerikanische Erfahrung ohne die US-Visahürde. Gute Brücke für einen späteren Job in Kanada oder den USA. Toronto ist stark bei KI-Unternehmenssoftware, weniger bei Consumer-Apps.</p></dd></div>
+        <div><dt>Geld</dt><dd><ul><li>Mindestlohn Ontario 17,95 CAD (seit 01.10.2026), British Columbia 18,25 CAD. Ob er für ein ausländisches Pflichtpraktikum gilt, ist nicht geprüft.</li><li>Zimmer Toronto im Schnitt 1.194 CAD (Ende 2024), Vancouver 950–1.150 CAD</li><li>DAAD 1.175 € oder PROMOS 350 € + 1.188 € Reise</li></ul></dd></div>
+      </dl>
+    </details>
+
+    <details class="place">
+      <summary><span class="rank">2</span><span class="name">Singapur<small>Asiens Tech-Drehkreuz, Englisch als Arbeitssprache</small></span><span class="pills"><span class="pill p-good">Visum ohne Sponsor</span><span class="pill p-warn">Chance mittel–niedrig</span></span></summary>
+      <dl class="profile">
+        <div><dt>Szene</dt><dd><p>Asien-Zentrale vieler Tech-Firmen. Grab (Super-App), Sea mit Shopee und Garena sowie ByteDance/TikTok haben hier große Teams. Der Staat fördert KI aktiv. Dichte Startup-Szene, Englisch im Büro Standard.</p></dd></div>
+        <div><dt>Bedingungen</dt><dd><ul><li>Work Holiday Pass: 18 bis 25 Jahre bei Antragstellung (du bist 21), mindestens 3 Monate Vollzeitstudium an einer staatlich anerkannten Hochschule</li><li>Höchstens 6 Monate, nicht verlängerbar, 2.000 Plätze gleichzeitig</li><li>Du beantragst den Pass selbst. Die Firma muss also kein Visum sponsern, das ist ein großer Vorteil.</li><li>Der Training Employment Pass gilt nur 3 Monate und reicht deshalb nicht</li></ul></dd></div>
+        <div><dt>Chance</dt><dd><p>Mittel bis niedrig. Ohne Sponsor-Hürde bist du für Firmen einfach einzustellen. Du konkurrierst aber mit lokalen Studierenden, die Praktika fest im Studium haben.</p></dd></div>
+        <div><dt>Aussichten</dt><dd><p>Asien-Erfahrung ist bei deutschen Designern selten und hebt dich ab. Super-Apps wie Grab sind ein ganz anderes UX-Feld als europäische Produkte.</p></dd></div>
+        <div><dt>Geld</dt><dd><ul><li>Vergütung für Praktika im Schnitt rund S$ 1.000 im Monat, im Design S$ 800–1.100</li><li>Zimmer in einer HDB-Wohnung S$ 900–1.500</li><li>DAAD 1.500 €. Eine typische Vergütung liegt knapp über der 603-€-Grenze, das Stipendium wird also kaum gekürzt.</li></ul></dd></div>
+      </dl>
+    </details>
+
+    <details class="place">
+      <summary><span class="rank">3</span><span class="name">Australien · Sydney, Melbourne<small>Canva sitzt hier, Praktika laufen parallel zum WS</small></span><span class="pills"><span class="pill p-good">Visum ohne Sponsor</span><span class="pill p-warn">Chance mittel–niedrig</span></span></summary>
+      <dl class="profile">
+        <div><dt>Szene</dt><dd><p>Canva (Sydney) ist eine der designgetriebensten Tech-Firmen überhaupt und baut stark auf KI, Leonardo.Ai gehört dazu. Atlassian (Sydney), Airwallex und Culture Amp (Melbourne). Die KI-Forschungsszene ist kleiner als in Nordamerika oder London.</p></dd></div>
+        <div><dt>Bedingungen</dt><dd><ul><li>Working Holiday 417: für Deutsche seit 01.07.2026 von 18 bis 35 Jahren, etwa 840 AUD, Nachweis von 5.000 AUD</li><li>Höchstens 6 Monate pro Arbeitgeber, 18 Wochen passen</li><li>Die Sommerprogramme laufen von November bis Februar, also parallel zum WS</li></ul></dd></div>
+        <div><dt>Chance</dt><dd><p>Mittel bis niedrig. Die offiziellen Programme von Canva und Atlassian waren zuletzt nur für Locals offen. Mit dem Working-Holiday-Visum brauchst du aber kein Sponsoring, das öffnet den Weg über direkte Bewerbungen bei kleineren Firmen.</p></dd></div>
+        <div><dt>Aussichten</dt><dd><p>Canva wäre eine Top-Referenz für Produktdesign. Australien selbst ist ein eher abgelegener Markt für eine spätere Karriere in Europa.</p></dd></div>
+        <div><dt>Geld</dt><dd><ul><li>Mindestlohn 26,44 AUD pro Stunde seit 01.07.2026. Unbezahlt ist nur in engen Fällen erlaubt, rechne mit Bezahlung.</li><li>Zimmer in der Innenstadt von Sydney 350–550 AUD pro Woche</li><li>DAAD 1.275 € oder PROMOS 450 € + 1.735 € Reise</li></ul></dd></div>
+      </dl>
+    </details>
+
+    <details class="place">
+      <summary><span class="rank">4</span><span class="name">USA · San Francisco, New York, Los Angeles<small>Höchste Decke für KI und Design, schwerstes Ziel</small></span><span class="pills"><span class="pill p-warn">Visum J-1</span><span class="pill p-bad">Chance niedrig</span></span></summary>
+      <dl class="profile">
+        <div><dt>Szene</dt><dd><p>Die Bay Area ist das Zentrum der KI-Industrie: OpenAI, Anthropic, Figma, Notion, Perplexity und unzählige Startups. New York ist stark bei designgetriebenen Firmen und Agenturen. In Los Angeles sitzt BMW Group Designworks.</p></dd></div>
+        <div><dt>Bedingungen</dt><dd><ul><li>J-1 Intern über einen Sponsor wie Cultural Vistas: bis 6 Monate 1.125 $ für Studierende, dazu SEVIS 220 $ und Visum 185 $</li><li>Die Firma muss einen Trainingsplan mittragen. Sponsoren verlangen einen Finanzierungsnachweis, das DAAD-Stipendium hilft dabei.</li><li>Viele US-Programme schließen J-1 aus, z. B. Atlassian 2027</li></ul></dd></div>
+        <div><dt>Chance</dt><dd><p>Niedrig. Der realistischste Weg führt über deutsche Firmen mit US-Designstudios. BMW Designworks hatte ein Praktikum „UI/UX Summer/Fall 2026" für 25,30 $ pro Stunde. J-1-Bewerber brauchen dort aber BMW-Vorerfahrung.</p></dd></div>
+        <div><dt>Aussichten</dt><dd><p>Die stärkste Wirkung im Lebenslauf und das beste Netzwerk für KI. Ein späterer Job in den USA ist trotzdem schwer, weil das Arbeitsvisum per Lotterie vergeben wird.</p></dd></div>
+        <div><dt>Geld</dt><dd><ul><li>Design-Praktika in SF 25–40 $ pro Stunde</li><li>Zimmer in SF im Schnitt etwa 1.650 $ (Q1 2026)</li><li>DAAD 1.400 € oder PROMOS 550 € + 1.188 € Reise</li></ul></dd></div>
+      </dl>
+    </details>
+
+    <details class="place">
+      <summary><span class="rank">5</span><span class="name">Japan · Tokio<small>Höchste DAAD-Rate, günstige Sharehouses, aber Sprachhürde</small></span><span class="pills"><span class="pill p-good">Working Holiday bis 30</span><span class="pill p-bad">Chance niedrig</span></span></summary>
+      <dl class="profile">
+        <div><dt>Szene</dt><dd><p>Sakana AI (Tokio, von ehemaligen Google-Forschern gegründet), Mercari mit englischsprachigen Tech-Teams, dazu große Konzerne mit starker Designkultur.</p></dd></div>
+        <div><dt>Bedingungen</dt><dd><ul><li>Working-Holiday-Visum für Deutsche von 18 bis 30 Jahren</li><li>Japanisch ist meist Pflicht. Sakana AI verlangt für sein Produkt-Praktikum Business-Japanisch.</li></ul></dd></div>
+        <div><dt>Chance</dt><dd><p>Niedrig, außer bei den wenigen englischsprachigen Tech-Firmen</p></dd></div>
+        <div><dt>Aussichten</dt><dd><p>Ein sehr seltenes Profil, aber für eine UX- und KI-Karriere in Europa weniger direkt verwertbar</p></dd></div>
+        <div><dt>Geld</dt><dd><ul><li>Sharehouse-Zimmer ¥ 55.000–80.000 im Monat, alles inklusive</li><li>Vergütung oft niedrig, Teilzeitlöhne ¥ 1.100–1.500 pro Stunde</li><li>DAAD 1.550 €, die höchste Rate. Finanziell das entspannteste Ziel.</li></ul></dd></div>
+      </dl>
+    </details>
+
+    <details class="place">
+      <summary><span class="rank">·</span><span class="name">Weitere und gestrichen<small>geprüft, aber nachrangig</small></span><span class="pills"><span class="pill p-info">Notizen</span></span></summary>
+      <dl class="profile">
+        <div><dt>Südkorea</dt><dd><p>Gestrichen. Das Working-Holiday-Visum erlaubt nur 25 Stunden Arbeit pro Woche, ein Vollzeitpraktikum geht damit nicht.</p></dd></div>
+        <div><dt>Mexiko-Stadt</dt><dd><p>BAYLAT bis 1.500 € einmalig, DAAD 1.400 €. Günstig, aber wenig KI-Design.</p></dd></div>
+        <div><dt>Bangalore</dt><dd><p>BayIND bis 1.000 €, DAAD 1.325 €. Designzentren großer Tech-Firmen, sehr günstig, Vergütung eher niedrig.</p></dd></div>
+        <div><dt>China</dt><dd><p>BayCHINA bis 850 €, DAAD 1.450 €. Hürden bei Sprache und Visum.</p></dd></div>
+      </dl>
+    </details>
+  </div>
+</section>
+
+<section>
+  <h2>Europa</h2>
+  <div class="places">
+
+    <details class="place">
+      <summary><span class="rank">1</span><span class="name">Amsterdam<small>Produktdesign-Kultur, Englisch im Büro, kein Visum</small></span><span class="pills"><span class="pill p-good">EU</span><span class="pill p-good">Chance mittel–gut</span></span></summary>
+      <dl class="profile">
+        <div><dt>Szene</dt><dd><p>Framer (Design-Tool mit KI-Website-Builder) hat hier seinen Hauptsitz. Dazu Miro, Booking.com, Adyen, Mollie, Picnic und die EMEA-Zentrale von Uber. Starke Produktdesign-Kultur, Englisch ist in Tech-Firmen Arbeitssprache.</p></dd></div>
+        <div><dt>Bedingungen</dt><dd><p>Kein Visum, kein Sonderformular. Der HM-Vertrag reicht.</p></dd></div>
+        <div><dt>Chance</dt><dd><p>Mittel bis gut. Viele Firmen nehmen regelmäßig Design-Praktikanten aus ganz Europa.</p></dd></div>
+        <div><dt>Aussichten</dt><dd><p>Framer wäre ideal für dein Profil aus Design und KI. Amsterdam ist ein guter Startpunkt für eine Karriere in europäischem Produktdesign.</p></dd></div>
+        <div><dt>Geld</dt><dd><ul><li>Vergütung 350–800 € im Monat, Median rund 400 €</li><li>Zimmer im Median rund 950 € (Kamernet Q2 2026), Wohnungsmarkt sehr knapp</li><li>Erasmus 750 € (120 Tage) oder DAAD 1.275 €</li></ul></dd></div>
+      </dl>
+    </details>
+
+    <details class="place">
+      <summary><span class="rank">2</span><span class="name">Paris<small>Stärkster KI-Cluster der EU, Bezahlung gesetzlich garantiert</small></span><span class="pills"><span class="pill p-good">EU</span><span class="pill p-info">Chance mittel</span></span></summary>
+      <dl class="profile">
+        <div><dt>Szene</dt><dd><p>Mistral AI, Hugging Face, Photoroom, Dust, H Company, dazu Alan, Qonto und Pigment. Station F ist einer der größten Startup-Campusse Europas.</p></dd></div>
+        <div><dt>Bedingungen</dt><dd><p>Französische Firmen erwarten eine „convention de stage", die die HM mitunterschreibt. In KI-Startups wird oft Englisch gesprochen, im Alltag hilft Französisch.</p></dd></div>
+        <div><dt>Chance</dt><dd><p>Mittel. Praktika sind in Frankreich fester Teil der Ausbildung, das Angebot ist groß. Du konkurrierst aber mit sehr vielen französischen Studierenden.</p></dd></div>
+        <div><dt>Aussichten</dt><dd><p>Das KI-Zentrum Europas. Mistral oder Photoroom im Lebenslauf haben großes Gewicht.</p></dd></div>
+        <div><dt>Geld</dt><dd><ul><li>Ab 2 Monaten Pflicht: 4,50 € pro Stunde, rund 693 € im Monat</li><li>WG-Zimmer im Schnitt 776 € inklusive Nebenkosten</li><li>Erasmus 750 € oder DAAD 1.150 €</li></ul></dd></div>
+      </dl>
+    </details>
+
+    <details class="place">
+      <summary><span class="rank">3</span><span class="name">Stockholm<small>Lovable sitzt hier und baut genau so, wie du arbeitest</small></span><span class="pills"><span class="pill p-good">EU</span><span class="pill p-info">Chance mittel</span></span></summary>
+      <dl class="profile">
+        <div><dt>Szene</dt><dd><p>Lovable (Apps per KI bauen) passt direkt zu deiner Arbeitsweise mit Agents. Dazu Spotify, Klarna, Legora (KI für Juristen) und Epidemic Sound. Skandinavische Designkultur.</p></dd></div>
+        <div><dt>Bedingungen</dt><dd><p>Kein Visum. Viele Stellen setzen voraus, dass du schon in Schweden lebst, also früh direkt anfragen.</p></dd></div>
+        <div><dt>Chance</dt><dd><p>Mittel. Kleiner Markt, aber deine Agent-gebauten Produkte sind hier ein direktes Argument.</p></dd></div>
+        <div><dt>Aussichten</dt><dd><p>Lovable gehört zu den am schnellsten wachsenden KI-Firmen Europas. Eine Station dort wäre ein sehr starkes Signal.</p></dd></div>
+        <div><dt>Geld</dt><dd><ul><li>Kein gesetzlicher Mindestlohn, viele Praktika unbezahlt</li><li>Privates Zimmer rund 821 €</li><li>Erasmus 750 € oder DAAD 1.225 €</li></ul></dd></div>
+      </dl>
+    </details>
+
+    <details class="place">
+      <summary><span class="rank">4</span><span class="name">London<small>Größter KI- und Design-Arbeitsmarkt Europas</small></span><span class="pills"><span class="pill p-warn">Visum schwer</span><span class="pill p-warn">Chance niedrig–mittel</span></span></summary>
+      <dl class="profile">
+        <div><dt>Szene</dt><dd><p>Google DeepMind, ElevenLabs, Synthesia, Wayve, Granola, Attio, Monzo, dazu viele Designstudios</p></dd></div>
+        <div><dt>Bedingungen</dt><dd><p>Visum „Government Authorised Exchange" über einen Sponsor, Antrag £340. Der DAAD warnt ausdrücklich, dass Praktikumsvisa für UK sehr restriktiv sind.</p></dd></div>
+        <div><dt>Chance</dt><dd><p>Niedrig bis mittel. Es gibt viele Stellen, aber das Visum ist die Hürde.</p></dd></div>
+        <div><dt>Aussichten</dt><dd><p>Das größte Netzwerk in Europa. Als einziges Ziel lassen sich hier DAAD und Erasmus kombinieren.</p></dd></div>
+        <div><dt>Geld</dt><dd><ul><li>Mindestlohn £12,71 pro Stunde gilt für dich</li><li>Zimmer im Schnitt £978</li></ul></dd></div>
+      </dl>
+    </details>
+
+    <details class="place">
+      <summary><span class="rank">5</span><span class="name">Dublin<small>Intercom und die EMEA-Zentralen von Big Tech</small></span><span class="pills"><span class="pill p-good">EU</span><span class="pill p-warn">Chance niedrig–mittel</span></span></summary>
+      <dl class="profile">
+        <div><dt>Szene</dt><dd><p>Intercom (KI-Agent Fin, starkes Design-Team), Stripe, Google, Meta, Microsoft. Die Big-Tech-Büros sind eher auf Vertrieb und Betrieb ausgerichtet als auf Design.</p></dd></div>
+        <div><dt>Chance</dt><dd><p>Niedrig bis mittel. Wenige Design-Praktika, hoher Wettbewerb.</p></dd></div>
+        <div><dt>Geld</dt><dd><ul><li>Mindestlohn 14,15 € pro Stunde</li><li>Zimmer 700–1.400 €</li><li>Erasmus 750 € oder DAAD 1.250 €</li></ul></dd></div>
+      </dl>
+    </details>
+
+    <details class="place">
+      <summary><span class="rank">6</span><span class="name">Zürich<small>Großes Google-Büro, ETH-Umfeld, sehr teuer</small></span><span class="pills"><span class="pill p-good">EU-Regeln</span><span class="pill p-warn">Chance niedrig–mittel</span></span></summary>
+      <dl class="profile">
+        <div><dt>Szene</dt><dd><p>Google mit einem großen Entwicklungsstandort, Disney Research, viele Spin-offs der ETH</p></dd></div>
+        <div><dt>Geld</dt><dd><p>Kein Erasmus, aber DAAD 1.475 €, die zweithöchste Rate in Europa. Vergütung und Mieten nicht geprüft.</p></dd></div>
+      </dl>
+    </details>
+  </div>
+</section>
+
+<section>
+  <h2>Budget <span class="tag">pro Monat · verfügbar = 1.000 € + Förderung + Vergütung</span></h2>
+  <p class="muted">18 Wochen sind etwa 4,2 Monate. Erasmus+ zahlt höchstens 120 Tage, umgelegt rund 714 € im Monat. „Rest" (Essen, Transport, Handy) ist geschätzt. Wechselkurse grob, nicht tagesaktuell: 1 $ ≈ 0,86 €, 1 CAD ≈ 0,62 €, 1 AUD ≈ 0,57 €, 1 S$ ≈ 0,67 €, ¥ 100 ≈ 0,58 €. Vergütungen brutto.</p>
+  <div class="tbl wide">
+    <table>
+      <thead><tr><th>Szenario</th><th class="n">Eigen</th><th class="n">Förderung</th><th class="n">Vergütung</th><th class="n">Verfügbar</th><th class="n">Zimmer + Rest</th><th class="n">Übrig</th></tr></thead>
+      <tbody>
+        <tr class="group"><td colspan="7">Europa</td></tr>
+        <tr><td>Paris</td><td class="n">1.000</td><td class="n">714</td><td class="n">693</td><td class="n">2.407</td><td class="n">776 + 500</td><td class="n pos">+1.131</td></tr>
+        <tr><td>Amsterdam, 400 € Vergütung</td><td class="n">1.000</td><td class="n">714</td><td class="n">400</td><td class="n">2.114</td><td class="n">950 + 550</td><td class="n pos">+614</td></tr>
+        <tr><td>Amsterdam, unbezahlt</td><td class="n">1.000</td><td class="n">714</td><td class="n">0</td><td class="n">1.714</td><td class="n">950 + 550</td><td class="n pos">+214</td></tr>
+        <tr><td>Stockholm, unbezahlt</td><td class="n">1.000</td><td class="n">714</td><td class="n">0</td><td class="n">1.714</td><td class="n">821 + 600</td><td class="n pos">+293</td></tr>
+        <tr><td>London, Mindestlohn</td><td class="n">1.000</td><td class="n">0–714</td><td class="n">≈ 2.380</td><td class="n">≈ 3.380+</td><td class="n">1.125 + 650</td><td class="n pos">deutlich +</td></tr>
+        <tr class="group"><td colspan="7">International</td></tr>
+        <tr><td>Toronto, unbezahlt, DAAD</td><td class="n">1.000</td><td class="n">1.175</td><td class="n">0</td><td class="n">2.175</td><td class="n">740 + 650</td><td class="n pos">+785</td></tr>
+        <tr><td>Singapur, S$ 1.000, DAAD</td><td class="n">1.000</td><td class="n">1.433</td><td class="n">≈ 670</td><td class="n">≈ 3.103</td><td class="n">805 + 550</td><td class="n pos">+1.748</td></tr>
+        <tr><td>Sydney, Mindestlohn, PROMOS</td><td class="n">1.000</td><td class="n">450</td><td class="n">≈ 2.480</td><td class="n">≈ 3.930</td><td class="n">1.110 + 650</td><td class="n pos">deutlich +</td></tr>
+        <tr><td>San Francisco, unbezahlt, DAAD</td><td class="n">1.000</td><td class="n">1.400</td><td class="n">0</td><td class="n">2.400</td><td class="n">1.420 + 800</td><td class="n flat">+180</td></tr>
+        <tr><td>San Francisco, 25 $/h, PROMOS</td><td class="n">1.000</td><td class="n">550</td><td class="n">≈ 3.720</td><td class="n">≈ 5.270</td><td class="n">1.420 + 800</td><td class="n pos">deutlich +</td></tr>
+        <tr><td>Tokio, unbezahlt, DAAD</td><td class="n">1.000</td><td class="n">1.550</td><td class="n">0</td><td class="n">2.550</td><td class="n">390 + 550</td><td class="n pos">+1.610</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="mono muted">Einmalkosten kommen dazu: J-1 rund 1.500–2.100 $, IEC Co-op rund 270 CAD, Working Holiday Australien rund 840 AUD, Flüge. Dagegen stehen die Reisepauschalen von DAAD oder PROMOS (USA/Kanada 1.188 €, Australien/Japan/Singapur 1.735 €).</p>
+</section>
+
+<div class="next"><a href="#bewerbung">Weiter zu 03 Bewerbungsprozess: so bewirbst du dich →</a></div>
+</div>
+
+<!-- ============ 03 BEWERBUNG ============ -->
+<div class="wrap" data-tab="bewerbung" hidden>
+
+<section>
+  <h2>Kurz gesagt</h2>
+  <div class="note key">
+    <strong>Dein 18-Wochen-Praktikum im Winter passt in kaum ein offizielles Programm. Der Hauptweg ist deshalb die Direktansprache.</strong>
+    <p>Große Firmen schreiben Design-Praktika fast nur als Sommerprogramme aus. Startups und Scale-ups haben oft gar kein Programm, aber Projekte, die liegen bleiben. Dort kommst du am ehesten über eine kurze, konkrete Mail an Gründer oder Design-Lead rein, mit Portfolio-Link und einem klaren Zeitraum. Ausschreibungen und Kontakte laufen parallel.</p>
+  </div>
+  <div class="cols">
+    <div class="card">
+      <h3>Womit du rechnen musst</h3>
+      <ul>
+        <li>In den USA kamen 2024/25 im Schnitt 109 Bewerbungen auf jede ausgeschriebene Praktikumsstelle, ein Jahr davor 62 (Handshake)</li>
+        <li>In einer kleinen UK-Umfrage (87 Studierende, 2025) führte weniger als 1 von 5 Bewerbungen zum Gespräch und davon etwa 2 von 5 zum Angebot</li>
+        <li>Daraus folgt grob: 40 bis 60 gezielte Kontakte bis Februar. Das ist eine Planungsgröße, keine Messung für dein Feld.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Was Design-Teams 2026 sehen wollen</h3>
+      <ul>
+        <li>Wenige, tiefe Case Studies mit Entscheidungen und Abwägungen, auch verworfenen Ideen</li>
+        <li>KI-Kompetenz: Viele Hiring Manager setzen sie laut Figma inzwischen voraus</li>
+        <li>Prototypen, die mit KI gebaut sind und laufen. Ein Partner von Foundation Capital sagt, deren Portfolio-Firmen achten genau darauf.</li>
+        <li>Stellen bei Anthropic, Cursor und Intercom verlangen Prototyping in Code oder mit Tools wie Framer und Lovable</li>
+      </ul>
+    </div>
+  </div>
+  <p class="muted">Dein Vorteil: Du baust mit KI-Agents echte Produkte und hast eine App im App Store. Genau das wird gesucht. Deine Lücke ist UX-Berufserfahrung. Die gleichst du im Portfolio und im Gespräch aus.</p>
+  <div class="note warn">
+    <strong>Bevor die erste Bewerbung rausgeht: Portfolio bereinigen</strong>
+    <ul>
+      <li><strong>Unify:</strong> Die Live-Seite zeigt eine Umfrage, Zitate und einen Pilottest, die erfunden sind. Im öffentlichen Quelltext steht dazu ein Kommentar, dass alle Zahlen erfunden sind. Design-Leads fragen im Gespräch genau danach. Zahlen streichen oder echt erheben, Kommentar löschen. Gilt auch schon für das DLR-Interview am 20.10.</li>
+      <li><strong>curiosity</strong> als Case Study ergänzen. Das ist dein stärkster Beleg für KI-Kompetenz und fehlt bisher.</li>
+      <li>Reihenfolge: to.morrow, curiosity, Unify. Mac-Lamp und Double Packaging in einen Bereich „Craft/3D".</li>
+      <li>About-Seite auf KI und UX ausrichten, dort steht noch VR/AR als Hauptinteresse.</li>
+    </ul>
+  </div>
+  <div class="note">
+    <strong>APE nutzen</strong>
+    <p>Im CV unter Programme aufführen. Bei Startups und Innovationsteams reicht in der Mail ein Satz dazu. Im DAAD-Motivationsschreiben ist APE ein gutes Argument. Wenn der Partner zustimmt, wird das Partnerprojekt eine eigene Case Study. APE ersetzt aber keine Design-Case-Study.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Drei Wege rein <span class="tag">parallel, in dieser Gewichtung</span></h2>
+  <div class="cols">
+    <div class="card">
+      <span class="pill p-good">Hauptweg</span>
+      <h3>1 · Direktansprache</h3>
+      <p>Mail an Gründer, Head of Design oder einen Designer im Team, nicht an info@. Bei kleinen Startups direkt an die Gründer.</p>
+      <ul>
+        <li>Mit einer konkreten Beobachtung zum Produkt einsteigen, nicht mit dir</li>
+        <li>Ein begrenztes Angebot machen: Zeitraum, Bereich, was du mitbringst</li>
+        <li>Unter 150 Wörter, Portfolio-Link oben, Lebenslauf erst auf Nachfrage</li>
+        <li>Zwei Follow-ups im Abstand von etwa einer Woche</li>
+        <li>Lieber 5 gut recherchierte Mails pro Woche als 50 generische</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="pill p-info">Verstärker</span>
+      <h3>2 · Kontakte und Empfehlungen</h3>
+      <p>Eine Empfehlung von innen bringt deine Bewerbung vor die richtigen Leute. Oft zitiert wird eine alte Jobvite-Zahl: rund 30 % Einstellungsquote mit Empfehlung gegen 7 % ohne. Das Original habe ich nicht geprüft.</p>
+      <ul>
+        <li>Designer der Zielfirma auf LinkedIn mit persönlicher Notiz anschreiben und um ein kurzes Gespräch bitten, nicht um einen Job</li>
+        <li>Mentoren auf ADPList buchen, die bei deinen Zielfirmen arbeiten. Dort sind Portfolio-Reviews kostenlos.</li>
+        <li>Erst nach einem echten Austausch nach einer Empfehlung fragen</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="pill p-warn">Grundrauschen</span>
+      <h3>3 · Ausschreibungen</h3>
+      <p>Jobbörsen und Karriereseiten abonnieren, aber nicht darauf warten. Ausschreibungen für deinen Zeitraum tauchen oft erst 3 bis 6 Monate vorher auf, also zu spät für die DAAD-Frist.</p>
+      <ul>
+        <li>Suchbegriffe: „product design intern", „UX intern", „design engineer intern", „stage UX" (Frankreich)</li>
+        <li>Wenn du eine Sommer-Ausschreibung findest: trotzdem anschreiben und den Winter-Zeitraum anbieten</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Unterlagen <span class="tag">einmal bauen, pro Firma anpassen</span></h2>
+  <div class="cols">
+    <div class="card">
+      <h3>Portfolio</h3>
+      <ul>
+        <li>3 Case Studies, nicht mehr: to.morrow zuerst (verworfene erste Version, SkeuKit), dann Unify, dann ein KI-Projekt (absorb oder curiosity)</li>
+        <li>Jede Case Study mit einer Kurzfassung, die in unter einer Minute Problem, Rolle, wichtigste Entscheidung und Ergebnis zeigt</li>
+        <li>Eigenen Anteil klar benennen, besonders bei Unify (Team)</li>
+        <li>Neu: eine Seite „How I build with AI", die zeigt, wie du von Figma zu laufender Software kommst, mit Tools und Beispielen</li>
+        <li>Alle Texte vollständig auf Englisch. Dazu ein PDF-Auszug mit 1 bis 2 Seiten für Formulare, die keine Links nehmen</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Lebenslauf (CV)</h3>
+      <ul>
+        <li>Internationale Version auf Englisch, eine Seite, <strong>ohne Foto</strong>. In den USA, im UK, in Kanada und Australien ist ein Foto unüblich.</li>
+        <li>Für Deutschland, Österreich und die Schweiz ist ein Foto optional</li>
+        <li>Format: Letter für USA und Kanada, A4 für den Rest</li>
+        <li>Ganz oben: Portfolio-Link, „AI-centered designer", Zeitraum des Praktikums</li>
+        <li>CeiliX als aktuelle Station mit konkreter Aufgabe nach oben</li>
+        <li>Bestehende Basis: <span class="mono">Job_Search/cv/cv.html</span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Anschreiben je Markt</h3>
+      <ul>
+        <li><strong>Startups überall:</strong> die kurze Mail ersetzt das Anschreiben</li>
+        <li><strong>USA, UK, Kanada, Australien:</strong> 250 bis 400 Wörter, mit dem stärksten Projekt einsteigen</li>
+        <li><strong>Frankreich:</strong> „lettre de motivation", eine Seite, im Betreff Zeitraum und Dauer des Praktikums. In Tech-Startups oft auf Englisch möglich.</li>
+        <li><strong>Deutschsprachig:</strong> klassisches Anschreiben</li>
+        <li>Jeder Bewerbungstext läuft vor dem Senden durch den humanizer-Skill</li>
+      </ul>
+    </div>
+  </div>
+  <div class="cols">
+    <div class="note">
+      <strong>Visum früh ansprechen</strong>
+      <p>Firmen sortieren aus, wenn unklar ist, ob du überhaupt arbeiten darfst. Nenne deinen Status in einem Satz und sag dazu, was die Firma tun muss. Bei Working-Holiday-Visa (Singapur, Australien, Japan) ist das nichts, und das ist ein Verkaufsargument. Die Sätze stehen unten bei den Vorlagen.</p>
+    </div>
+    <div class="note">
+      <strong>Förderung als Argument</strong>
+      <p>Mit einem DAAD-Stipendium kostet dich die Firma wenig. Für Startups senkt das die Hürde. Wo Mindestlohn gilt (UK, Irland, Australien, Frankreich), muss die Firma trotzdem zahlen. Dort sagst du es nur, wenn es passt.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Wo suchen <span class="tag">je Markt</span></h2>
+  <div class="tbl wide">
+    <table>
+      <thead><tr><th>Markt</th><th>Quellen</th><th>Hinweis</th></tr></thead>
+      <tbody>
+        <tr><td>Überall, Startups</td><td>Wellfound · startup.jobs · LinkedIn · Karriereseiten der Zielfirmen</td><td>Wellfound zeigt Gehalt, Equity und Finanzierungsstand</td></tr>
+        <tr><td>KI-Firmen</td><td>fastaijobs.com</td><td>Im Juni 2026 waren dort 484 Design-Stellen bei 307 KI-Startups gelistet</td></tr>
+        <tr><td>Design</td><td>uiuxjobsboard.com · ADPList (Kontakte)</td><td>—</td></tr>
+        <tr><td>USA</td><td>Work at a Startup (Y Combinator) · Wellfound</td><td>Ein Profil für viele YC-Firmen. J-1 im Gespräch klären.</td></tr>
+        <tr><td>Kanada</td><td>Career Edge · TalentEgg · JobPostings.ca · Job Bank</td><td>Career Edge vermittelt bezahlte Praktika</td></tr>
+        <tr><td>Frankreich</td><td>Welcome to the Jungle · Station F Jobs</td><td>Eigene Seiten für „stage", viele Anzeigen auf Französisch</td></tr>
+        <tr><td>Niederlande</td><td>magnet.me</td><td>Viele Anzeigen nennen die Vergütung</td></tr>
+        <tr><td>Skandinavien</td><td>The Hub (thehub.io)</td><td>Startup-Jobs in Dänemark, Schweden, Finnland, Norwegen</td></tr>
+        <tr><td>Australien</td><td>Seek · LinkedIn</td><td>nicht geprüft</td></tr>
+        <tr><td>Singapur</td><td>LinkedIn · Karriereseiten</td><td>Das Staatsportal MyCareersFuture richtet sich vor allem an Einheimische</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <h2>Vorlagen <span class="tag">auf Englisch · [Klammern] ersetzen</span></h2>
+  <p class="muted">Entwürfe, schon durch den humanizer gelaufen. Pro Firma anpassen, vor allem die erste Zeile. Wer nichts Konkretes zum Produkt sagen kann, sollte die Mail noch nicht schicken.</p>
+  <div class="tpl">
+    <div class="tpl-head"><h3>Erstkontakt per Mail</h3><button type="button" class="copy" data-copy="tpl-mail">Kopieren</button></div>
+<pre id="tpl-mail">Subject: [Product]: two notes on [flow], and an 18-week design internship
+
+Hi [Name],
+
+I've been using [Product] for [time] and wrote up two notes on [flow], each with a fix I'd want to test. Happy to send them over either way.
+
+I'm a design student at Munich University of Applied Sciences and I build my own products with AI agents. My iOS app to.morrow passed App Store review, and I currently make product visuals for the robotics startup CeiliX. Portfolio: lucasmaher.com
+
+My degree includes a mandatory 18-week internship from [Sept/Oct 2027] to [Feb 2028], and I'd like to spend it on [team or product area] at [Company]. [Visa sentence]
+
+Would a 15-minute call in the next few weeks work for you?
+
+Lucas Maher</pre>
+  </div>
+  <div class="tpl">
+    <div class="tpl-head"><h3>Follow-up nach etwa einer Woche</h3><button type="button" class="copy" data-copy="tpl-follow">Kopieren</button></div>
+<pre id="tpl-follow">Hi [Name],
+
+Bringing this back up in case it got buried. The two notes on [flow] are ready, and you're welcome to them even if an internship isn't an option right now.
+
+Lucas</pre>
+  </div>
+  <div class="tpl">
+    <div class="tpl-head"><h3>LinkedIn-Kontaktanfrage</h3><button type="button" class="copy" data-copy="tpl-li">Kopieren</button></div>
+<pre id="tpl-li">Hi [Name], I'm a design student from Munich and liked your work on [specific thing]. I'm planning an internship in [city] next autumn. Could I ask you two short questions about the design team at [Company]?</pre>
+  </div>
+  <div class="tpl">
+    <div class="tpl-head"><h3>Visa-Satz je Ziel</h3><button type="button" class="copy" data-copy="tpl-visa">Kopieren</button></div>
+<pre id="tpl-visa">EU: (no sentence needed, I'm an EU citizen)
+
+Singapore: I'd come on a Work Holiday Pass, which I apply for myself, so you wouldn't need to sponsor a visa.
+
+Australia: I'd come on a Working Holiday visa (subclass 417), which I arrange myself, so there's no sponsorship on your side.
+
+Japan: I'd come on a Working Holiday visa, which I arrange myself through the embassy.
+
+Canada: Canada's IEC International Co-op permit covers mandatory internships like mine. Your side would be one online offer form and a CAD 230 fee.
+
+USA: I'd come on a J-1 intern visa through a sponsor organization. Your side would be co-signing a training plan.</pre>
+  </div>
+</section>
+
+<section>
+  <h2>Gespräche <span class="tag">typischer Ablauf</span></h2>
+  <ol class="plan">
+    <li><span class="d">1 · Screening</span><div class="b"><p>Rund 30 Minuten mit Recruiter oder Gründer. Hintergrund, Motivation, Zeitraum, Visum. Bei Startups oft schon mit Blick ins Portfolio.</p></div></li>
+    <li><span class="d">2 · Portfolio</span><div class="b"><p>1 bis 2 Projekte im Detail, 30 bis 60 Minuten. Mindestens 10 Minuten für Fragen einplanen. Gefragt wird nach dem Warum hinter Entscheidungen und dem Ergebnis. to.morrow beantwortet die Frage „Welche Idee hast du verworfen?" bereits.</p></div></li>
+    <li><span class="d">3 · Aufgabe</span><div class="b"><p>Eine von drei Formen: Take-home (kurzes Briefing, 3 bis 5 Stunden, danach Besprechung), Live-Übung am Whiteboard oder App-Kritik. Bewertet wird dein Denken, nicht Pixelperfektion.</p></div></li>
+    <li><span class="d">4 · Team</span><div class="b"><p>Zusammenarbeit, Umgang mit Feedback und Konflikten, Zeitplanung. Konkrete Beispiele aus Unify oder der Arbeit mit Nam vorbereiten.</p></div></li>
+    <li><span class="d">5 · Angebot</span><div class="b"><p>Bei Startups oft innerhalb weniger Tage. Danach sofort: Vertrag nach HM-Muster, Petri, DAAD-Formular „Praktikumszusage".</p></div></li>
+  </ol>
+  <div class="note">
+    <strong>Üben</strong>
+    <ul>
+      <li>Einmal pro Woche eine App kritisieren, die du täglich nutzt, laut und mit Begründung. Am besten Produkte deiner Zielfirmen.</li>
+      <li>Die Portfolio-Präsentation auf Englisch mit Stoppuhr proben, einmal bei einem ADPList-Mentor</li>
+      <li>Zeitzonen beachten: Gespräche mit Kanada oder den USA laufen am deutschen Abend, mit Singapur oder Sydney am Morgen</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Ablauf der Bewerbungsphase</h2>
+  <ol class="plan">
+    <li><span class="d">bis 30.11.2026</span><div class="b"><strong>Unterlagen</strong><ul><li>Portfolio auf Englisch mit 3 Case Studies und der Seite zu KI</li><li>CV international, Zielliste mit 40 bis 60 Firmen, für jede ein Kontakt</li><li>Zwei ADPList-Reviews für Portfolio und CV</li></ul></div></li>
+    <li><span class="d">Dez 2026</span><div class="b"><strong>Welle 1: Wunschziele</strong><ul><li>Kanada, Singapur, USA, London, dazu die Top-Firmen in Europa</li><li>Etwa 5 bis 8 Kontakte pro Woche, jeweils mit Produkt-Beobachtung</li></ul></div></li>
+    <li><span class="d">Jan 2027</span><div class="b"><strong>Welle 2 und erste Gespräche</strong><ul><li>Follow-ups für Welle 1, neue Kontakte in Amsterdam, Paris, Stockholm</li><li>Gespräche führen, Aufgaben abgeben</li></ul></div></li>
+    <li class="deadline"><span class="d">bis ca. 20.02.2027</span><div class="b"><strong>Zusage für den DAAD</strong><ul><li>Für die Frist am 26.02. brauchst du die unterschriebene „Praktikumszusage" auf dem DAAD-Formular</li></ul></div></li>
+    <li><span class="d">Mär–Mai 2027</span><div class="b"><strong>Falls noch offen: Europa-Spur</strong><ul><li>Weiter bewerben, Förderung über Erasmus+ (Antrag 1 Monat vor Start) oder PROMOS statt DAAD</li></ul></div></li>
+  </ol>
+</section>
+
+<section>
+  <h2>Nachhalten</h2>
+  <p>Jeden Kontakt in einer Tabelle führen: Firma, Ort, Person, Kanal, Datum, Status, nächstes Follow-up. Dafür eignet sich die bestehende Tabelle in <span class="mono">Job_Search/JOBSUCHE.md</span>, ergänzt um einen eigenen Abschnitt „Auslandspraktikum WS 2027/28". Dort wird ohnehin jede Firma mit Anschreiben als „beworben" gezählt.</p>
+</section>
+
+<section>
+  <h2>Quellen zur Bewerbung</h2>
+  <ol class="sources">
+    <li><a href="https://careers.augsburg.edu/resources/handshakes-internship-index-2025/">Handshake Internship Index 2025</a> · <a href="https://felixonline.co.uk/articles/internship-survey-results/">UK-Umfrage 2025 (Felix)</a></li>
+    <li><a href="https://www.figma.com/blog/skills-for-the-ai-era/">Figma: Skills im KI-Zeitalter</a> · <a href="https://designlab.com/blog/the-brief-2-13-26">Designlab zu Figma-Studie</a> · <a href="https://www.fastcompany.com/91543989/ai-in-design-design-jobs-2026">Fast Company: KI und Designjobs 2026</a> · <a href="https://aigoodies.beehiiv.com/p/design-job-requirements-2026">Anforderungen in Design-Stellen 2026</a></li>
+    <li><a href="https://myuxacademy.com/blog/ux-design-portfolio-guide/">Portfolio-Struktur (MyUXAcademy)</a> · <a href="https://www.uxdesigninstitute.com/blog/hiring-managers-ux-portfolio/">Was Hiring Manager im Portfolio suchen</a></li>
+    <li><a href="https://whali.com/blog/cold-email-ceo-founder-internship">Kaltakquise an Gründer</a> · <a href="https://www.jobhuntrr.com/blog/cold-email-for-internship">Vorlagen und Follow-ups</a></li>
+    <li><a href="https://uxplanet.org/what-i-learned-from-linkedin-product-design-internship-interviews-12a1a0bf77e3">Erfahrungsbericht LinkedIn-Praktikum</a> · <a href="https://uxdesign.cc/breaking-down-the-ux-design-job-interview-b773ab93b900">Ablauf von UX-Interviews</a> · <a href="https://interviewing.durolabs.co/product-design/">Beispiel Take-home</a></li>
+    <li><a href="https://stylingcv.com/should-you-include-a-photo-on-your-resume-2026/">Foto im CV je Land</a> · <a href="https://www.extern.com/post/internship-cover-letter-examples-by-industry">Anschreiben für Praktika (USA)</a> · <a href="https://www.letudiant.fr/jobsstages/lettres-de-motivation_1/candidature-spontanee-pour-un-stage-notre-modele-et-nos-conseils.html">Lettre de motivation (L'Etudiant)</a></li>
+    <li><a href="https://adplist.org/services/portfolio-review">ADPList Portfolio-Review</a> · <a href="https://uxdesign.cc/remote-networking-tips-for-designers-who-are-afraid-of-linkedin-42fa939712d2">Netzwerken auf LinkedIn für Designer</a> · <a href="https://erinapp.com/blog/employee-referral-statistics-you-need-to-know-for-2024-infographic">Empfehlungs-Statistiken (Zweitquelle)</a></li>
+    <li><a href="https://www.welcometothejungle.com/fr/pages/stage">Welcome to the Jungle</a> · <a href="https://thehub.io/about">The Hub</a> · <a href="https://www.careeredge.ca/career-edge-opens-doors-even-wider-share-internship-opportunities/">Career Edge</a> · <a href="https://www.ycombinator.com/blog/intern-at-a-yc-company-2019">Work at a Startup</a> · <a href="https://www.fastaijobs.com/jobs/role/designer">fastaijobs</a></li>
+  </ol>
+</section>
+
+</div>
+
+</main>
+
+<footer>Quelle für den Stand ist die Vault-Notiz „Auslandssemester". Diese Seite ist die Arbeitsansicht. Arbeitsordner: ~/TEMP/auslandssemester:praktikum/arbeit/praktikum/</footer>
+
+<script>
+(function () {
+  var tabs = ["allgemein", "orte", "bewerbung"];
+  function show(id) {
+    if (tabs.indexOf(id) < 0) id = "allgemein";
+    document.querySelectorAll("[data-tab]").forEach(function (p) { p.hidden = p.getAttribute("data-tab") !== id; });
+    document.querySelectorAll("nav.tabbar a").forEach(function (a) {
+      a.setAttribute("aria-current", a.getAttribute("href") === "#" + id ? "page" : "false");
+    });
+  }
+  window.addEventListener("hashchange", function () {
+    show(location.hash.slice(1));
+    window.scrollTo(0, 0);
+  });
+  document.querySelectorAll("button.copy").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var el = document.getElementById(b.getAttribute("data-copy"));
+      var txt = el.textContent;
+      function done(msg) { b.textContent = msg; setTimeout(function () { b.textContent = "Kopieren"; }, 1600); }
+      function fallback() {
+        var r = document.createRange(); r.selectNodeContents(el);
+        var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+        done("Markiert");
+      }
+      try { navigator.clipboard.writeText(txt).then(function () { done("Kopiert"); }, fallback); } catch (e) { fallback(); }
+    });
+  });
+  show(location.hash.slice(1));
+})();
+</script>
