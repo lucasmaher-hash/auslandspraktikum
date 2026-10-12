@@ -71,6 +71,11 @@ main { padding-top: 32px; }
 .facts div { padding: 12px 14px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); display: grid; gap: 2px; min-width: 0; }
 .facts dt { font-family: var(--font-mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 .facts dd { margin: 0; font-weight: 500; font-variant-numeric: tabular-nums; }
+.keydates { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (min-width: 720px) { .keydates { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.keydates dd { font-size: 14px; }
+td.dcol { width: 150px; }
+section[id] { scroll-margin-top: 72px; }
 
 section { display: grid; gap: 16px; }
 section > h2 { font-size: 21px; font-weight: 600; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
@@ -196,7 +201,13 @@ footer { max-width: 880px; margin: 48px auto 0; font-size: 13px; color: var(--mu
   <div class="kicker">Lucas Maher · 21 · Design B.A., Industriedesign · HM FK12 · Product Visuals bei CeiliX</div>
   <h1>Auslandspraktikum WS&nbsp;2027/28</h1>
   <p class="lede">Pflichtpraktikum im Ausland, Richtung UI/UX und KI, in Europa oder weltweit. Karriere geht vor Großstadtleben.</p>
-  <p class="mono muted">Stand 13.10.2026 · alles ohne Pille „geprüft" ist Einschätzung · Quellen im Reiter Allgemein</p>
+  <dl class="facts keydates">
+    <div><dt>Nächster Termin</dt><dd>19.10.2026 · IO-Info „Praktikum im Ausland“</dd></div>
+    <div><dt>Bewerbungsfrist DAAD</dt><dd>26.02.2027 · Zusage muss vorliegen</dd></div>
+    <div><dt>Rückmeldung</dt><dd>01.–31.07.2027</dd></div>
+    <div><dt>Praktikum</dt><dd>WS 2027/28 · 18 Wochen</dd></div>
+  </dl>
+  <p class="mono muted"><a href="#allgemein" data-jump="fristen">Alle Fristen</a> · Stand 13.10.2026 · alles ohne Pille „geprüft" ist Einschätzung · Quellen im Reiter Allgemein</p>
 </header>
 
 <nav class="tabbar" aria-label="Bereiche">
@@ -213,15 +224,57 @@ footer { max-width: 880px; margin: 48px auto 0; font-size: 13px; color: var(--mu
 <!-- ============ 01 ALLGEMEIN ============ -->
 <div class="wrap" data-tab="allgemein">
 
+<section id="fristen">
+  <h2>Fristen <span class="tag">alles fürs Auslandspraktikum · geprüft am 13.10.2026</span></h2>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Wann</th><th>Was</th></tr></thead>
+      <tbody>
+        <tr class="group"><td colspan="2">Herbst 2026</td></tr>
+        <tr><td class="mono dcol"><strong>Mo 19.10.2026<br>17:00–18:30</strong></td><td>IO-Info <strong>„Praktikum im Ausland“</strong>, online per Zoom, ohne Anmeldung. Schwerpunkt Europa und Erasmus+. Fragen zu Erasmus+ in UK und zur DAAD-Zusage mitnehmen. <span class="pill p-good">geprüft</span></td></tr>
+        <tr><td class="mono dcol">bis 31.10.2026</td><td>Mail an Prof. Petri mit den offenen Fragen <span class="pill p-info">dein Ziel</span></td></tr>
+        <tr><td class="mono dcol">Nov 2026–Jan 2027</td><td>Hauptphase der Bewerbung: Direktansprache, weil Ausschreibungen für Herbst 2027 erst nach der DAAD-Frist kommen <span class="pill p-info">dein Ziel</span></td></tr>
+        <tr><td class="mono dcol">ca. Dez 2026–Jan 2027</td><td>Kanada: Die IEC-Saison 2027 öffnet voraussichtlich (2026 war es der 19.12.2025). Dann sofort ein Profil im Pool anlegen. <span class="pill p-warn">Drittquelle</span></td></tr>
+        <tr class="group"><td colspan="2">Bewerbungsfrist DAAD</td></tr>
+        <tr><td class="mono dcol">Mo 08.02.2027, 17:00</td><td>Zweite IO-Info „Praktikum im Ausland“, online <span class="pill p-good">geprüft</span></td></tr>
+        <tr><td class="mono dcol">Fr 12.02.2027</td><td>Notenbekanntgabe WS 2026/27, aktuelles Transcript für den DAAD <span class="pill p-good">geprüft</span></td></tr>
+        <tr><td class="mono dcol">ca. 20.02.2027</td><td>Schriftliche Zusage der Firma auf dem DAAD-Formular „Praktikumszusage“ <span class="pill p-info">dein Ziel</span></td></tr>
+        <tr><td class="mono dcol"><strong>Fr 26.02.2027<br>24:00 MEZ</strong></td><td><strong>DAAD HAW.International, Auslandspraktika:</strong> Bewerbungsschluss für einen Start zwischen August 2027 und Januar 2028. Die Zusage gehört in die Bewerbung. Gefördert werden 2 bis 6 Monate. <span class="pill p-good">geprüft</span></td></tr>
+        <tr class="group"><td colspan="2">Frühjahr und Sommer 2027</td></tr>
+        <tr><td class="mono dcol">ca. März–April 2027</td><td>Auslands-BAföG beantragen, etwa 6 Monate vor Start. Gefördert wird erst ab dem Monat des Antrags. <span class="pill p-info">abgeleitet</span></td></tr>
+        <tr><td class="mono dcol">nach der Zusage</td><td>Vertrag nach HM-Muster, Genehmigung durch Petri, Anmeldung in PRIMUSS. Eine feste Frist nennt die HM nicht. <span class="pill p-good">geprüft</span></td></tr>
+        <tr><td class="mono dcol">ca. Mai–Juni 2027</td><td>Nur UK mit Erasmus+: Bewerbung mindestens 4 Monate vor Start. Ob UK 2027 gefördert wird, ist offen. <span class="pill p-info">abgeleitet</span></td></tr>
+        <tr><td class="mono dcol">Juni / Juli 2027</td><td>DAAD: Auswahl im Juni, Ergebnis im Juli <span class="pill p-good">geprüft</span></td></tr>
+        <tr><td class="mono dcol"><strong>01.–31.07.2027</strong></td><td><strong>Rückmeldung fürs WS 2027/28</strong> in PRIMUSS. Pflicht auch im Praxissemester, ein Urlaubssemester geht nicht. <span class="pill p-good">geprüft</span></td></tr>
+        <tr class="group"><td colspan="2">Vor dem Start</td></tr>
+        <tr><td class="mono dcol">frühestens 3 Monate vor der Reise</td><td>Singapur: Work Holiday Pass beantragen, Bearbeitung meist bis 4 Wochen <span class="pill p-good">Regel geprüft</span></td></tr>
+        <tr><td class="mono dcol">20 Tage nach der Einladung</td><td>Kanada: Nach der Einladung aus dem IEC-Pool den Antrag auf Arbeitserlaubnis einreichen <span class="pill p-good">Regel geprüft</span></td></tr>
+        <tr><td class="mono dcol">4–6 Wochen nach der Zusage</td><td>USA: J-1 beim Sponsor, danach Termin im Konsulat. Früh anfangen. <span class="pill p-warn">Drittquelle</span></td></tr>
+        <tr><td class="mono dcol">1 Monat vor Start</td><td>Erasmus+ (Europa und weltweit): vollständige Bewerbung beim IO. Rückwirkend wird nicht gefördert. <span class="pill p-good">Regel geprüft</span></td></tr>
+        <tr><td class="mono dcol">2 Wochen vor Abreise</td><td>Reisekostenzuschuss der HM, bis 1.000 €. Nicht mit DAAD oder Erasmus+ kombinierbar. <span class="pill p-good">Regel geprüft</span></td></tr>
+        <tr><td class="mono dcol">Di 31.08.2027</td><td>Zweite DAAD-Frist, gilt nur für einen Start zwischen Februar und Juli 2028 <span class="pill p-good">geprüft</span></td></tr>
+        <tr class="group"><td colspan="2">Praktikum und danach</td></tr>
+        <tr><td class="mono dcol">01.10.2027–14.03.2028</td><td>WS 2027/28, Vorlesungszeit 04.10.2027–25.01.2028. Aus der HM-Satzung berechnet, noch nicht auf der Terminseite. <span class="pill p-info">abgeleitet</span></td></tr>
+        <tr><td class="mono dcol">z. B. 06.09.2027–07.01.2028</td><td>18 Fünftagewochen. Fehltage und Betriebsurlaub über Weihnachten nachholen. Ob ein Start vor Oktober geht, mit Petri klären. <span class="pill p-info">abgeleitet</span></td></tr>
+        <tr><td class="mono dcol">nach dem Praktikum</td><td>Zeugnis in PRIMUSS hochladen, Praktikumsseminar (Modul 510) abschließen, Abschlussbericht fürs Förderprogramm <span class="pill p-good">geprüft</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="note">
+    <strong>Nur fürs Auslandssemester, nicht fürs Praktikum</strong>
+    <p>Non-EU-Info am 15.10. (online) und 10.11.2026, Erasmus+-Info am 22.10. (online) und 17.11.2026 (Raum T0.012 und Zoom). Das Bewerbungsfenster Non-EU läuft bis 01.12.2026. PROMOS gibt es an der HM nur in diesem Rahmen.</p>
+  </div>
+</section>
+
 <section>
   <h2>Jetzt dran</h2>
   <div class="note warn">
     <strong>Die Zusage muss bis Ende Februar 2027 stehen.</strong>
-    <p>Für DAAD HAW.International ist Bewerbungsschluss am 26.02.2027, und die Praktikumszusage gehört schon in die Bewerbung. Deine Bewerbungsphase läuft deshalb von November 2026 bis Februar 2027. Wenn es bis dahin nicht klappt, bleiben Erasmus+, PROMOS und der Reisekostenzuschuss. Dort reicht ein Antrag kurz vor dem Start.</p>
+    <p>Für DAAD HAW.International ist Bewerbungsschluss am 26.02.2027, und die Praktikumszusage gehört schon in die Bewerbung. Deine Bewerbungsphase läuft deshalb von November 2026 bis Februar 2027. Wenn es bis dahin nicht klappt, bleiben Erasmus+ (auch weltweit) und der Reisekostenzuschuss der HM. Dort reicht ein Antrag kurz vor dem Start.</p>
   </div>
   <ul class="todos">
     <li class="hot"><span class="box"></span><span class="t">Mail an Prof. Petri mit den offenen Fragen (weiter unten). Dabei fragen, welches „Center" er meinte<small>florian.petri@hm.edu</small></span><span class="when">bis 31.10.</span></li>
-    <li><span class="box"></span><span class="t">Erasmus-Infoveranstaltung des International Office<small>22.10.2026, 17 Uhr, Zugang noch prüfen</small></span><span class="when">22.10.</span></li>
+    <li class="hot"><span class="box"></span><span class="t">IO-Info „Praktikum im Ausland“ besuchen<small>19.10.2026, 17:00–18:30, online per Zoom. Fragen: Erasmus+ für UK 2027/28, DAAD-Zusage unter Vorbehalt</small></span><span class="when">19.10.</span></li>
     <li class="hot"><span class="box"></span><span class="t">Portfolio auf UX + KI umbauen: 3 Fälle mit Prozess<small>Unify, to.morrow (App Store), absorb oder curiosity. Agent-gebaute Produkte nach vorne.</small></span><span class="when">bis 30.11.</span></li>
     <li class="hot"><span class="box"></span><span class="t">CV auf Englisch, Positionierung „AI-centered designer"<small>CeiliX als aktuelle Startup-Station nach oben. Für US- und kanadische Firmen eine Seite im US-Format.</small></span><span class="when">bis 30.11.</span></li>
     <li><span class="box"></span><span class="t">CeiliX um ein Referenzschreiben bitten, wenn die ersten Projekte stehen<small>Hilft bei der Bewerbung und beim DAAD-Motivationsschreiben</small></span><span class="when">bis 31.01.</span></li>
@@ -292,8 +345,8 @@ footer { max-width: 880px; margin: 48px auto 0; font-size: 13px; color: var(--mu
     <li><span class="d">Okt–Nov 2026</span><div class="b"><strong>Klären und vorbereiten</strong><ul><li>Fragen an Petri, Infoveranstaltung, Auslandssemester-Entscheidung</li><li>Portfolio, CV, Zielliste</li></ul></div></li>
     <li><span class="d">Nov 2026–Feb 2027</span><div class="b"><strong>Bewerbungswelle</strong><ul><li>Startups, Scale-ups und Design-Studios direkt anschreiben, nicht nur auf Ausschreibungen warten</li><li>Bei Kanada und den USA im ersten Kontakt klären, ob die Firma IEC Co-op bzw. J-1 mitträgt</li><li>Falls BAföG plausibel: Auslands-BAföG beantragen, rund 6 Monate Bearbeitung</li></ul></div></li>
     <li class="deadline"><span class="d">26.02.2027</span><div class="b"><strong>Frist DAAD HAW.International</strong><ul><li>Lebenslauf, Beschreibung der Praktikumsstelle (max. 3 Seiten), Motivationsschreiben, Transcript, Abiturzeugnis, Sprachnachweis, DAAD-Formular „Praktikumszusage"</li><li>Auswahl im Juni 2027, Ergebnis im Juli 2027</li></ul></div></li>
-    <li><span class="d">Mär–Jul 2027</span><div class="b"><strong>Zusage festmachen</strong><ul><li>Vertrag (HM-Muster auf Englisch) → fachliche Genehmigung durch Petri → Anmeldung in PRIMUSS</li><li>Ohne DAAD: Erasmus+ (spätestens 1 Monat vor Start, UK 4 Monate) oder PROMOS (HM-Fristen 01.12. und 01.07., prüfen)</li><li>Visum beantragen (siehe unten)</li></ul></div></li>
-    <li><span class="d">Jul–Sep 2027</span><div class="b"><strong>Umzug vorbereiten</strong><ul><li>Für das WS 2027/28 zurückmelden, ein Urlaubssemester ist nicht möglich</li><li>Versicherungen: Die gesetzliche Unfallversicherung gilt im Ausland nicht. Beim DAAD sind Kranken-, Unfall- und Haftpflichtversicherung enthalten</li><li>Wohnung suchen, Puffer für die ersten Wochen einplanen</li></ul></div></li>
+    <li><span class="d">Mär–Jul 2027</span><div class="b"><strong>Zusage festmachen</strong><ul><li>Vertrag (HM-Muster auf Englisch) → fachliche Genehmigung durch Petri → Anmeldung in PRIMUSS</li><li>Ohne DAAD: Erasmus+ (spätestens 1 Monat vor Start, UK 4 Monate) oder Reisekostenzuschuss (mindestens 2 Wochen vor Abreise)</li><li>Visum beantragen (siehe unten)</li></ul></div></li>
+    <li><span class="d">Jul–Sep 2027</span><div class="b"><strong>Umzug vorbereiten</strong><ul><li>Für das WS 2027/28 zurückmelden (01.–31.07.2027), ein Urlaubssemester ist nicht möglich</li><li>Versicherungen: Die gesetzliche Unfallversicherung gilt im Ausland nicht. Beim DAAD sind Kranken-, Unfall- und Haftpflichtversicherung enthalten</li><li>Wohnung suchen, Puffer für die ersten Wochen einplanen</li></ul></div></li>
     <li><span class="d">WS 2027/28</span><div class="b"><strong>18 Wochen Praktikum</strong><ul><li>Kein Urlaubsanspruch, Fehltage nachholen</li><li>Praktikumsseminar (Modul 510): Bericht und Präsentation</li></ul></div></li>
     <li><span class="d">Ende</span><div class="b"><strong>Abschließen</strong><ul><li>Zeugnis in PRIMUSS hochladen, Bericht „mit Erfolg" ist Voraussetzung für die Bachelorarbeit</li><li>Abschlussberichte für das Förderprogramm einreichen</li></ul></div></li>
   </ol>
@@ -304,11 +357,11 @@ footer { max-width: 880px; margin: 48px auto 0; font-size: 13px; color: var(--mu
   <h2>Förderung <span class="tag">ein Hauptprogramm wählen</span></h2>
   <div class="note key">
     <strong>Welches „Center" meinte dein Prof?</strong>
-    <p>Bei der HM gibt es keine Stelle mit genau diesem Namen. Wahrscheinlich sind die <strong>Bayerischen Hochschulzentren</strong> gemeint: staatliche Zentren für einzelne Regionen, die Praktika mit einmaligen Zuschüssen fördern. Für die USA, Kanada und Australien gibt es aber keins. Die andere Möglichkeit ist das <strong>International Office</strong>, das Erasmus+, PROMOS und den Reisekostenzuschuss vergibt. Ein dritter Kandidat ist das <strong>Strascheg Center for Entrepreneurship (SCE)</strong>, das auch APE betreibt. Eine Förderung von Auslandspraktika durch das SCE habe ich aber nicht gefunden. Steht auf der Fragenliste für Petri.</p>
+    <p>Bei der HM gibt es keine Stelle mit genau diesem Namen. Wahrscheinlich sind die <strong>Bayerischen Hochschulzentren</strong> gemeint: staatliche Zentren für einzelne Regionen, die Praktika mit einmaligen Zuschüssen fördern. Für die USA, Kanada und Australien gibt es aber keins. Die andere Möglichkeit ist das <strong>International Office</strong>, das Erasmus+ und den Reisekostenzuschuss vergibt. Ein dritter Kandidat ist das <strong>Strascheg Center for Entrepreneurship (SCE)</strong>, das auch APE betreibt. Eine Förderung von Auslandspraktika durch das SCE habe ich aber nicht gefunden. Steht auf der Fragenliste für Petri.</p>
   </div>
   <div class="note warn">
     <strong>Kombinieren geht nur begrenzt.</strong>
-    <p>Erasmus+, PROMOS und DAAD HAW.International schließen sich gegenseitig aus. Ausnahme beim DAAD: Großbritannien. Der Reisekostenzuschuss der HM ist mit keinem der drei kombinierbar.</p>
+    <p>Erasmus+ und DAAD HAW.International schließen sich gegenseitig aus. Ausnahme beim DAAD: Großbritannien. Der Reisekostenzuschuss der HM ist mit keinem der beiden kombinierbar. PROMOS fällt weg, weil die HM es nur für ein Studium vergibt.</p>
   </div>
   <div class="tbl wide">
     <table>
@@ -318,7 +371,7 @@ footer { max-width: 880px; margin: 48px auto 0; font-size: 13px; color: var(--mu
         <tr><td><strong>DAAD HAW.International</strong><br><span class="muted">Auslandspraktika für HAW-Studierende</span></td><td>weltweit</td><td class="n">1.125–1.550 € / Monat<br>+ Reisekosten<br>+ Versicherung</td><td><strong>26.02.2027</strong> für einen Start zwischen August 2027 und Januar 2028, Praktikumszusage nötig. Raten für Studierende laut Stipendienrechner (Vorbehalt 2027/28): Japan 1.550, Singapur 1.500, Schweiz 1.475, USA 1.400, Südkorea 1.375, UK 1.300, Australien 1.275, Niederlande 1.275, Irland 1.250, Schweden 1.225, Kanada 1.175, Frankreich 1.150, Spanien 1.125 €. <span class="pill p-good">geprüft</span></td></tr>
         <tr><td><strong>Erasmus+ Praktikum</strong></td><td>EU-Programmländer</td><td class="n">G1 750 € · G2/G3 690 €</td><td>Die HM fördert höchstens 120 Tage. Antrag spätestens 1 Monat vor Start, Vergütung höchstens 2.500 € brutto. <span class="pill p-good">geprüft</span></td></tr>
         <tr><td><strong>Erasmus+ weltweit</strong></td><td>UK, Schweiz, USA, Kanada u. a.</td><td class="n">750 € (UK/CH) · 700 €</td><td>Mittel begrenzt, Vorrang für Digitalisierung. KI-Design passt dazu. <span class="pill p-good">geprüft</span></td></tr>
-        <tr><td><strong>PROMOS</strong></td><td>außerhalb Europas, auch UK und Schweiz</td><td class="n">350–550 € / Monat<br>+ einmalige Reisepauschale</td><td>Sätze 2027: USA 550 + 1.188, Kanada 350 + 1.188, Australien 450 + 1.735, Japan 550 + 1.735, Singapur 550 + 1.735, UK 450 + 309 €. Höchstens 6 Monate. HM-Fristen laut Drittquelle 01.12. und 01.07. <span class="pill p-good">Sätze geprüft</span></td></tr>
+        <tr><td><strong>PROMOS</strong></td><td>—</td><td class="n">—</td><td>Die HM vergibt PROMOS nur für ein Studium an Partnerhochschulen außerhalb Europas, nicht für Praktika. Die Fristen 01.12. und 01.07. sind die Bewerbungsfenster fürs Non-EU-Studium. <span class="pill p-bad">nicht für Praktika</span> <span class="pill p-good">geprüft 13.10.</span></td></tr>
         <tr class="group"><td colspan="4">Regionale Zuschüsse (Bayerische Hochschulzentren)</td></tr>
         <tr><td><strong>BAYLAT</strong></td><td>Lateinamerika</td><td class="n">bis 1.500 € einmalig</td><td>Stand 2024: Praktikumsplatz muss feststehen, 2 bis 6 Monate</td></tr>
         <tr><td><strong>BayIND</strong></td><td>Indien</td><td class="n">500–1.000 € einmalig</td><td>Fristen 15.04. und 15.09.</td></tr>
@@ -332,7 +385,7 @@ footer { max-width: 880px; margin: 48px auto 0; font-size: 13px; color: var(--mu
   </div>
   <div class="note">
     <strong>DAAD-Stipendium und Gehalt addieren sich nicht voll</strong>
-    <p>Laut DAAD wird Vergütung über 603 € im Monat vom Stipendium abgezogen. Beispiel USA mit 1.400 €: Unbezahlt bekommst du 1.400 €. Bei 1.000 € Gehalt bleiben 1.003 € Stipendium. Ab rund 2.000 € Gehalt fällt das Stipendium weg, Reisekosten und Versicherung bleiben. Stockt die Firma nur bis zum gesetzlichen Mindestlohn auf, wird das nicht abgezogen. Bei gutem Gehalt ist PROMOS die bessere Wahl, weil es nicht gekürzt wird.</p>
+    <p>Laut DAAD wird Vergütung über 603 € im Monat vom Stipendium abgezogen. Beispiel USA mit 1.400 €: Unbezahlt bekommst du 1.400 €. Bei 1.000 € Gehalt bleiben 1.003 € Stipendium. Ab rund 2.000 € Gehalt fällt das Stipendium weg, Reisekosten und Versicherung bleiben. Stockt die Firma nur bis zum gesetzlichen Mindestlohn auf, wird das nicht abgezogen. Bei gutem Gehalt ist Erasmus+ die Alternative: Es wird nicht gekürzt, solange die Vergütung höchstens 2.500 € brutto beträgt. Außerhalb Europas sind die Mittel aber begrenzt.</p>
   </div>
 </section>
 
@@ -368,7 +421,7 @@ footer { max-width: 880px; margin: 48px auto 0; font-size: 13px; color: var(--mu
     <li><span class="d">1 · Vertrag</span><div class="b"><p>Praktikumsvertrag mit der Firma schließen. Die HM hat Muster auf Deutsch, Englisch, Französisch und Spanisch. Ohne Vertrag keine Anerkennung.</p></div></li>
     <li><span class="d">2 · Genehmigung</span><div class="b"><p>Vertrag Prof. Petri zur fachlichen Genehmigung vorlegen. Er unterschreibt beim Erasmus-Antrag auch das Learning Agreement als „Responsible Person".</p></div></li>
     <li><span class="d">3 · PRIMUSS</span><div class="b"><p>Praktikum in PRIMUSS unter Services → Praktikumsverwaltung anmelden</p></div></li>
-    <li><span class="d">4 · Förderung</span><div class="b"><p>Je nach Programm: DAAD-Portal, Erasmus über MoveOn, PROMOS oder Reisekostenzuschuss beim International Office</p></div></li>
+    <li><span class="d">4 · Förderung</span><div class="b"><p>Je nach Programm: DAAD-Portal, Erasmus+ oder Reisekostenzuschuss beim International Office</p></div></li>
     <li><span class="d">5 · Abschluss</span><div class="b"><p>Zeugnis in PRIMUSS hochladen, Praktikumsseminar abschließen</p></div></li>
   </ol>
 </section>
@@ -399,7 +452,7 @@ footer { max-width: 880px; margin: 48px auto 0; font-size: 13px; color: var(--mu
       <ul>
         <li>Welches „Center" für die Förderung von Auslandspraktika meinten Sie?</li>
         <li>Frühester Start und spätestes Ende im WS 2027/28? Ist ein Start im August oder September 2027 möglich?</li>
-        <li>Wie läuft das Praktikumsseminar (510), wenn ich im Ausland bin?</li>
+        <li>Wie läuft das Praktikumsseminar (510), wenn ich im Ausland bin? Laut IO oft als Block oder im Folgesemester.</li>
         <li>Zählt UX/Product Design bei einer Tech- oder KI-Firma fachlich für Industriedesign? Muss ein Designer vor Ort betreuen?</li>
         <li>Unterschreibt die HM eine „convention de stage", einen J-1-Trainingsplan und eine Bestätigung „mandatory internship" für Kanada?</li>
       </ul>
@@ -407,7 +460,8 @@ footer { max-width: 880px; margin: 48px auto 0; font-size: 13px; color: var(--mu
     <div class="card">
       <h3>An das International Office</h3>
       <ul>
-        <li>PROMOS für Praktika: aktuelle HM-Fristen, Auswahlkriterien, wie viele Bewerbungen zuletzt gefördert wurden, gibt es Teilstipendien oder nur Reisekosten?</li>
+        <li>Erasmus+ für ein Praktikum in London: Die HM-Seite sagt, die UK-Förderung lief regulär bis WS 2022/23, nennt aber eine 4-Monats-Regel und einen Satz für UK. Gilt das 2027/28?</li>
+        <li>Akzeptiert der DAAD eine Praktikumszusage „vorbehaltlich der Genehmigung durch die HM“, und was passiert, wenn die Firma nach der Bewerbung wechselt?</li>
         <li>DAAD HAW.International: Wie viele HM-Studierende haben in den letzten Runden ein Praktikumsstipendium bekommen?</li>
         <li>Erasmus+ weltweit: Wie realistisch ist eine Förderung für Kanada oder die USA?</li>
         <li>Erasmus-Budget 2027/28: Bleibt es bei 120 Tagen?</li>
@@ -427,7 +481,7 @@ footer { max-width: 880px; margin: 48px auto 0; font-size: 13px; color: var(--mu
   <ol class="sources">
     <li><a href="https://mediapool.hm.edu/media/dachmarke/dm_transfer/download_13/spo_6/spo_aktuell/12_dsb_aktuell_spo.pdf">SPO Bachelor Design, Lesefassung (HM)</a> · <a href="https://design.hm.edu/studierende/praktikum/index.de.html">FK12: Praktikum</a> · <a href="https://hm.edu/studium_1/im_studium/mein_studium/verlauf/praxis.de.html">HM: Praktisches Studiensemester</a> · <a href="https://mediapool.hm.edu/media/dachmarke/dm_lokal/hauptabteilung2/pruefung_praktikum/praktikum_11/Ansprechpartner_Praxisbeauftragte.pdf">Praktikumsbeauftragte</a></li>
     <li><a href="https://hm.edu/internationales/wege_in_die_welt/studierende/praktikum_im_ausland/smp_ablauf_und_unterlagen.de.html">HM IO: Erasmus+ Praktikum</a> · <a href="https://hm.edu/internationales/wege_in_die_welt/studierende/praktikum_im_ausland/praktikum_non_eu.de.html">Erasmus+ weltweit</a> · <a href="https://hm.edu/internationales/wege_in_die_welt/studierende/foerdermoeglichkeiten/erasmus_foerderung.de.html">Fördersätze</a> · <a href="https://hm.edu/internationales/wege_in_die_welt/studierende/foerdermoeglichkeiten/reisekostenzuschuss.de.html">Reisekostenzuschuss</a> · <a href="https://hm.edu/internationales/wege_in_die_welt/studierende/foerdermoeglichkeiten/weitere_foerdermoeglichkeiten.de.html">Weitere Förderung</a> · <a href="https://hm.edu/studium_1/studienberatung_1/foerderung_und_finanzierung/incoming_outgoing/muehlfenzlstiftung.de.html">Mühlfenzl-Stiftung</a></li>
-    <li><a href="https://www2.daad.de/ausland/studieren/stipendium/de/70-stipendien-finden-und-bewerben/?detail=57588826">DAAD HAW.International</a> · <a href="https://www2.daad.de/bundles/daadstipendiendatenbanklsh/data/d/js/scholarshiprates.js">DAAD-Stipendienrechner (Daten)</a> · <a href="https://www.daad.de/de/im-ausland-studieren-forschen-lehren/stipendien-finanzierung/wichtige-hinweise-zu-daad-stipendien/">DAAD: Stipendienhinweise</a> · <a href="https://www2.daad.de/downloads/foerderprogramm/file.php?id=9736">PROMOS-Sätze 2027</a></li>
+    <li><a href="https://www2.daad.de/ausland/studieren/stipendium/de/70-stipendien-finden-und-bewerben/?detail=57588826">DAAD HAW.International</a> · <a href="https://www2.daad.de/bundles/daadstipendiendatenbanklsh/data/d/js/scholarshiprates.js">DAAD-Stipendienrechner (Daten)</a> · <a href="https://www.daad.de/de/im-ausland-studieren-forschen-lehren/stipendien-finanzierung/wichtige-hinweise-zu-daad-stipendien/">DAAD: Stipendienhinweise</a> · <a href="https://www2.daad.de/downloads/foerderprogramm/file.php?id=9736">PROMOS-Sätze 2027</a> · <a href="https://hm.edu/internationales/wege_in_die_welt/studierende/foerdermoeglichkeiten/index.de.html">HM: PROMOS nur fürs Studium</a></li>
     <li><a href="https://www.stmwk.bayern.de/wissenschaftler/international/hochschulzentren.html">Bayerische Hochschulzentren</a> · <a href="https://www.baylat.org/fileadmin/user_upload/dateien/descargas/Ausschreibung_BAYLAT_Mobilitaetsbeihilfe_2024_Praktikum.pdf">BAYLAT</a> · <a href="https://www.mystipendium.de/stipendien/bayind-stipendium-indien">BayIND</a> · <a href="https://www.mystipendium.de/stipendien/baychina-auslandspraktikum">BayCHINA</a></li>
     <li><a href="https://pvtistes.net/en/dossiers/international-co-op-internship-iec-work-permit/">Kanada: IEC Co-op</a> · <a href="https://hicksmorley.com/2026/04/01/ontario-minimum-wage-to-increase-october-1-2026/">Mindestlohn Ontario</a> · <a href="https://www2.gov.bc.ca/gov/content/employment-business/employment-standards-advice/employment-standards/wages/minimum-wage">Mindestlohn BC</a> · <a href="https://www.cp24.com/local/toronto/2025/01/10/the-cost-to-rent-a-toronto-apartment-fell-by-about-7-per-cent-last-year-report/">Zimmer Toronto</a></li>
     <li><a href="https://culturalvistas.org/j-1-fees-intern-trainee-research-scholar-specialist">USA: J-1-Gebühren</a> · <a href="https://jobs.bmwgroup.com/job/Santa-Monica-Intern%2C-UIUX-SummerFall-2026-CA-90401/1383342733/">BMW Designworks</a> · <a href="https://jobs.accel.com/companies/atlassian/jobs/92598808-product-design-intern-2027-summer-u-s">Atlassian 2027</a> · <a href="https://citiesinsider.com/country/united-states/san-francisco/shared-housing/">Zimmer SF</a></li>
@@ -442,6 +496,7 @@ footer { max-width: 880px; margin: 48px auto 0; font-size: 13px; color: var(--mu
 <section>
   <h2>Log</h2>
   <ul class="log">
+    <li><span class="mono muted">13.10.2026</span><span>Fristen geprüft und als Tabelle ganz oben eingebaut, die wichtigsten vier im Kopf. Korrektur: PROMOS gibt es an der HM nur fürs Studium, nicht für Praktika, überall durch Erasmus+ weltweit oder den Reisekostenzuschuss ersetzt. „Irish Work and Travel“ setzt laut Drittquellen ein Studium in Irland voraus. IO-Info „Praktikum im Ausland“ am 19.10. statt Erasmus-Info am 22.10.</span></li>
     <li><span class="mono muted">13.10.2026</span><span>Kein Remote-Praktikum aus München, nur vor Ort: Remote-Teil bei HeyClicky gestrichen. Intercom heißt jetzt Fin (Salesforce-Übernahme vereinbart). Nothing und Fyxer ergänzt. To-do Designfabrik-Arbeitsprobe. Pixelschrift entfernt.</span></li>
     <li><span class="mono muted">09.10.2026</span><span>Dossier HeyClicky mit Vorgehensplan im Reiter Firmen, aufrufbar über die Karte.</span></li>
     <li><span class="mono muted">09.10.2026</span><span>HeyClicky recherchiert: YC Spring 2026, Gründer Farza Majeed, Kontaktweg. Dossier im Vault („Bewerbung HeyClicky“).</span></li>
@@ -503,7 +558,7 @@ footer { max-width: 880px; margin: 48px auto 0; font-size: 13px; color: var(--mu
         <div><dt>Bedingungen</dt><dd><ul><li>Visum „IEC International Co-op", gemacht für Pflichtpraktika. Die HM muss bestätigen, dass das Praktikum Pflicht ist.</li><li>Die Firma reicht das Angebot im Regierungsportal ein und zahlt 230 CAD. Du zahlst 184,75 CAD plus 85 CAD Biometrie.</li><li>Plätze werden aus Pools vergeben, also früh einsteigen</li><li>Englisch reicht, in Montreal hilft Französisch</li></ul></dd></div>
         <div><dt>Chance</dt><dd><p>Mittel bis niedrig. Kanadische Firmen kennen Praktika über ein Semester aus ihrem eigenen Co-op-System. Die Firma muss aber den IEC-Schritt mitmachen, und kleine Startups scheuen das oft. Am besten fragst du gleich im ersten Kontakt danach.</p></dd></div>
         <div><dt>Aussichten</dt><dd><p>Nordamerikanische Erfahrung ohne die US-Visahürde. Gute Brücke für einen späteren Job in Kanada oder den USA. Toronto ist stark bei KI-Unternehmenssoftware, weniger bei Consumer-Apps.</p></dd></div>
-        <div><dt>Geld</dt><dd><ul><li>Mindestlohn Ontario 17,95 CAD (seit 01.10.2026), British Columbia 18,25 CAD. Ob er für ein ausländisches Pflichtpraktikum gilt, ist nicht geprüft.</li><li>Zimmer Toronto im Schnitt 1.194 CAD (Ende 2024), Vancouver 950–1.150 CAD</li><li>DAAD 1.175 € oder PROMOS 350 € + 1.188 € Reise</li></ul></dd></div>
+        <div><dt>Geld</dt><dd><ul><li>Mindestlohn Ontario 17,95 CAD (seit 01.10.2026), British Columbia 18,25 CAD. Ob er für ein ausländisches Pflichtpraktikum gilt, ist nicht geprüft.</li><li>Zimmer Toronto im Schnitt 1.194 CAD (Ende 2024), Vancouver 950–1.150 CAD</li><li>DAAD 1.175 € oder Erasmus+ weltweit 700 € (Mittel begrenzt)</li></ul></dd></div>
       </dl>
     </details>
 
@@ -525,7 +580,7 @@ footer { max-width: 880px; margin: 48px auto 0; font-size: 13px; color: var(--mu
         <div><dt>Bedingungen</dt><dd><ul><li>Working Holiday 417: für Deutsche seit 01.07.2026 von 18 bis 35 Jahren, etwa 840 AUD, Nachweis von 5.000 AUD</li><li>Höchstens 6 Monate pro Arbeitgeber, 18 Wochen passen</li><li>Die Sommerprogramme laufen von November bis Februar, also parallel zum WS</li></ul></dd></div>
         <div><dt>Chance</dt><dd><p>Mittel bis niedrig. Die offiziellen Programme von Canva und Atlassian waren zuletzt nur für Locals offen. Mit dem Working-Holiday-Visum brauchst du aber kein Sponsoring, das öffnet den Weg über direkte Bewerbungen bei kleineren Firmen.</p></dd></div>
         <div><dt>Aussichten</dt><dd><p>Canva wäre eine Top-Referenz für Produktdesign. Australien selbst ist ein eher abgelegener Markt für eine spätere Karriere in Europa.</p></dd></div>
-        <div><dt>Geld</dt><dd><ul><li>Mindestlohn 26,44 AUD pro Stunde seit 01.07.2026. Unbezahlt ist nur in engen Fällen erlaubt, rechne mit Bezahlung.</li><li>Zimmer in der Innenstadt von Sydney 350–550 AUD pro Woche</li><li>DAAD 1.275 € oder PROMOS 450 € + 1.735 € Reise</li></ul></dd></div>
+        <div><dt>Geld</dt><dd><ul><li>Mindestlohn 26,44 AUD pro Stunde seit 01.07.2026. Unbezahlt ist nur in engen Fällen erlaubt, rechne mit Bezahlung.</li><li>Zimmer in der Innenstadt von Sydney 350–550 AUD pro Woche</li><li>DAAD 1.275 € oder Erasmus+ weltweit 700 € (Mittel begrenzt)</li></ul></dd></div>
       </dl>
     </details>
 
@@ -533,10 +588,10 @@ footer { max-width: 880px; margin: 48px auto 0; font-size: 13px; color: var(--mu
       <summary><span class="rank">4</span><span class="name">USA · San Francisco, New York, Los Angeles<small>Höchste Decke für KI und Design, schwerstes Ziel</small></span><span class="pills"><span class="pill p-warn">Visum J-1</span><span class="pill p-bad">Chance niedrig</span></span></summary>
       <dl class="profile">
         <div><dt>Szene</dt><dd><p>Die Bay Area ist das Zentrum der KI-Industrie: OpenAI, Anthropic, Figma, Notion, Perplexity und unzählige Startups. New York ist stark bei designgetriebenen Firmen und Agenturen. In Los Angeles sitzt BMW Group Designworks.</p></dd></div>
-        <div><dt>Bedingungen</dt><dd><ul><li>Mit irischem Pass gibt es eventuell das J-1 „Irish Work and Travel": bis 12 Monate, ohne vorher feste Stelle. Ob es auch bei einem Studium an einer deutschen Hochschule gilt, ist ungeklärt, beim Sponsor fragen (z. B. USIT, CIEE).</li><li>Sonst J-1 Intern über einen Sponsor wie Cultural Vistas: bis 6 Monate 1.125 $ für Studierende, dazu SEVIS 220 $ und Visum 185 $</li><li>Die Firma muss einen Trainingsplan mittragen. Sponsoren verlangen einen Finanzierungsnachweis, das DAAD-Stipendium hilft dabei.</li><li>Viele US-Programme schließen J-1 aus, z. B. Atlassian 2027</li></ul></dd></div>
+        <div><dt>Bedingungen</dt><dd><ul><li>Das J-1 „Irish Work and Travel" setzt laut Drittquellen ein Studium oder einen Abschluss in Irland voraus. Mit Studium in Deutschland bleibt der normale Weg.</li><li>J-1 Intern über einen Sponsor wie Cultural Vistas: bis 6 Monate 1.125 $ für Studierende, dazu SEVIS 220 $ und Visum 185 $</li><li>Die Firma muss einen Trainingsplan mittragen. Sponsoren verlangen einen Finanzierungsnachweis, das DAAD-Stipendium hilft dabei.</li><li>Viele US-Programme schließen J-1 aus, z. B. Atlassian 2027</li></ul></dd></div>
         <div><dt>Chance</dt><dd><p>Niedrig. Der realistischste Weg führt über deutsche Firmen mit US-Designstudios. BMW Designworks hatte ein Praktikum „UI/UX Summer/Fall 2026" für 25,30 $ pro Stunde. J-1-Bewerber brauchen dort aber BMW-Vorerfahrung.</p></dd></div>
         <div><dt>Aussichten</dt><dd><p>Die stärkste Wirkung im Lebenslauf und das beste Netzwerk für KI. Ein späterer Job in den USA ist trotzdem schwer, weil das Arbeitsvisum per Lotterie vergeben wird.</p></dd></div>
-        <div><dt>Geld</dt><dd><ul><li>Design-Praktika in SF 25–40 $ pro Stunde</li><li>Zimmer in SF im Schnitt etwa 1.650 $ (Q1 2026)</li><li>DAAD 1.400 € oder PROMOS 550 € + 1.188 € Reise</li></ul></dd></div>
+        <div><dt>Geld</dt><dd><ul><li>Design-Praktika in SF 25–40 $ pro Stunde</li><li>Zimmer in SF im Schnitt etwa 1.650 $ (Q1 2026)</li><li>DAAD 1.400 € oder Erasmus+ weltweit 700 € (Mittel begrenzt)</li></ul></dd></div>
       </dl>
     </details>
 
@@ -574,7 +629,7 @@ footer { max-width: 880px; margin: 48px auto 0; font-size: 13px; color: var(--mu
         <div><dt>Bedingungen</dt><dd><p>Mit deinem irischen Pass darfst du über die Common Travel Area ohne Visum im Vereinigten Königreich leben und arbeiten. Die Hürde, die London für andere Deutsche fast unmöglich macht (Visum „Government Authorised Exchange" über einen Sponsor), fällt für dich weg. Sag das in der ersten Mail, denn Firmen gehen sonst von einem Visumproblem aus.</p></dd></div>
         <div><dt>Chance</dt><dd><p>Mittel. Viele Stellen, aber auch viel Konkurrenz. Weil Praktikanten Mindestlohn bekommen müssen, sind Firmen wählerischer als in Amsterdam oder Stockholm.</p></dd></div>
         <div><dt>Aussichten</dt><dd><p>Das größte Netzwerk für KI und Design in Europa. Später kannst du hier ohne Visum auch fest arbeiten, das ist ein echter Vorteil gegenüber deinen deutschen Mitbewerbern.</p></dd></div>
-        <div><dt>Geld</dt><dd><ul><li>Mindestlohn £12,71 pro Stunde gilt für dich, rund £2.070 im Monat brutto bei Vollzeit</li><li>Zimmer im Schnitt £978</li><li>Bei dieser Vergütung fällt das DAAD-Stipendium weg (Abzug über 603 €). PROMOS gibt 450 € + 309 € Reise ohne Kürzung, Erasmus weltweit 750 € (Mittel begrenzt, Antrag 4 Monate vorher)</li></ul></dd></div>
+        <div><dt>Geld</dt><dd><ul><li>Mindestlohn £12,71 pro Stunde gilt für dich, rund £2.070 im Monat brutto bei Vollzeit</li><li>Zimmer im Schnitt £978</li><li>Bei dieser Vergütung fällt das DAAD-Stipendium weg (Abzug über 603 €). Erasmus+ für UK ist an der HM unklar: regulär nur bis WS 2022/23, aber mit Satz 750 € und Antrag 4 Monate vorher. Beim IO fragen. Für UK lassen sich DAAD und Erasmus+ sogar kombinieren.</li></ul></dd></div>
       </dl>
     </details>
     <details class="place">
@@ -641,14 +696,14 @@ footer { max-width: 880px; margin: 48px auto 0; font-size: 13px; color: var(--mu
         <tr class="group"><td colspan="7">International</td></tr>
         <tr><td>Toronto, unbezahlt, DAAD</td><td class="n">1.000</td><td class="n">1.175</td><td class="n">0</td><td class="n">2.175</td><td class="n">740 + 650</td><td class="n pos">+785</td></tr>
         <tr><td>Singapur, S$ 1.000, DAAD</td><td class="n">1.000</td><td class="n">1.433</td><td class="n">≈ 670</td><td class="n">≈ 3.103</td><td class="n">805 + 550</td><td class="n pos">+1.748</td></tr>
-        <tr><td>Sydney, Mindestlohn, PROMOS</td><td class="n">1.000</td><td class="n">450</td><td class="n">≈ 2.480</td><td class="n">≈ 3.930</td><td class="n">1.110 + 650</td><td class="n pos">deutlich +</td></tr>
+        <tr><td>Sydney, Mindestlohn, ohne Förderung</td><td class="n">1.000</td><td class="n">0</td><td class="n">≈ 2.480</td><td class="n">≈ 3.480</td><td class="n">1.110 + 650</td><td class="n pos">deutlich +</td></tr>
         <tr><td>San Francisco, unbezahlt, DAAD</td><td class="n">1.000</td><td class="n">1.400</td><td class="n">0</td><td class="n">2.400</td><td class="n">1.420 + 800</td><td class="n flat">+180</td></tr>
-        <tr><td>San Francisco, 25 $/h, PROMOS</td><td class="n">1.000</td><td class="n">550</td><td class="n">≈ 3.720</td><td class="n">≈ 5.270</td><td class="n">1.420 + 800</td><td class="n pos">deutlich +</td></tr>
+        <tr><td>San Francisco, 25 $/h, DAAD nur Reise</td><td class="n">1.000</td><td class="n">0</td><td class="n">≈ 3.720</td><td class="n">≈ 4.720</td><td class="n">1.420 + 800</td><td class="n pos">deutlich +</td></tr>
         <tr><td>Tokio, unbezahlt, DAAD</td><td class="n">1.000</td><td class="n">1.550</td><td class="n">0</td><td class="n">2.550</td><td class="n">390 + 550</td><td class="n pos">+1.610</td></tr>
       </tbody>
     </table>
   </div>
-  <p class="mono muted">Einmalkosten kommen dazu: J-1 rund 1.500–2.100 $, IEC Co-op rund 270 CAD, Working Holiday Australien rund 840 AUD, Flüge. Dagegen stehen die Reisepauschalen von DAAD oder PROMOS (USA/Kanada 1.188 €, Australien/Japan/Singapur 1.735 €).</p>
+  <p class="mono muted">Einmalkosten kommen dazu: J-1 rund 1.500–2.100 $, IEC Co-op rund 270 CAD, Working Holiday Australien rund 840 AUD, Flüge. Dagegen stehen die Reisekosten vom DAAD oder die Erasmus+-Reisepauschale (4.000–7.999 km 1.188 €, ab 8.000 km 1.735 €).</p>
 </section>
 
 <div class="next"><a href="#bewerbung">Weiter zu 03 Bewerbungsprozess: so bewirbst du dich →</a></div>
@@ -878,7 +933,7 @@ USA: I'd come on a J-1 intern visa through a sponsor organization. Your side wou
     <li><span class="d">Dez 2026</span><div class="b"><strong>Welle 1: Wunschziele</strong><ul><li>Kernziele London und Amsterdam zuerst (Framer, Lovable, Londoner KI-Startups), dazu Toronto und Singapur</li><li>Etwa 5 bis 8 Kontakte pro Woche, jeweils mit Produkt-Beobachtung</li></ul></div></li>
     <li><span class="d">Jan 2027</span><div class="b"><strong>Welle 2 und erste Gespräche</strong><ul><li>Follow-ups für Welle 1, neue Kontakte in Amsterdam, Paris, Stockholm</li><li>Gespräche führen, Aufgaben abgeben</li></ul></div></li>
     <li class="deadline"><span class="d">bis ca. 20.02.2027</span><div class="b"><strong>Zusage für den DAAD</strong><ul><li>Für die Frist am 26.02. brauchst du die unterschriebene „Praktikumszusage" auf dem DAAD-Formular</li></ul></div></li>
-    <li><span class="d">Mär–Mai 2027</span><div class="b"><strong>Falls noch offen: Europa-Spur</strong><ul><li>Weiter bewerben, Förderung über Erasmus+ (Antrag 1 Monat vor Start) oder PROMOS statt DAAD</li></ul></div></li>
+    <li><span class="d">Mär–Mai 2027</span><div class="b"><strong>Falls noch offen: Europa-Spur</strong><ul><li>Weiter bewerben, Förderung über Erasmus+ (Antrag 1 Monat vor Start) oder Reisekostenzuschuss statt DAAD</li></ul></div></li>
   </ol>
 </section>
 
@@ -989,30 +1044,30 @@ USA: I'd come on a J-1 intern visa through a sponsor organization. Your side wou
 
       <h3>Vor Ort in San Francisco</h3>
       <ul>
-        <li>Zählt als Auslandspraktikum, DAAD oder PROMOS möglich</li>
+        <li>Zählt als Auslandspraktikum, DAAD oder Erasmus+ weltweit möglich</li>
         <li>Nah am Team, das sichtbar im Büro arbeitet</li>
-        <li>Braucht ein J-1: über einen Sponsor (rund 1.500–2.100 $, HeyClicky unterschreibt einen Trainingsplan) oder eventuell „Irish Work and Travel“ über deinen irischen Pass. Ob das mit einem Studium in Deutschland geht, ist offen.</li>
+        <li>Braucht ein J-1: über einen Sponsor (rund 1.500–2.100 $, HeyClicky unterschreibt einen Trainingsplan). „Irish Work and Travel“ setzt laut Drittquellen ein Studium in Irland voraus und fällt damit wohl weg.</li>
         <li>Zimmer im Schnitt rund 1.650 $ im Monat</li>
       </ul>
 
       <h3>Förderung</h3>
       <ul>
         <li><strong>DAAD HAW.International:</strong> 1.400 € im Monat für die USA plus Reise und Versicherung. Frist 26.02.2027, Zusage muss dann vorliegen. Vergütung über 603 € wird abgezogen. Erfolgsquote nicht veröffentlicht.</li>
-        <li><strong>PROMOS:</strong> 550 € im Monat plus 1.188 € Reisepauschale, wird bei Vergütung nicht gekürzt. Die HM wählt selbst aus, Quote unbekannt. Bei vielen Bewerbungen gibt es oft nur die Reisekosten.</li>
-        <li>In SF zahlen Startups Praktikanten meist. Dann ist PROMOS die bessere Wahl.</li>
+        <li><strong>Erasmus+ weltweit:</strong> 700 € im Monat plus 1.188 € Reisepauschale, höchstens 120 Tage. Wird bis 2.500 € Vergütung nicht gekürzt. Mittel begrenzt, Digitalisierung hat Vorrang.</li>
+        <li>In SF zahlen Startups Praktikanten meist. Ab rund 2.000 € Gehalt zahlt der DAAD nur noch Reise und Versicherung, dann ist Erasmus+ weltweit die bessere Wahl.</li>
       </ul>
 
       <h3>Vorgehensplan</h3>
       <ol class="plan">
-        <li><span class="d">bis 31.10.2026</span><div class="b"><strong>Klären</strong><ul><li>Petri: Unterschreibt die HM einen J-1-Trainingsplan?</li><li>Bei einem J-1-Sponsor (z. B. USIT, CIEE) fragen, ob „Irish Work and Travel“ mit einem Studium in Deutschland geht</li></ul></div></li>
+        <li><span class="d">bis 31.10.2026</span><div class="b"><strong>Klären</strong><ul><li>Petri: Unterschreibt die HM einen J-1-Trainingsplan?</li><li>J-1-Sponsor auswählen (z. B. Cultural Vistas, CIEE): Kosten, Vorlauf (mindestens 4–6 Wochen nach der Zusage) und Finanzierungsnachweis klären</li></ul></div></li>
         <li><span class="d">ab sofort</span><div class="b"><strong>Produkt und Kanal kennenlernen</strong><ul><li>HeyClicky installieren und echt nutzen, mit Studentenrabatt Pro testen</li><li>Videos schauen und notieren, welche dich gepackt haben und warum. Das ist der Rohstoff fürs Anschreiben.</li></ul></div></li>
         <li><span class="d">bis 30.11.2026</span><div class="b"><strong>Portfolio bereit machen</strong><ul><li>Unify bereinigen, to.morrow nach vorn, Gauntlet als Case Study</li><li>CV auf Englisch, eine Seite, ohne Foto</li></ul></div></li>
         <li><span class="d">Nov 2026</span><div class="b"><strong>Arbeitsprobe für HeyClicky bauen</strong><ul><li>Läuft als Semesterthema in der Designfabrik: Die erste Kurzaufgabe (Identity als Zustandssystem der Buddys) geht mit der ersten Mail raus, Website und Tool folgen als Follow-ups</li><li>Entweder ein 20–30-Sekunden-Motion-Stück mit neuen Zuständen für Coco oder Poppy (zuhören, denken, zeigen), oder ein SwiftUI-Prototyp einer Interaktion, z. B. zu „spatial context“</li><li>Öffentlich posten und @heyclicky markieren</li></ul></div></li>
         <li><span class="d">Ende Nov 2026</span><div class="b"><strong>Anschreiben</strong><ul><li>Persönlich, mit den Punkten unten. Die KI-Hassliebe ist der rote Faden.</li><li>Konkrete Videos nennen, die du wirklich gesehen hast</li><li>Klar sagen: vor Ort in San Francisco, 18 Wochen im WS 2027/28</li><li>Am Ende durch den humanizer</li></ul></div></li>
         <li class="deadline"><span class="d">Anfang Dez 2026</span><div class="b"><strong>Senden</strong><ul><li>Mail an hi@heyclicky.com mit Arbeitsprobe, Portfolio und CV</li><li>Parallel eine kurze Nachricht an @FarzaTV mit Link zur Arbeitsprobe, nur einmal</li></ul></div></li>
         <li><span class="d">+ 1 Woche</span><div class="b"><strong>Ein Follow-up</strong><ul><li>Kurz, mit etwas Neuem, z. B. einer zweiten Variante der Arbeitsprobe</li></ul></div></li>
-        <li><span class="d">bis ca. 20.02.2027</span><div class="b"><strong>Zusage für den DAAD</strong><ul><li>Ein kleines Startup plant ungern 9 Monate voraus. Frag offen nach einer schriftlichen Zusage für den Zeitraum, weil du sie für das Stipendium brauchst.</li><li>Ohne Zusage bis Februar bleibt PROMOS (spätere Frist) oder eine Vergütung</li></ul></div></li>
-        <li><span class="d">nach der Zusage</span><div class="b"><strong>Festmachen</strong><ul><li>Vertrag nach HM-Muster, Genehmigung durch Petri, Anmeldung in PRIMUSS</li><li>DAAD bis 26.02. oder PROMOS, J-1 über den Sponsor</li></ul></div></li>
+        <li><span class="d">bis ca. 20.02.2027</span><div class="b"><strong>Zusage für den DAAD</strong><ul><li>Ein kleines Startup plant ungern 9 Monate voraus. Frag offen nach einer schriftlichen Zusage für den Zeitraum, weil du sie für das Stipendium brauchst.</li><li>Ohne Zusage bis Februar bleiben Erasmus+ weltweit (Antrag 1 Monat vor Start), der Reisekostenzuschuss oder eine Vergütung</li></ul></div></li>
+        <li><span class="d">nach der Zusage</span><div class="b"><strong>Festmachen</strong><ul><li>Vertrag nach HM-Muster, Genehmigung durch Petri, Anmeldung in PRIMUSS</li><li>DAAD bis 26.02. oder Erasmus+ weltweit, J-1 über den Sponsor</li></ul></div></li>
       </ol>
 
       <h3>Persönliche Punkte fürs Anschreiben</h3>
@@ -1075,6 +1130,15 @@ USA: I'd come on a J-1 intern visa through a sponsor organization. Your side wou
         done("Markiert");
       }
       try { navigator.clipboard.writeText(txt).then(function () { done("Kopiert"); }, fallback); } catch (e) { fallback(); }
+    });
+  });
+  document.querySelectorAll("[data-jump]").forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      e.preventDefault();
+      if (location.hash !== "#allgemein") history.pushState(null, "", "#allgemein");
+      show("allgemein");
+      var t = document.getElementById(a.getAttribute("data-jump"));
+      if (t) t.scrollIntoView({ block: "start" });
     });
   });
   /* ── Firmen: Daten und Filter ──────────────────────────────────────── */
