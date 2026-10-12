@@ -7,7 +7,7 @@
 <title>Auslandspraktikum WS 2027/28</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Silkscreen&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
 <style>
 /* Layout: Arbeitsdossier mit drei Reitern (Allgemein, Orte, Bewerbung), eine ruhige Spalte, Status als Pillen. */
 :root {
@@ -25,7 +25,7 @@
   --warn-wash: #F7EEDC;
   --bad: #A93838;
   --bad-wash: #F6E3E3;
-  --font-display: "Silkscreen", "Geist Mono", ui-monospace, monospace;
+  --font-display: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-body: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
 }
@@ -59,7 +59,7 @@ p { margin: 0; max-width: 68ch; }
 
 header.top { max-width: 880px; margin-inline: auto; padding-top: 36px; padding-bottom: 20px; display: grid; gap: 14px; }
 .kicker { font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
-h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(26px, 6vw, 40px); letter-spacing: .01em; }
+h1 { font-family: var(--font-display); font-weight: 600; font-size: clamp(26px, 6vw, 40px); letter-spacing: -.02em; }
 .lede { font-size: 16.5px; }
 
 /* Reiter */
@@ -132,7 +132,7 @@ td.flat { color: var(--warn); font-weight: 500; }
 details.place { border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
 details.place summary { cursor: pointer; list-style: none; padding: 14px 16px; display: grid; grid-template-columns: 28px 1fr auto; gap: 12px; align-items: baseline; }
 details.place summary::-webkit-details-marker { display: none; }
-details.place .rank { font-family: var(--font-display); font-size: 15px; color: var(--accent); }
+details.place .rank { font-family: var(--font-mono); font-size: 14px; font-weight: 500; color: var(--accent); }
 details.place .name { font-weight: 600; font-size: 16px; min-width: 0; }
 details.place .name small { display: block; font-weight: 400; color: var(--muted); font-size: 13.5px; }
 details.place .pills { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
@@ -187,7 +187,7 @@ button.copy:focus-visible { outline: 2px solid var(--accent-soft); outline-offse
 details.dossier { border: 1px solid var(--line); border-radius: 10px; background: var(--surface); scroll-margin-top: 72px; }
 details.dossier summary { cursor: pointer; list-style: none; padding: 16px; display: grid; gap: 4px; }
 details.dossier summary::-webkit-details-marker { display: none; }
-details.dossier .d-title { font-family: var(--font-display); font-size: 20px; }
+details.dossier .d-title { font-family: var(--font-display); font-size: 20px; font-weight: 600; letter-spacing: -.01em; }
 details.dossier .d-hint { font-family: var(--font-mono); font-size: 12px; color: var(--accent); }
 details.dossier .d-hint::before { content: "▸ "; }
 details.dossier[open] .d-hint::before { content: "▾ "; }
@@ -203,7 +203,7 @@ footer { max-width: 880px; margin: 48px auto 0; font-size: 13px; color: var(--mu
   <div class="kicker">Lucas Maher · 21 · Design B.A., Industriedesign · HM FK12 · Product Visuals bei CeiliX</div>
   <h1>Auslandspraktikum WS&nbsp;2027/28</h1>
   <p class="lede">Pflichtpraktikum im Ausland, Richtung UI/UX und KI, in Europa oder weltweit. Karriere geht vor Großstadtleben.</p>
-  <p class="mono muted">Stand 09.10.2026 · alles ohne Pille „geprüft" ist Einschätzung · Quellen im Reiter Allgemein</p>
+  <p class="mono muted">Stand 13.10.2026 · alles ohne Pille „geprüft" ist Einschätzung · Quellen im Reiter Allgemein</p>
 </header>
 
 <nav class="tabbar" aria-label="Bereiche">
@@ -233,6 +233,7 @@ footer { max-width: 880px; margin: 48px auto 0; font-size: 13px; color: var(--mu
     <li class="hot"><span class="box"></span><span class="t">CV auf Englisch, Positionierung „AI-centered designer"<small>CeiliX als aktuelle Startup-Station nach oben. Für US- und kanadische Firmen eine Seite im US-Format.</small></span><span class="when">bis 30.11.</span></li>
     <li><span class="box"></span><span class="t">CeiliX um ein Referenzschreiben bitten, wenn die ersten Projekte stehen<small>Hilft bei der Bewerbung und beim DAAD-Motivationsschreiben</small></span><span class="when">bis 31.01.</span></li>
     <li><span class="box"></span><span class="t">Bewerbung bei FLUID Design (Start März 2027) neu einordnen<small>Wäre kein Pflichtpraktikum mehr, weil das erst im WS 2027/28 liegt</small></span><span class="when">bis 31.10.</span></li>
+    <li class="hot"><span class="box"></span><span class="t">Designfabrik: Semesterthema auf eine Zielfirma legen<small>Empfehlung HeyClicky (dynamische Identity für die Buddys), Plan B Nothing mit Essential, für einen echten Rebrand Subframe. Die drei Kurzaufgaben werden so zur Arbeitsprobe.</small></span><span class="when">offen</span></li>
     <li><span class="box"></span><span class="t">Zielliste mit 40 bis 60 Firmen in zwei Spuren<small>Kern (London, Amsterdam, Stockholm, Paris) und Wunschziele (Toronto, Singapur)</small></span><span class="when">bis 30.11.</span></li>
     <li><span class="box"></span><span class="t">Englisch-Nachweis für den DAAD organisieren<small>DAAD-Sprachnachweisformular über das HM-Sprachenzentrum, höchstens 3 Jahre alt</small></span><span class="when">bis 31.01.</span></li>
     <li><span class="box"></span><span class="t">Entscheiden: Auslandssemester im SoSe 2028 ja oder nein</span><span class="when">bis 30.11.</span></li>
@@ -448,6 +449,7 @@ footer { max-width: 880px; margin: 48px auto 0; font-size: 13px; color: var(--mu
 <section>
   <h2>Log</h2>
   <ul class="log">
+    <li><span class="mono muted">13.10.2026</span><span>Kein Remote-Praktikum aus München, nur vor Ort: Remote-Teil bei HeyClicky gestrichen. Intercom heißt jetzt Fin (Salesforce-Übernahme vereinbart). Nothing und Fyxer ergänzt. To-do Designfabrik-Arbeitsprobe. Pixelschrift entfernt.</span></li>
     <li><span class="mono muted">09.10.2026</span><span>Dossier HeyClicky mit Vorgehensplan im Reiter Firmen, aufrufbar über die Karte.</span></li>
     <li><span class="mono muted">09.10.2026</span><span>HeyClicky recherchiert: YC Spring 2026, Gründer Farza Majeed, Kontaktweg. Dossier im Vault („Bewerbung HeyClicky“).</span></li>
     <li><span class="mono muted">09.10.2026</span><span>Reiter 04 Firmen: 48 konkrete Firmen mit Länderfilter, Priorität und geprüften Karriere-Links. Subframe und HeyClicky ergänzt.</span></li>
@@ -613,9 +615,9 @@ footer { max-width: 880px; margin: 48px auto 0; font-size: 13px; color: var(--mu
       </dl>
     </details>
     <details class="place">
-      <summary><span class="rank">5</span><span class="name">Dublin<small>Intercom und die EMEA-Zentralen von Big Tech</small></span><span class="pills"><span class="pill p-good">EU</span><span class="pill p-warn">Chance niedrig–mittel</span></span></summary>
+      <summary><span class="rank">5</span><span class="name">Dublin<small>Fin (früher Intercom) und die EMEA-Zentralen von Big Tech</small></span><span class="pills"><span class="pill p-good">EU</span><span class="pill p-warn">Chance niedrig–mittel</span></span></summary>
       <dl class="profile">
-        <div><dt>Szene</dt><dd><p>Intercom (KI-Agent Fin, starkes Design-Team), Stripe, Google, Meta, Microsoft. Die Big-Tech-Büros sind eher auf Vertrieb und Betrieb ausgerichtet als auf Design.</p></dd></div>
+        <div><dt>Szene</dt><dd><p>Fin (früher Intercom, KI-Agent Fin, starkes Design-Team; Übernahme durch Salesforce im Juni 2026 vereinbart), Stripe, Google, Meta, Microsoft. Die Big-Tech-Büros sind eher auf Vertrieb und Betrieb ausgerichtet als auf Design.</p></dd></div>
         <div><dt>Chance</dt><dd><p>Niedrig bis mittel. Wenige Design-Praktika, hoher Wettbewerb.</p></dd></div>
         <div><dt>Geld</dt><dd><ul><li>Mindestlohn 14,15 € pro Stunde</li><li>Zimmer 700–1.400 €</li><li>Erasmus 750 € oder DAAD 1.250 €</li></ul></dd></div>
       </dl>
@@ -683,7 +685,7 @@ footer { max-width: 880px; margin: 48px auto 0; font-size: 13px; color: var(--mu
         <li>Wenige, tiefe Case Studies mit Entscheidungen und Abwägungen, auch verworfenen Ideen</li>
         <li>KI-Kompetenz: Viele Hiring Manager setzen sie laut Figma inzwischen voraus</li>
         <li>Prototypen, die mit KI gebaut sind und laufen. Ein Partner von Foundation Capital sagt, deren Portfolio-Firmen achten genau darauf.</li>
-        <li>Stellen bei Anthropic, Cursor und Intercom verlangen Prototyping in Code oder mit Tools wie Framer und Lovable</li>
+        <li>Stellen bei Anthropic, Cursor und Fin (früher Intercom) verlangen Prototyping in Code oder mit Tools wie Framer und Lovable</li>
       </ul>
     </div>
   </div>
@@ -924,12 +926,12 @@ USA: I'd come on a J-1 intern visa through a sponsor organization. Your side wou
 <section>
   <h2>Dossiers <span class="tag">ausführlich recherchierte Zielfirmen</span></h2>
   <details class="dossier" id="dossier-heyclicky">
-    <summary><span class="d-title">HeyClicky</span><span class="mono muted">San Francisco / remote · Y Combinator Spring 2026 · Priorität A</span><span class="d-hint">Dossier und Vorgehensplan</span></summary>
+    <summary><span class="d-title">HeyClicky</span><span class="mono muted">San Francisco · Y Combinator Spring 2026 · Priorität A</span><span class="d-hint">Dossier und Vorgehensplan</span></summary>
     <div class="d-body">
 
       <div class="note key">
         <strong>Kurz</strong>
-        <p>KI-Buddy für den Mac, der neben dem Cursor sitzt. Die Firma sucht laut Karriereseite einen <strong>Intern</strong> und einen <strong>Designer</strong>, beide „sf / remote“. Das heißt: Büro in San Francisco oder remote. Du bewirbst dich direkt bei Gründer Farza, per Mail an <span class="mono">hi@heyclicky.com</span> und mit einer kurzen Nachricht an <span class="mono">@FarzaTV</span> auf X. Am meisten zählt eine kleine Arbeitsprobe für HeyClicky.</p>
+        <p>KI-Buddy für den Mac, der neben dem Cursor sitzt. Die Firma sucht laut Karriereseite einen <strong>Intern</strong> und einen <strong>Designer</strong>, beide „sf / remote“. Für dich zählt nur das Büro in <strong>San Francisco</strong>, vor Ort. Du bewirbst dich direkt bei Gründer Farza, per Mail an <span class="mono">hi@heyclicky.com</span> und mit einer kurzen Nachricht an <span class="mono">@FarzaTV</span> auf X. Am meisten zählt eine kleine Arbeitsprobe für HeyClicky.</p>
       </div>
 
       <h3>Die Stelle</h3>
@@ -992,27 +994,13 @@ USA: I'd come on a J-1 intern visa through a sponsor organization. Your side wou
         <li><strong>Agenten:</strong> Gauntlet ist ein Agenten-Produkt, HeyClicky hat gerade „agent buddies“ gestartet</li>
       </ul>
 
-      <h3>San Francisco oder remote</h3>
-      <div class="cols">
-        <div class="card">
-          <h3>Vor Ort in SF</h3>
-          <ul>
-            <li>Zählt klar als Auslandspraktikum, DAAD oder PROMOS möglich</li>
-            <li>Näher am Team, das sichtbar im Büro arbeitet</li>
-            <li>Braucht ein J-1: über einen Sponsor (rund 1.500–2.100 $, HeyClicky unterschreibt einen Trainingsplan) oder eventuell „Irish Work and Travel“ über deinen irischen Pass. Ob das mit einem Studium in Deutschland geht, ist offen.</li>
-            <li>Zimmer im Schnitt rund 1.650 $ im Monat</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Remote aus München</h3>
-          <ul>
-            <li>Kein Visum, keine Miete</li>
-            <li>Zählt vielleicht nicht als Auslandspraktikum. DAAD und Erasmus zahlen nur, wenn du im Ausland bist.</li>
-            <li>9 Stunden Zeitverschiebung</li>
-            <li>Ob die HM das als Pflichtpraktikum anerkennt, muss Petri sagen</li>
-          </ul>
-        </div>
-      </div>
+      <h3>Vor Ort in San Francisco</h3>
+      <ul>
+        <li>Zählt als Auslandspraktikum, DAAD oder PROMOS möglich</li>
+        <li>Nah am Team, das sichtbar im Büro arbeitet</li>
+        <li>Braucht ein J-1: über einen Sponsor (rund 1.500–2.100 $, HeyClicky unterschreibt einen Trainingsplan) oder eventuell „Irish Work and Travel“ über deinen irischen Pass. Ob das mit einem Studium in Deutschland geht, ist offen.</li>
+        <li>Zimmer im Schnitt rund 1.650 $ im Monat</li>
+      </ul>
 
       <h3>Förderung</h3>
       <ul>
@@ -1023,11 +1011,11 @@ USA: I'd come on a J-1 intern visa through a sponsor organization. Your side wou
 
       <h3>Vorgehensplan</h3>
       <ol class="plan">
-        <li><span class="d">bis 31.10.2026</span><div class="b"><strong>Klären</strong><ul><li>Petri: Zählt ein Remote-Praktikum bei einer US-Firma? Unterschreibt die HM einen J-1-Trainingsplan?</li><li>Bei einem J-1-Sponsor (z. B. USIT, CIEE) fragen, ob „Irish Work and Travel“ mit einem Studium in Deutschland geht</li></ul></div></li>
+        <li><span class="d">bis 31.10.2026</span><div class="b"><strong>Klären</strong><ul><li>Petri: Unterschreibt die HM einen J-1-Trainingsplan?</li><li>Bei einem J-1-Sponsor (z. B. USIT, CIEE) fragen, ob „Irish Work and Travel“ mit einem Studium in Deutschland geht</li></ul></div></li>
         <li><span class="d">ab sofort</span><div class="b"><strong>Produkt und Kanal kennenlernen</strong><ul><li>HeyClicky installieren und echt nutzen, mit Studentenrabatt Pro testen</li><li>Videos schauen und notieren, welche dich gepackt haben und warum. Das ist der Rohstoff fürs Anschreiben.</li></ul></div></li>
         <li><span class="d">bis 30.11.2026</span><div class="b"><strong>Portfolio bereit machen</strong><ul><li>Unify bereinigen, to.morrow nach vorn, Gauntlet als Case Study</li><li>CV auf Englisch, eine Seite, ohne Foto</li></ul></div></li>
-        <li><span class="d">Nov 2026</span><div class="b"><strong>Arbeitsprobe für HeyClicky bauen</strong><ul><li>Entweder ein 20–30-Sekunden-Motion-Stück mit neuen Zuständen für Coco oder Poppy (zuhören, denken, zeigen), oder ein SwiftUI-Prototyp einer Interaktion, z. B. zu „spatial context“</li><li>Öffentlich posten und @heyclicky markieren</li></ul></div></li>
-        <li><span class="d">Ende Nov 2026</span><div class="b"><strong>Anschreiben</strong><ul><li>Persönlich, mit den Punkten unten. Die KI-Hassliebe ist der rote Faden.</li><li>Konkrete Videos nennen, die du wirklich gesehen hast</li><li>SF als Wunsch nennen, remote als Alternative. Den Zeitraum nennen: 18 Wochen im WS 2027/28.</li><li>Am Ende durch den humanizer</li></ul></div></li>
+        <li><span class="d">Nov 2026</span><div class="b"><strong>Arbeitsprobe für HeyClicky bauen</strong><ul><li>Läuft als Semesterthema in der Designfabrik: Die erste Kurzaufgabe (Identity als Zustandssystem der Buddys) geht mit der ersten Mail raus, Website und Tool folgen als Follow-ups</li><li>Entweder ein 20–30-Sekunden-Motion-Stück mit neuen Zuständen für Coco oder Poppy (zuhören, denken, zeigen), oder ein SwiftUI-Prototyp einer Interaktion, z. B. zu „spatial context“</li><li>Öffentlich posten und @heyclicky markieren</li></ul></div></li>
+        <li><span class="d">Ende Nov 2026</span><div class="b"><strong>Anschreiben</strong><ul><li>Persönlich, mit den Punkten unten. Die KI-Hassliebe ist der rote Faden.</li><li>Konkrete Videos nennen, die du wirklich gesehen hast</li><li>Klar sagen: vor Ort in San Francisco, 18 Wochen im WS 2027/28</li><li>Am Ende durch den humanizer</li></ul></div></li>
         <li class="deadline"><span class="d">Anfang Dez 2026</span><div class="b"><strong>Senden</strong><ul><li>Mail an hi@heyclicky.com mit Arbeitsprobe, Portfolio und CV</li><li>Parallel eine kurze Nachricht an @FarzaTV mit Link zur Arbeitsprobe, nur einmal</li></ul></div></li>
         <li><span class="d">+ 1 Woche</span><div class="b"><strong>Ein Follow-up</strong><ul><li>Kurz, mit etwas Neuem, z. B. einer zweiten Variante der Arbeitsprobe</li></ul></div></li>
         <li><span class="d">bis ca. 20.02.2027</span><div class="b"><strong>Zusage für den DAAD</strong><ul><li>Ein kleines Startup plant ungern 9 Monate voraus. Frag offen nach einer schriftlichen Zusage für den Zeitraum, weil du sie für das Stipendium brauchst.</li><li>Ohne Zusage bis Februar bleibt PROMOS (spätere Frist) oder eine Vergütung</li></ul></div></li>
@@ -1046,7 +1034,7 @@ USA: I'd come on a J-1 intern visa through a sponsor organization. Your side wou
       <ul>
         <li>Viel Konkurrenz, das Produkt ist viral gegangen</li>
         <li>Sehr kleines Team: Ein Praktikant muss sofort liefern</li>
-        <li>Visum für SF und offene Anerkennung bei remote</li>
+        <li>J-1-Visum für SF: Sponsor, Trainingsplan und Kosten</li>
         <li>Portfolio: Farza klickt sich durch. Unify muss vorher bereinigt sein.</li>
       </ul>
 
@@ -1106,6 +1094,8 @@ USA: I'd come on a J-1 intern visa through a sponsor organization. Your side wou
     { n: "Wayve", c: "London", cc: "UK", t: "KI-nativ", p: "B", u: "https://wayve.ai/careers/", what: "KI für autonomes Fahren", why: "KI plus Fahrzeug, passt zu deinem Industriedesign-Hintergrund.", note: "" },
     { n: "Monzo", c: "London", cc: "UK", t: "Scale-up", p: "B", u: "https://monzo.com/careers", what: "Banking-App", why: "Große Consumer-App mit starker Design-Kultur.", note: "" },
     { n: "Cleo", c: "London", cc: "UK", t: "KI-nativ", p: "B", u: "https://web.meetcleo.com/careers", what: "KI-Finanzassistent", why: "Consumer-KI mit eigener Persönlichkeit im Produkt.", note: "" },
+    { n: "Nothing", c: "London", cc: "UK", t: "Hardware + KI", p: "A", u: "https://careers.nothing.tech/", what: "Smartphones und Audio, dazu die KI-Plattform Essential (Mini-Apps per Prompt, Beta seit Februar 2026)", why: "Industriedesign, Interface und KI in einer Firma, und ohne Visum erreichbar. Plan B für die Designfabrik-Arbeitsprobe.", note: "Zuletzt „Graduate UX/UI Designer, AI & Services“ in London (12 Monate, Frist 27.02.2026, abgelaufen) und ein Marketing-Praktikumsprogramm. Ein Design-Praktikum für 2027 ist nicht gefunden, also über LinkedIn direkt ans Design-Team." },
+    { n: "Fyxer", c: "London", cc: "UK", t: "KI-nativ", p: "C", u: "https://jobs.ashbyhq.com/fyxer", what: "KI-Assistent für E-Mail und Meetings", why: "Wachsendes KI-Produkt in London, ohne Visum erreichbar.", note: "Am 13.10.2026 ist eine Vollzeitstelle Product Designer in London ausgeschrieben, kein Praktikum. Marke eher generisch." },
     { n: "Google DeepMind", c: "London", cc: "UK", t: "Big Tech", p: "C", u: "https://deepmind.google/careers/", what: "KI-Forschung von Google", why: "Top-Name, aber Design-Praktika sind selten.", note: "" },
 
     { n: "Framer", c: "Amsterdam", cc: "NL", t: "Design-Tool", p: "A", u: "https://www.framer.com/careers/", what: "Design-Tool mit KI-Website-Builder, Hauptsitz Amsterdam", why: "Design und KI in einem Produkt. Passt zu dir wie kaum eine andere Firma.", note: "Die Stelle als Product Designer verlangt Berufserfahrung. Ein Praktikum also aktiv anfragen." },
@@ -1129,7 +1119,7 @@ USA: I'd come on a J-1 intern visa through a sponsor organization. Your side wou
     { n: "Alan", c: "Paris", cc: "FR", t: "Scale-up", p: "B", u: "https://alan.com/en/careers", what: "Krankenversicherung als App", why: "Bekannt für Produkt- und Designkultur.", note: "" },
     { n: "Qonto", c: "Paris", cc: "FR", t: "Scale-up", p: "B", u: "https://qonto.com/en/careers", what: "Business-Banking", why: "Großes Produktteam, viele Praktikanten in Frankreich.", note: "" },
 
-    { n: "Intercom (Fin)", c: "Dublin", cc: "IE", t: "KI-nativ", p: "B", u: "https://fin.ai/careers", what: "KI-Kundenservice-Agent Fin", why: "Starkes Design-Team, baut voll auf KI-Agenten.", note: "Eine Stelle als Senior Product Designer nennt Prototyping mit Framer und Lovable. Die Karriereseite leitet inzwischen auf fin.ai." },
+    { n: "Fin (früher Intercom)", c: "Dublin", cc: "IE", t: "KI-nativ", p: "B", u: "https://fin.ai/careers", what: "KI-Kundenservice-Agent Fin", why: "Starkes Design-Team, baut voll auf KI-Agenten.", note: "Intercom heißt seit Mai 2026 Fin. Im Juni 2026 hat Salesforce die Übernahme für rund 3,6 Mrd. $ vereinbart, das kann Einstellungen bremsen. Eine Stelle als Senior Product Designer nannte Prototyping mit Framer und Lovable." },
     { n: "Stripe", c: "Dublin", cc: "IE", t: "Big Tech", p: "C", u: "https://stripe.com/jobs", what: "Zahlungsinfrastruktur", why: "Top-Name für Design, aber stark umkämpft.", note: "" },
 
     { n: "Google Zürich", c: "Zürich", cc: "CH", t: "Big Tech", p: "C", u: "https://www.google.com/about/careers/applications/locations/zurich/", what: "Großer Google-Standort", why: "DAAD zahlt hier 1.475 €, aber Design-Praktika sind selten.", note: "" },
@@ -1148,7 +1138,7 @@ USA: I'd come on a J-1 intern visa through a sponsor organization. Your side wou
     { n: "Leonardo.Ai", c: "Sydney", cc: "AU", t: "KI-nativ", p: "B", u: "https://leonardo.ai/careers/", what: "KI-Bildgenerierung, gehört zu Canva", why: "KI-Produkt für Kreative.", note: "" },
     { n: "Atlassian", c: "Sydney", cc: "AU", t: "Big Tech", p: "C", u: "https://www.atlassian.com/company/careers", what: "Jira, Confluence", why: "Großes Design-Team.", note: "Das australische Praktikumsprogramm war nur für Australier und Neuseeländer offen." },
 
-    { n: "HeyClicky", d: "dossier-heyclicky", c: "San Francisco / remote", cc: "US", t: "KI-nativ", p: "A", u: "https://www.heyclicky.com/careers", what: "KI-Buddy für den Mac neben dem Cursor: sieht den Bildschirm, spricht, zeichnet und startet Agenten. Y Combinator Spring 2026.", why: "Passt ungewöhnlich gut: neues KI-Interface, Retro-Mac-Ästhetik („the computer we fell in love with“), Figuren (Coco, Poppy), natives macOS, Shipping-Videos. Genau dein Profil aus to.morrow, SkeuKit, Unify und Motion.", note: "Karriereseite (09.10.2026): Intern und Designer, beide „sf / remote“. Gründer Farza Majeed (früher buildspace) stellt selbst ein, Kontakt hi@heyclicky.com, auf X @FarzaTV. Studierende bekommen 50 % auf den ersten Monat Pro. Remote: Petri fragen, ob es als Auslandspraktikum zählt." },
+    { n: "HeyClicky", d: "dossier-heyclicky", c: "San Francisco", cc: "US", t: "KI-nativ", p: "A", u: "https://www.heyclicky.com/careers", what: "KI-Buddy für den Mac neben dem Cursor: sieht den Bildschirm, spricht, zeichnet und startet Agenten. Y Combinator Spring 2026.", why: "Passt ungewöhnlich gut: neues KI-Interface, Retro-Mac-Ästhetik („the computer we fell in love with“), Figuren (Coco, Poppy), natives macOS, Shipping-Videos. Genau dein Profil aus to.morrow, SkeuKit, Unify und Motion.", note: "Karriereseite (09.10. und 12.10.2026): Intern und Designer, beide „sf / remote“. Für dich zählt das Büro in SF. Gründer Farza Majeed (früher buildspace) stellt selbst ein, Kontakt hi@heyclicky.com, auf X @FarzaTV. Studierende bekommen 50 % auf den ersten Monat Pro." },
     { n: "Subframe", c: "San Francisco", cc: "US", t: "Design-Tool", p: "B", u: "https://www.subframe.com/", what: "Design-Tool für Designer, die in Code arbeiten. Desktop-App mit Canvas, Browser und Coding-Agent (Claude Code, Codex)", why: "Genau deine Arbeitsweise. Passt inhaltlich so gut wie Framer oder Lovable.", note: "Gegründet 2022, laut Firmenverzeichnis rund 6 Leute, CEO Irvin Zhan. Keine Karriereseite gefunden, also direkt anschreiben. Hürde ist das US-Visum." },
     { n: "BMW Group Designworks", c: "Los Angeles", cc: "US", t: "Design-Studio", p: "B", u: "https://jobs.bmwgroup.com/", what: "Designstudio der BMW Group", why: "Industriedesign plus UI/UX, deutscher Konzern.", note: "Zuletzt ein UI/UX-Praktikum „Summer/Fall 2026“ für 25,30 $ pro Stunde. J-1-Bewerber brauchten BMW-Vorerfahrung." },
     { n: "Figma", c: "San Francisco", cc: "US", t: "Design-Tool", p: "C", u: "https://www.figma.com/careers/", what: "Design-Tool", why: "Das Werkzeug, das du täglich nutzt.", note: "" },
