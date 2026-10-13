@@ -502,7 +502,7 @@ footer { max-width: 880px; margin: 48px auto 0; font-size: 13px; color: var(--mu
 <section>
   <h2>Log</h2>
   <ul class="log">
-    <li><span class="mono muted">13.10.2026</span><span>Schrift: Systemschriften (SF Pro, SF Mono) statt des Webfonts Geist, damit Umlaute überall richtig dargestellt werden.</span></li>
+    <li><span class="mono muted">13.10.2026</span><span>Schrift: Systemschriften (SF Pro, SF Mono) statt des Webfonts Geist, damit Umlaute überall richtig dargestellt werden. Reiter schalten jetzt per Klick um statt über den URL-Anker, im claude.ai-Artifact ging das vorher nicht.</span></li>
     <li><span class="mono muted">13.10.2026</span><span>Recherche in sechs Richtungen: 48 neue Firmen im Reiter Firmen (Pille „neu“), u. a. tldraw, Logitech Design, In The Pocket, Intuit, VW Innovation Center, Heidi Health. Bewerbungsprozess ergänzt: wen anschreiben, Zusage früh sichern, CV-Aufbau, Case-Study-Vorlage, Absagegründe. Neuseeland als Option, Hongkong und Taiwan gestrichen.</span></li>
     <li><span class="mono muted">13.10.2026</span><span>Fristen geprüft und als Tabelle ganz oben eingebaut, die wichtigsten vier im Kopf. Korrektur: PROMOS gibt es an der HM nur fürs Studium, nicht für Praktika, überall durch Erasmus+ weltweit oder den Reisekostenzuschuss ersetzt. „Irish Work and Travel“ setzt laut Drittquellen ein Studium in Irland voraus. IO-Info „Praktikum im Ausland“ am 19.10. statt Erasmus-Info am 22.10.</span></li>
     <li><span class="mono muted">13.10.2026</span><span>Kein Remote-Praktikum aus München, nur vor Ort: Remote-Teil bei HeyClicky gestrichen. Intercom heißt jetzt Fin (Salesforce-Übernahme vereinbart). Nothing und Fyxer ergänzt. To-do Designfabrik-Arbeitsprobe. Pixelschrift entfernt.</span></li>
@@ -1213,6 +1213,19 @@ USA: I'd come on a J-1 intern visa through a sponsor organization. Your side wou
       a.setAttribute("aria-current", a.getAttribute("href") === "#" + id ? "page" : "false");
     });
   }
+  /* Reiter per Klick umschalten, nicht über den URL-Anker: In eingebetteten Ansichten
+     (claude.ai-Artifact, Vorschau) springt ein #-Link oft nicht und hashchange feuert nicht. */
+  function go(id, target) {
+    show(id);
+    try { history.replaceState(null, "", "#" + id); } catch (e) {}
+    var t = target && document.getElementById(target);
+    if (t) t.scrollIntoView({ block: "start" }); else window.scrollTo(0, 0);
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    var id = a.getAttribute("href").slice(1);
+    if (tabs.indexOf(id) < 0) return;
+    a.addEventListener("click", function (e) { e.preventDefault(); go(id, a.getAttribute("data-jump")); });
+  });
   window.addEventListener("hashchange", function () {
     show(location.hash.slice(1));
     window.scrollTo(0, 0);
@@ -1228,15 +1241,6 @@ USA: I'd come on a J-1 intern visa through a sponsor organization. Your side wou
         done("Markiert");
       }
       try { navigator.clipboard.writeText(txt).then(function () { done("Kopiert"); }, fallback); } catch (e) { fallback(); }
-    });
-  });
-  document.querySelectorAll("[data-jump]").forEach(function (a) {
-    a.addEventListener("click", function (e) {
-      e.preventDefault();
-      if (location.hash !== "#allgemein") history.pushState(null, "", "#allgemein");
-      show("allgemein");
-      var t = document.getElementById(a.getAttribute("data-jump"));
-      if (t) t.scrollIntoView({ block: "start" });
     });
   });
   /* ── Firmen: Daten und Filter ──────────────────────────────────────── */
