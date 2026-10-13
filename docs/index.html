@@ -5,9 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <style>body{margin:0}[hidden]{display:none!important}</style>
 <title>Auslandspraktikum WS 2027/28</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
 <style>
 /* Layout: Arbeitsdossier mit drei Reitern (Allgemein, Orte, Bewerbung), eine ruhige Spalte, Status als Pillen. */
 :root {
@@ -25,9 +22,10 @@
   --warn-wash: #F7EEDC;
   --bad: #A93838;
   --bad-wash: #F6E3E3;
-  --font-display: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-body: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-mono: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  /* Systemschriften statt Webfont: Umlaute werden überall nativ gesetzt (SF Pro / SF Mono auf Apple-Geräten). */
+  --font-display: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-body: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -504,6 +502,7 @@ footer { max-width: 880px; margin: 48px auto 0; font-size: 13px; color: var(--mu
 <section>
   <h2>Log</h2>
   <ul class="log">
+    <li><span class="mono muted">13.10.2026</span><span>Schrift: Systemschriften (SF Pro, SF Mono) statt des Webfonts Geist, damit Umlaute überall richtig dargestellt werden.</span></li>
     <li><span class="mono muted">13.10.2026</span><span>Recherche in sechs Richtungen: 48 neue Firmen im Reiter Firmen (Pille „neu“), u. a. tldraw, Logitech Design, In The Pocket, Intuit, VW Innovation Center, Heidi Health. Bewerbungsprozess ergänzt: wen anschreiben, Zusage früh sichern, CV-Aufbau, Case-Study-Vorlage, Absagegründe. Neuseeland als Option, Hongkong und Taiwan gestrichen.</span></li>
     <li><span class="mono muted">13.10.2026</span><span>Fristen geprüft und als Tabelle ganz oben eingebaut, die wichtigsten vier im Kopf. Korrektur: PROMOS gibt es an der HM nur fürs Studium, nicht für Praktika, überall durch Erasmus+ weltweit oder den Reisekostenzuschuss ersetzt. „Irish Work and Travel“ setzt laut Drittquellen ein Studium in Irland voraus. IO-Info „Praktikum im Ausland“ am 19.10. statt Erasmus-Info am 22.10.</span></li>
     <li><span class="mono muted">13.10.2026</span><span>Kein Remote-Praktikum aus München, nur vor Ort: Remote-Teil bei HeyClicky gestrichen. Intercom heißt jetzt Fin (Salesforce-Übernahme vereinbart). Nothing und Fyxer ergänzt. To-do Designfabrik-Arbeitsprobe. Pixelschrift entfernt.</span></li>
