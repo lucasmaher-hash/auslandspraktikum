@@ -214,6 +214,7 @@ footer { max-width: 880px; margin: 48px auto 0; font-size: 13px; color: var(--mu
     <li><a href="#orte"><span class="num">02</span><span class="lbl">Orte</span></a></li>
     <li><a href="#bewerbung"><span class="num">03</span><span class="lbl">Bewerbungsprozess</span></a></li>
     <li><a href="#firmen"><span class="num">04</span><span class="lbl">Firmen</span></a></li>
+    <li><a href="#bewerbungen"><span class="num">05</span><span class="lbl">Bewerbungen</span></a></li>
   </ul>
 </nav>
 
@@ -495,6 +496,7 @@ footer { max-width: 880px; margin: 48px auto 0; font-size: 13px; color: var(--mu
 <section>
   <h2>Log</h2>
   <ul class="log">
+    <li><span class="mono muted">14.10.2026</span><span>Neuer Reiter 05 Bewerbungen: jede tatsächlich verschickte Bewerbung als Karte, im Stil der Firmenkarten. Erste Karte: Subframe.</span></li>
     <li><span class="mono muted">13.10.2026</span><span>Erste Bewerbung verschickt: LinkedIn-Kontaktanfrage an Filip Skrzesinski, Designer-Mitgründer von Subframe (San Francisco). Eine direkte Nachricht ging nicht (InMail nur mit Premium). Nachfassen am 20.10., Texte liegen bereit.</span></li>
     <li><span class="mono muted">13.10.2026</span><span>Schrift: Systemschriften (SF Pro, SF Mono) statt des Webfonts Geist, damit Umlaute überall richtig dargestellt werden. Reiter schalten jetzt per Klick um statt über den URL-Anker, im claude.ai-Artifact ging das vorher nicht.</span></li>
     <li><span class="mono muted">13.10.2026</span><span>Recherche in sechs Richtungen: 48 neue Firmen im Reiter Firmen (Pille „neu“), u. a. tldraw, Logitech Design, In The Pocket, Intuit, VW Innovation Center, Heidi Health. Bewerbungsprozess ergänzt: wen anschreiben, Zusage früh sichern, CV-Aufbau, Case-Study-Vorlage, Absagegründe. Neuseeland als Option, Hongkong und Taiwan gestrichen.</span></li>
@@ -1189,6 +1191,26 @@ USA: I'd come on a J-1 intern visa through a sponsor organization. Your side wou
 </section>
 
 
+<div class="next"><a href="#bewerbungen">Weiter zu 05 Bewerbungen →</a></div>
+</div>
+
+<div class="wrap" data-tab="bewerbungen" hidden>
+
+<section>
+  <h2>Bewerbungen <span class="tag">nur tatsächlich verschickte</span></h2>
+  <p class="muted">Hier steht jede Bewerbung, sobald sie wirklich raus ist. Vorbereitete Unterlagen zählen nicht. Die Dateien liegen im Ordner Bewerbungen/&lt;Firma&gt;/, oben nur das, was du verschickst.</p>
+  <div class="firms" id="applications">
+    <!-- Eine Karte je verschickter Bewerbung, neueste zuerst. Status-Pille: p-info verschickt, p-good Antwort/Gespräch/Zusage, p-bad Absage. -->
+    <article class="firm">
+      <header><div><h3>Subframe</h3><span class="mono muted">San Francisco · USA</span></div><div class="firm-pills"><span class="pill p-info">verschickt</span><span class="pill p-info">Design-Tool</span></div></header>
+      <p><span class="mono">13.10.2026 · LinkedIn</span><br>Kontaktanfrage mit Notiz an Filip Skrzesinski, Designer-Mitgründer. Eine direkte Nachricht ging nicht (InMail nur mit Premium).</p>
+      <p class="why">Gesendet: kurze Notiz. Angehängt wird der CV erst mit der nächsten Nachricht.</p>
+      <p class="fnote"><span class="mono">Nächster Schritt:</span> 20.10. Nimmt Filip an: Nachricht A mit CV. Sonst Mail C an support@subframe.com. Texte in Bewerbungen/Subframe/Nachrichten.md.</p>
+      <div class="firm-actions"><a class="firm-link" href="https://www.linkedin.com/in/filipskrzesinski" target="_blank" rel="noopener">Filip auf LinkedIn →</a><span class="mono muted">keine Antwort</span></div>
+    </article>
+  </div>
+</section>
+
 <div class="next"><a href="#allgemein">Zurück zu 01 Allgemein →</a></div>
 </div>
 
@@ -1198,7 +1220,7 @@ USA: I'd come on a J-1 intern visa through a sponsor organization. Your side wou
 
 <script>
 (function () {
-  var tabs = ["allgemein", "orte", "bewerbung", "firmen"];
+  var tabs = ["allgemein", "orte", "bewerbung", "firmen", "bewerbungen"];
   function show(id) {
     if (tabs.indexOf(id) < 0) id = "allgemein";
     document.querySelectorAll("[data-tab]").forEach(function (p) { p.hidden = p.getAttribute("data-tab") !== id; });
