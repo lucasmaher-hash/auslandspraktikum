@@ -193,6 +193,8 @@ button.copy { font: inherit; font-size: 15px; font-weight: 500; color: var(--acc
 .firm .fnote { font-size: 15px; color: var(--muted); }
 .firm-link { font-size: 15px; text-decoration: none; }
 .firm-actions { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 2px; }
+.firm.applied { opacity: .5; }
+.firm.applied:hover { opacity: .85; }
 .dossier-btn { font: inherit; font-size: 15px; font-weight: 500; color: var(--accent); background: none; border: 0; padding: 0; cursor: pointer; }
 
 /* Dossiers */
@@ -513,6 +515,7 @@ footer { max-width: 880px; margin: 48px auto 0; font-size: 13px; color: var(--mu
 <section>
   <h2>Log</h2>
   <ul class="log">
+    <li><span class="mono muted">16.10.2026</span><span>Firmen-Reiter: beworbene Firmen werden automatisch aus Reiter 05 erkannt, grau dargestellt und ans Ende sortiert (Pille „beworben“, Zähler offen/beworben).</span></li>
 <li><span class="mono muted">16.10.2026</span><span>Enchanted Tools Open Application verschickt, Lucas bestätigt. Kein InMail. Ohne Antwort ab 30.10. nachfassen.</span></li>
     <li><span class="mono muted">16.10.2026</span><span>Sesame: E-Mail mit individuellem CV und Anschreiben an careers@sesame.com verschickt, Lucas bestätigt. Kein InMail. Ohne Antwort ab 26.10. einmal nachfassen. Split nur als Ausnahme bei ausdrücklich kürzeren Programmen.</span></li>
     <li><span class="mono muted">16.10.2026</span><span>Krea per E-Mail an Diego mit CV und Anschreiben verschickt, Lucas bestätigt. Kein InMail verwendet. Nächste Bewerbung: Sesame.</span></li>
@@ -1608,6 +1611,11 @@ USA: I'd come on a J-1 intern visa through a sponsor organization. Your side wou
   var countBox = document.getElementById("firm-count");
   var onlyA = document.getElementById("only-a");
   var order = { A: 0, B: 1, C: 2 };
+  // Beworbene Firmen: automatisch aus den Karten im Reiter 05 Bewerbungen (#applications)
+  function norm(x) { return x.toLowerCase().replace(/[^a-z0-9]/g, ""); }
+  var APPLIED = {};
+  document.querySelectorAll("#applications .firm h3").forEach(function (h) { APPLIED[norm(h.textContent)] = true; });
+  function isApplied(f) { return !!APPLIED[norm(f.n)]; }
 
   function chip(code, label, count) {
     var b = document.createElement("button");
@@ -1622,13 +1630,15 @@ USA: I'd come on a J-1 intern visa through a sponsor organization. Your side wou
     onlyA.checked = state.onlyA;
     filterBox.querySelectorAll(".chip").forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.cc === state.cc ? "true" : "false"); });
     var list = FIRMS.filter(function (f) { return (state.cc === "ALL" || f.cc === state.cc) && (!state.onlyA || f.p === "A"); })
-      .sort(function (a, b) { return order[a.p] - order[b.p] || a.n.localeCompare(b.n); });
-    countBox.textContent = list.length + (list.length === 1 ? " Firma" : " Firmen");
+      .sort(function (a, b) { return (isApplied(a) - isApplied(b)) || order[a.p] - order[b.p] || a.n.localeCompare(b.n); });
+    var nApplied = list.filter(isApplied).length;
+    countBox.textContent = list.length + (list.length === 1 ? " Firma" : " Firmen") + " · " + (list.length - nApplied) + " offen · " + nApplied + " beworben";
     listBox.innerHTML = list.map(function (f) {
       var pc = f.p === "A" ? "p-good" : f.p === "B" ? "p-info" : "p-warn";
-      return '<article class="firm">' +
+      var ap = isApplied(f);
+      return '<article class="firm' + (ap ? ' applied' : '') + '">' +
         '<header><div><h3>' + esc(f.n) + '</h3><span class="mono muted">' + esc(f.c) + " · " + COUNTRIES[f.cc] + "</span></div>" +
-        '<div class="firm-pills">' + (f.nw === 2 ? '<span class="pill p-good">Startup neu</span>' : f.nw ? '<span class="pill p-good">neu</span>' : '') + '<span class="pill ' + pc + '">' + f.p + '</span><span class="pill p-info">' + esc(f.t) + "</span></div></header>" +
+        '<div class="firm-pills">' + (ap ? '<span class="pill p-info">beworben</span>' : '') + (f.nw === 2 ? '<span class="pill p-good">Startup neu</span>' : f.nw ? '<span class="pill p-good">neu</span>' : '') + '<span class="pill ' + pc + '">' + f.p + '</span><span class="pill p-info">' + esc(f.t) + "</span></div></header>" +
         "<p>" + esc(f.what) + "</p>" +
         '<p class="why">' + esc(f.why) + "</p>" +
         (f.note ? '<p class="fnote"><span class="mono">Gut zu wissen:</span> ' + esc(f.note) + "</p>" : "") +
