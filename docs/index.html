@@ -522,6 +522,7 @@ footer { max-width: 880px; margin: 48px auto 0; font-size: 13px; color: var(--mu
 <section>
   <h2>Log</h2>
   <ul class="log">
+    <li><span class="mono muted">20.10.2026</span><span>reMarkable: E-Mail an talent@remarkable.com verschickt, Lucas bestätigt. Kein InMail. Ohne Antwort ab 03.11. einmal nachfassen. Nächste neue Firma: Logitech.</span></li>
     <li><span class="mono muted">20.10.2026</span><span>Fünf nächste Ziele von Lucas bestätigt: jetzt reMarkable, dann Logitech, Furhat Robotics, Hello Robot, Figma (Timing prüfen). reMarkable-Unterlagen individuell vorbereitet; nicht verschickt. Recruiting-Mail talent@remarkable.com offiziell verifiziert, kein InMail nötig.</span></li>
     <li><span class="mono muted">16.10.2026</span><span>Dust angefragt: Kontaktanfrage mit Notiz an Edouard Wautier, kein InMail. Ashby-Bewerbung erst am 23.10., falls er nicht annimmt.</span></li>
     <li><span class="mono muted">16.10.2026</span><span>Jitter verschickt: Open Application mit neuem CV und Anschreiben (UI/UX-Fokus), von Lucas bestätigt.</span></li>
@@ -1266,15 +1267,14 @@ USA: I'd come on a J-1 intern visa through a sponsor organization. Your side wou
 
 <section id="next-application-queue">
   <h2>Als Nächstes <span class="tag">bestätigt 20.10.2026</span></h2>
-  <p class="muted">Aktive Warteschlange, noch nicht verschickt. reMarkable zuerst, wie von Lucas gewählt. Bestehenden Dust-Kontakt separat weiterführen.</p>
+  <p class="muted">reMarkable am 20.10.2026 per E-Mail verschickt. Als Nächstes Logitech. Die folgenden Firmen sind noch nicht verschickt; bestehenden Dust-Kontakt separat weiterführen.</p>
   <table>
     <thead><tr><th>Reihenfolge</th><th>Firma</th><th>Nächster Schritt</th></tr></thead>
     <tbody>
-      <tr><td>1 · jetzt</td><td><strong>reMarkable · Oslo</strong></td><td>CV, Anschreiben und Mail vorbereitet. Offiziell talent@remarkable.com, kein InMail nötig.</td></tr>
-      <tr><td>2</td><td>Logitech · Cork / Lausanne</td><td>UX-/Produktdesign-Kontakt und Termine prüfen; alte 2026-Anzeigen sind keine aktuellen Angebote.</td></tr>
-      <tr><td>3</td><td>Furhat Robotics · Stockholm</td><td>Designbetreuung und Finanzierung zuerst klären; frühere Praktika unbezahlt bzw. nicht voll bezahlt.</td></tr>
-      <tr><td>4</td><td>Hello Robot · Kalifornien</td><td>Sponsor-Vorabklärung, danach geeignete Designaufgaben und J-1-Hostbereitschaft prüfen.</td></tr>
-      <tr><td>5 · Timing prüfen</td><td>Figma · USA</td><td>Anzeige Sommer 2027 passt nicht automatisch. Sommer 2028 ist die bestätigte Alternative; ggf. nächsten Zyklus verfolgen.</td></tr>
+      <tr><td>1 · jetzt</td><td>Logitech · Cork / Lausanne</td><td>UX-/Produktdesign-Kontakt und Termine prüfen; alte 2026-Anzeigen sind keine aktuellen Angebote.</td></tr>
+      <tr><td>2</td><td>Furhat Robotics · Stockholm</td><td>Designbetreuung und Finanzierung zuerst klären; frühere Praktika unbezahlt bzw. nicht voll bezahlt.</td></tr>
+      <tr><td>3</td><td>Hello Robot · Kalifornien</td><td>Sponsor-Vorabklärung, danach geeignete Designaufgaben und J-1-Hostbereitschaft prüfen.</td></tr>
+      <tr><td>4 · Timing prüfen</td><td>Figma · USA</td><td>Anzeige Sommer 2027 passt nicht automatisch. Sommer 2028 ist die bestätigte Alternative; ggf. nächsten Zyklus verfolgen.</td></tr>
     </tbody>
   </table>
 </section>
@@ -1284,6 +1284,13 @@ USA: I'd come on a J-1 intern visa through a sponsor organization. Your side wou
   <h2>Bewerbungen <span class="tag">nur tatsächlich verschickte</span></h2>
   <p class="muted">Hier steht jede Bewerbung, sobald sie wirklich raus ist. Vorbereitete Unterlagen zählen nicht. Die Dateien liegen im Ordner Bewerbungen/&lt;Firma&gt;/, oben nur das, was du verschickst.</p>
   <div class="firms" id="applications">
+    <article class="firm">
+      <header><div><h3>reMarkable</h3><span class="mono muted">Oslo · NO</span></div><div class="firm-pills"><span class="pill p-info">verschickt</span></div></header>
+      <p><span class="mono">20.10.2026 · E-Mail</span><br>Initiativanfrage für ein UI/UX-Praktikum an talent@remarkable.com. Versand von Lucas bestätigt.</p>
+      <p class="why">Verbindung von Gerät und Software; to.morrow, Designsystem und User Testing für beide Apps. Individueller CV und Anschreiben vorbereitet, kurze Begleitmail.</p>
+      <p class="fnote"><span class="mono">Nächster Schritt:</span> Ohne Antwort ab 03.11. einmal nachfassen. Kein InMail verwendet.</p>
+      <div class="firm-actions"><a class="firm-link" href="https://careers.remarkable.com/qa" target="_blank" rel="noopener">Recruiting →</a><span class="mono muted">keine Antwort</span></div>
+    </article>
     <article class="firm">
       <header><div><h3>Dust</h3><span class="mono muted">Paris · FR</span></div><div class="firm-pills"><span class="pill p-warn">angefragt</span></div></header>
       <p><span class="mono">16.10.2026 · LinkedIn-Kontaktanfrage</span><br>Kontaktanfrage mit Notiz an Edouard Wautier (Principal Product Designer, Paris) für ein Produktdesign-Praktikum ab Herbst 2027. Von Lucas bestätigt.</p>
@@ -1653,7 +1660,7 @@ USA: I'd come on a J-1 intern visa through a sponsor organization. Your side wou
     { nw: 2, n: "mimic", c: "Zürich", cc: "CH", t: "Robotik + KI", p: "B", u: "https://www.mimicrobotics.com/careers", what: "Robotik, Robot Learning und Operator-Workflows", why: "Möglicher UX-Ansatz bei Bedienung und Training physischer Roboter.", note: "Reserve: aktuelle Rollen überwiegend Engineering und Data Operations. Designbedarf nur Hypothese; kein Designpraktikum bestätigt." },
     { nw: 2, n: "Sesame", c: "San Francisco", cc: "US", t: "Hardware + KI", p: "A", u: "https://jobs.ashbyhq.com/sesame", what: "Sprach-KI und Brille für den ganzen Tag", why: "Stimme als Interface plus Hardware, Oculus-Gründer, Series B 250 Mio. $ (Sequoia).", note: "USA-Shortlist 16.10.2026: persönliche Sprachagenten plus Geräte. Offiziell careers@sesame.com, kostenlos zuerst. Büros SF, Bellevue, New York; Designstandort, Praktikum und J-1 offen." },
     { nw: 2, n: "Daylight Computer", c: "San Francisco", cc: "US", t: "Hardware", p: "B", u: "https://daylightcomputer.com/", what: "Ruhiges Tablet DC-1 ohne Blaulicht und Flimmern", why: "Technik gegen die Aufmerksamkeitsökonomie, Hardware plus Software.", note: "11 bis 50 Leute, Finanzierungszahlen widersprüchlich. Brand Design Lead in New York ausgeschrieben. USA nur über J-1." },
-    { nw: 2, n: "reMarkable", c: "Oslo", cc: "NO", t: "Hardware", p: "B", u: "https://careers.remarkable.com/", what: "Papier-Tablet, Hardware und Software aus einer Hand", why: "Industriedesign plus UI an einem ruhigen Produkt, EWR ohne Visum.", note: "20.10.2026 aktive nächste Bewerbung: individueller CV, Anschreiben und Mail vorbereitet, nicht verschickt. Offizieller Recruiting-Kontakt talent@remarkable.com (FAQ). Kein Designpraktikum bestätigt; kein InMail nötig." },
+    { nw: 2, n: "reMarkable", c: "Oslo", cc: "NO", t: "Hardware", p: "B", u: "https://careers.remarkable.com/", what: "Papier-Tablet, Hardware und Software aus einer Hand", why: "Industriedesign plus UI an einem ruhigen Produkt, EWR ohne Visum.", note: "20.10.2026 E-Mail an talent@remarkable.com verschickt, Lucas bestätigt. Ohne Antwort ab 03.11. einmal nachfassen. Kein InMail verwendet; Designpraktikum bleibt Initiativanfrage." },
     { nw: 2, n: "Fairphone", c: "Amsterdam", cc: "NL", t: "Hardware", p: "B", u: "https://fairphone.jobs.personio.com/", what: "Reparierbare, modulare Smartphones", why: "Bezahltes Product-Management-Praktikum, das ausdrücklich Industriedesign-Studierende anspricht.", note: "Kein Design-Praktikum, aber das einzige konkrete Praktikum für Industriedesign in der Startup-Recherche. Aus der Firmen-Analyse übernommen." },
     { nw: 2, n: "Lightyear", c: "London / Tallinn", cc: "UK", t: "Scale-up", p: "B", u: "https://careers.lightyear.com/", what: "Investment-App, Gründer Ex-Wise", why: "Trade-Republic-Muster in London mit kleinem Designteam (zwei Produktdesigner).", note: "60+ Leute, neue visuelle Identität. Kein Praktikum gefunden." },
     { nw: 2, n: "Finary", c: "Paris", cc: "FR", t: "Scale-up", p: "B", u: "https://jobs.ashbyhq.com/finary", what: "Vermögens-App mit KI", why: "Consumer-Fintech mit Designkultur und Praktikumskultur, EU.", note: "Series B 25 Mio. € (PayPal Ventures). Am 15.10. mehrere Stages ausgeschrieben, z. B. für Juli 2027, aber kein Design. Französisch vermutlich nötig." }
