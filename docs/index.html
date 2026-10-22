@@ -1276,7 +1276,7 @@ USA: I'd come on a J-1 intern visa through a sponsor organization. Your side wou
   <table>
     <thead><tr><th>Reihenfolge</th><th>Firma</th><th>Nächster Schritt</th></tr></thead>
     <tbody>
-      <tr><td>1 · prüfen</td><td>Figma · USA</td><td>Anzeige Sommer2027; Standard12–16Wochen. Termine2028 und Verlängerung oder Ausnahmefall mit ergänzendem Praktikum/HM-Anerkennung klären.</td></tr>
+      <tr><td>1 · prüfen</td><td>Figma · USA <span class="pill p-warn">geprüft · zurückgestellt</span></td><td>Anzeige Sommer2027; Standard12–16Wochen. Termine2028 und Verlängerung oder Ausnahmefall mit ergänzendem Praktikum/HM-Anerkennung klären.</td></tr>
       <tr><td>2 · zuletzt</td><td>Logitech · Cork / Lausanne</td><td>UX-/Produktdesign-Kontakt und Termine prüfen.</td></tr>
     </tbody>
   </table>
@@ -1598,7 +1598,7 @@ USA: I'd come on a J-1 intern visa through a sponsor organization. Your side wou
     { n: "HeyClicky", d: "dossier-heyclicky", c: "San Francisco", cc: "US", t: "KI-nativ", p: "B", u: "https://www.heyclicky.com/careers", what: "KI-Buddy für den Mac neben dem Cursor: sieht den Bildschirm, spricht, zeichnet und startet Agenten. Y Combinator Spring 2026.", why: "Passt ungewöhnlich gut: neues KI-Interface, Retro-Mac-Ästhetik („the computer we fell in love with“), Figuren (Coco, Poppy), natives macOS, Shipping-Videos. Genau dein Profil aus to.morrow, SkeuKit, Unify und Motion.", note: "Karriereseite (09.10. und 12.10.2026): Intern und Designer, beide „sf / remote“. Für dich zählt das Büro in SF. Gründer Farza Majeed (früher buildspace) stellt selbst ein, Kontakt hi@heyclicky.com, auf X @FarzaTV. Studierende bekommen 50 % auf den ersten Monat Pro." },
     { n: "Subframe", c: "San Francisco", cc: "US", t: "Design-Tool", p: "B", u: "https://www.subframe.com/", what: "Design-Tool für Designer, die in Code arbeiten. Desktop-App mit Canvas, Browser und Coding-Agent (Claude Code, Codex)", why: "Genau deine Arbeitsweise. Passt inhaltlich so gut wie Framer oder Lovable.", note: "Gegründet 2022, laut LinkedIn 8 Leute, CEO Irvin Zhan, Designer-Mitgründer Filip Skrzesinski. Keine Karriereseite. Am 13.10.2026 angeschrieben: LinkedIn-Kontaktanfrage an Filip. Einzige öffentliche Mail: support@subframe.com. Hürde ist das US-Visum (J-1)." },
     { n: "BMW Group Designworks", c: "Los Angeles", cc: "US", t: "Design-Studio", p: "B", u: "https://jobs.bmwgroup.com/", what: "Designstudio der BMW Group", why: "Industriedesign plus UI/UX, deutscher Konzern.", note: "Zuletzt ein UI/UX-Praktikum „Summer/Fall 2026“ für 25,30 $ pro Stunde. J-1-Bewerber brauchten BMW-Vorerfahrung." },
-    { n: "Figma", c: "San Francisco", cc: "US", t: "Design-Tool", p: "B", u: "https://www.figma.com/careers/", what: "Design-Tool", why: "Das Werkzeug, das du täglich nutzt.", note: "16.10.2026: offizielle Product Design Intern (2027)-Ausschreibung gefunden. Termine, 18-Wochen-Dauer und internationale Zulassung noch prüfen; Sommer 2028 ist Lucas alternative Verfügbarkeit." },
+    { reviewed: true, n: "Figma", c: "San Francisco", cc: "US", t: "Design-Tool", p: "B", u: "https://www.figma.com/careers/", what: "Design-Tool", why: "Das Werkzeug, das du täglich nutzt.", note: "22.10.2026 geprüft, zurückgestellt: aktuelle Designstelle Sommer2027, Standard12–16Wochen. Termine2028 und Verlängerung oder genehmigten Ausnahmefall mit ergänzendem Praktikum prüfen; nichts verschickt." },
     { n: "Anthropic", c: "San Francisco", cc: "US", t: "KI-nativ", p: "C", u: "https://www.anthropic.com/careers", what: "KI-Modelle (Claude)", why: "Du baust mit ihren Werkzeugen.", note: "Eine Stelle als Product Designer für Claude Code verlangt Prototyping in HTML, CSS und JS." },
     { n: "Cursor", c: "San Francisco", cc: "US", t: "KI-nativ", p: "C", u: "https://cursor.com/careers", what: "KI-Code-Editor", why: "Design Engineering an der Schnittstelle von Figma und Code.", note: "Eine Stelle als Design Engineer verlangt Figma und Code (TypeScript, React)." },
 
@@ -1718,7 +1718,7 @@ USA: I'd come on a J-1 intern visa through a sponsor organization. Your side wou
       var ap = isApplied(f);
       return '<article class="firm' + (ap ? ' applied' : '') + '">' +
         '<header><div><h3>' + esc(f.n) + '</h3><span class="mono muted">' + esc(f.c) + " · " + COUNTRIES[f.cc] + "</span></div>" +
-        '<div class="firm-pills">' + (ap ? '<span class="pill p-info">beworben</span>' : '') + (f.nw === 2 ? '<span class="pill p-good">Startup neu</span>' : f.nw ? '<span class="pill p-good">neu</span>' : '') + '<span class="pill ' + pc + '">' + f.p + '</span><span class="pill p-info">' + esc(f.t) + "</span></div></header>" +
+        '<div class="firm-pills">' + (f.reviewed ? '<span class="pill p-warn">geprüft · zurückgestellt</span>' : '') + (ap ? '<span class="pill p-info">beworben</span>' : '') + (f.nw === 2 ? '<span class="pill p-good">Startup neu</span>' : f.nw ? '<span class="pill p-good">neu</span>' : '') + '<span class="pill ' + pc + '">' + f.p + '</span><span class="pill p-info">' + esc(f.t) + "</span></div></header>" +
         "<p>" + esc(f.what) + "</p>" +
         '<p class="why">' + esc(f.why) + "</p>" +
         (f.note ? '<p class="fnote"><span class="mono">Gut zu wissen:</span> ' + esc(f.note) + "</p>" : "") +
